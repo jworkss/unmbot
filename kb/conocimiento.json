@@ -1,0 +1,126 @@
+{
+  "institucion": "Universidad Nacional de Moreno (UNM)",
+  "departamento": "Departamento de Ciencias Aplicadas y Tecnología",
+  "preguntas_frecuentes": [
+    {
+      "categoria": "Inscripciones y Admisión",
+      "pregunta": "¿Cuándo y cómo se realiza el proceso general de inscripción para ingresantes?",
+      "respuesta": "La inscripción para ingresantes suele abrirse entre octubre y noviembre para cursar en el ciclo lectivo siguiente. El proceso contempla una etapa inicial de preinscripción web y culmina de manera presencial con la presentación de la documentación en la Dirección/Departamento de Alumnos de la Universidad."
+    },
+    {
+      "categoria": "Inscripciones y Admisión",
+      "pregunta": "¿Cuáles son los pasos específicos de preinscripción e inscripción definitiva?",
+      "respuesta": "Paso 1 (Preinscripción): Registrarse con un correo electrónico personal y activo, validar el enlace recibido por mail y completar el formulario en línea con datos personales, laborales y de trayectoria académica. Paso 2 (Inscripción): Presentar de forma presencial el formulario impreso y firmado junto con toda la documentación obligatoria en el Departamento de Alumnos dentro de los plazos estipulados en el Calendario Académico."
+    },
+    {
+      "categoria": "Inscripciones y Admisión",
+      "pregunta": "¿Qué datos se solicitan para generar el usuario de preinscripción en el sistema?",
+      "respuesta": "Se requiere completar: género, fecha de nacimiento, nacionalidad, país emisor del documento, tipo y número de documento (con repetición), apellidos y nombres completos (idénticos al DNI), nombre de pila elegido bajo la Ley de Identidad de Género N° 26.743, número de celular, pregunta y respuesta secreta de recuperación, correo electrónico principal y contraseña."
+    },
+    {
+      "categoria": "Inscripciones y Admisión",
+      "pregunta": "¿Qué documentación general se debe presentar?",
+      "respuesta": "Original y fotocopia del DNI, título secundario legalizado o certificado de título en trámite (sin adeudar asignaturas), el formulario de preinscripción impreso y firmado, junto con fotos carnet."
+    },
+    {
+      "categoria": "Inscripciones y Admisión",
+      "pregunta": "¿Cuáles son los horarios de atención y datos de contacto del Departamento de Alumnos?",
+      "respuesta": "El Departamento de Alumnos atiende de lunes a viernes en el horario de 9:00 a 19:00 horas, y su correo electrónico oficial de contacto es alumnos@unm.edu.ar."
+    },
+    {
+      "categoria": "Ingreso a la Universidad",
+      "pregunta": "¿Existe un curso de ingreso obligatorio en la UNM?",
+      "respuesta": "Sí. Todos los aspirantes que deseen cursar carreras de grado deben realizar de forma obligatoria el COPRUN (Curso de Orientación y Preparación Universitaria)."
+    },
+    {
+      "categoria": "Ingreso a la Universidad",
+      "pregunta": "¿Qué acciones realiza el área de Articulación con Escuelas Secundarias?",
+      "respuesta": "Desarrolla actividades de promoción de estudios superiores, difusión de la oferta académica de la UNM y programas de aproximación a la vida universitaria para estudiantes secundarios y la comunidad general."
+    },
+    {
+      "categoria": "Carreras de Diseño",
+      "pregunta": "¿Qué carreras integran el área de diseño en la UNM y cuáles son sus títulos intermedios?",
+      "respuesta": "La UNM dicta cuatro carreras de grado de 5 años de duración pertenecientes al área de diseño: 1) Licenciatura en Diseño Industrial (Título intermedio de 3 años: Técnico/a Universitario/a en Prototipado Rápido y Renderización); 2) Licenciatura en Diseño de Indumentaria (Título intermedio de 3 años: Técnico/a Universitario/a en Planificación y Confección de Indumentaria); 3) Licenciatura en Diseño Multimedial (Título intermedio de 3 años: Técnico/a Universitario/a en Animación Digital); 4) Licenciatura en Diseño en Comunicación Visual (Título intermedio de 3 años: Técnico/a Universitario/a en Desarrollo de Imagen e Identidad Corporativa)."
+    },
+    {
+      "categoria": "Carreras de Diseño",
+      "pregunta": "¿Cuál es el perfil profesional de Diseño Industrial y Diseño de Indumentaria?",
+      "respuesta": "El/la Diseñador/a Industrial se capacita para proyectar y dirigir procesos y productos industriales con solvencia estética, rigor tecnológico y sustentabilidad ambiental. El/la Diseñador/a de Indumentaria se forma para planificar, diseñar y definir los elementos del vestir y la producción textil con criterios estéticos, técnicos, éticos y socioculturales."
+    },
+    {
+      "categoria": "Carreras de Diseño",
+      "pregunta": "¿Cuál es el perfil profesional de Diseño Multimedial y Diseño en Comunicación Visual?",
+      "respuesta": "El/la Diseñador/a Multimedial domina el desarrollo de contenidos audiovisuales animados, páginas web interactivas y aplicaciones digitales articulando arte y tecnología. El/la Diseñador/a en Comunicación Visual proyecta estrategias integrales de identidad, piezas gráficas y codificación de mensajes visuales en soportes tradicionales y digitales."
+    },
+    {
+      "categoria": "Régimen y Turnos de Cursada",
+      "pregunta": "¿En qué turnos y horarios se desarrollan las carreras de diseño?",
+      "respuesta": "Las materias de estas carreras se dictan principalmente durante el turno tarde, en una franja horaria aproximada de 12:00 a 18:00 horas."
+    },
+    {
+      "categoria": "Régimen y Turnos de Cursada",
+      "pregunta": "¿Cómo operan las materias anuales, cuatrimestrales y el régimen de contracursada?",
+      "respuesta": "Las asignaturas anuales se extienden de marzo a diciembre durante ambos cuatrimestres. Las materias cuatrimestrales se ubican en el primer o segundo cuatrimestre, pero algunas cuentan con la opción de contracursada, lo que habilita cursarlas en un cuatrimestre alternativo para regularizar el avance de la carrera."
+    },
+    {
+      "categoria": "Plan de Estudios (Diseño Industrial - 1° Año)",
+      "pregunta": "¿Qué asignaturas, cargas horarias y modalidades integran el 1° cuatrimestre de Diseño Industrial?",
+      "respuesta": "Comprende: Taller de Diseño I (cód. 240010, 6 hs semanales, presencial)[cite: 1]; Tecnología I (cód. 240011, 4 hs semanales, presencial)[cite: 1]; Dibujo (cód. 240012, 4 hs semanales, presencial)[cite: 1]; Matemática (cód. 240013, 3 hs semanales, semipresencial con presencialidad semana por medio)[cite: 1]; y Física (cód. 240014, 3 hs semanales, semipresencial con presencialidad semana por medio)[cite: 1]."
+    },
+    {
+      "categoria": "Plan de Estudios (Diseño Industrial - 1° Año)",
+      "pregunta": "¿Qué asignaturas integran el 2° cuatrimestre de Diseño Industrial y cuáles son sus correlatividades?",
+      "respuesta": "Incluye: Taller de Diseño II (cód. 240015, 6 hs semanales, presencial; correlativa fuerte: Taller de Diseño I)[cite: 2]; Tecnología II (cód. 240016, 4 hs semanales, presencial; correlativa fuerte: Tecnología I)[cite: 2]; Morfología (cód. 240017, 3 hs semanales, presencial; correlativa fuerte: Dibujo)[cite: 2]; y Problemas Socioeconómicos Argentinos (cód. 240018, 6 hs semanales, presencial o semipresencial según comisión)[cite: 2]."
+    },
+    {
+      "categoria": "Cuerpo Docente por Comisión (1° Cuatrimestre)",
+      "pregunta": "¿Quiénes son los profesores asignados a cada comisión de Taller de Diseño I (240010)?",
+      "respuesta": "Comisión 240010-01: DE ROSE Roberto / CIAN Mariana / ESCUDERO Romina[cite: 1]. Comisión 240010-02: DE ROSE Roberto / SAVIA Micaela Victoria / ORAZETTI Nadia[cite: 1]. Comisión 240010-03: DE ROSE Roberto / CIAN Mariana / MENENDEZ Natalia[cite: 1]. Comisión 240010-04: FELIPPE Mirela / TANUZ Leila / CEVALLOS Luciana[cite: 1]. Comisión 240010-05: FELIPPE Mirela / FERREYRA Brenda / FORMICA Esteban[cite: 1]. Comisión 240010-06: FELIPPE Mirela / TANUZ Leila / FREGA Laura[cite: 1]."
+    },
+    {
+      "categoria": "Cuerpo Docente por Comisión (1° Cuatrimestre)",
+      "pregunta": "¿Quiénes son los profesores asignados a cada comisión de Tecnología I (240011)?",
+      "respuesta": "Comisión 240011-01: JAUREGUI Marianela / FERREYRA Brenda / ORAZETTI Nadia[cite: 1]. Comisión 240011-02: JAUREGUI Marianela / CIVIELLO Soledad / ESCUDERO Romina[cite: 1]. Comisión 240011-03: JAUREGUI Marianela / TANUZ Leila / FORMICA Esteban[cite: 1]. Comisión 240011-04: CIVIELLO Soledad / ZERBINO Florencia / FELIPPE Mirela[cite: 1]. Comisión 240011-05: CIVIELLO Soledad / SAVIA Micaela / CEVALLOS Luciana[cite: 1]. Comisión 240011-06: CIVIELLO Soledad / GUISER Julieta / FREGA Laura[cite: 1]."
+    },
+    {
+      "categoria": "Cuerpo Docente por Comisión (1° Cuatrimestre)",
+      "pregunta": "¿Quiénes son los profesores asignados a cada comisión de Dibujo (240012)?",
+      "respuesta": "Comisión 240012-01: FELIPPE Mirela / ROMERO MARCHESINI Nadia / CRESPO Facundo[cite: 1]. Comisión 240012-02: FELIPPE Mirela / CAVO Joaquin / CEVALLOS Luciana[cite: 1]. Comisión 240012-03: FELIPPE Mirela / ZERBINO Florencia / FORMICA Esteban[cite: 1]. Comisión 240012-04: CHERNY Laura / SAVIA Micaela Victoria / ORAZETTI Nadia[cite: 1]. Comisión 240012-05: CHERNY Laura / PEDROSA Maria Selene / BENEDETTI Gustavo[cite: 1]. Comisión 240012-06: CHERNY Laura / LÓPEZ Andrea / ZUFRIATTEGUI Macarena[cite: 1]."
+    },
+    {
+      "categoria": "Cuerpo Docente por Comisión (1° Cuatrimestre)",
+      "pregunta": "¿Quiénes son los profesores asignados a cada comisión de Matemática (240013)?",
+      "respuesta": "Comisión 240013-01: SALDIVIA Diego[cite: 1]. Comisión 240013-02: GUERRERO Virginia[cite: 1]. Comisión 240013-03: LÓPEZ Ernesto[cite: 1]. Comisión 240013-04: REYNOSO Laura[cite: 1]. Comisión 240013-05: ACOSTA PEREIRA René[cite: 1]. Comisión 240013-06: COLL Pablo[cite: 1]. Comisión 240013-07: REYNOSO Laura[cite: 1]. Comisión 240013-08: LÓPEZ Ernesto[cite: 1]. Comisión 240013-09: BRAVO Silvio Damián[cite: 1]. Comisión 240013-10: COLL Pablo[cite: 1]."
+    },
+    {
+      "categoria": "Cuerpo Docente por Comisión (1° Cuatrimestre)",
+      "pregunta": "¿Quiénes son los profesores asignados a cada comisión de Física (240014)?",
+      "respuesta": "Comisión 240014-01: CABEZÓN Mariano[cite: 1]. Comisión 240014-02: ASPIROZ BATALLA Gabriela[cite: 1]. Comisión 240014-03: FERREYRA Brenda[cite: 1]. Comisión 240014-04: CURES Lorena[cite: 1]. Comisión 240014-05: ASPIROZ BATALLA Gabriela[cite: 1]. Comisión 240014-06: MASCARÓ Pablo[cite: 1]. Comisión 240014-07: ARAMBURU Germán[cite: 1, 2]. Comisión 240014-08: CABEZÓN Mariano[cite: 2]."
+    },
+    {
+      "categoria": "Cuerpo Docente por Comisión (2° Cuatrimestre)",
+      "pregunta": "¿Quiénes son los profesores asignados a cada comisión de Taller de Diseño II (240015)?",
+      "respuesta": "Comisión 240015-01: DE ROSE Roberto / CIAN Mariana / ESCUDERO Romina[cite: 2]. Comisión 240015-02: DE ROSE Roberto / SAVIA Micaela Victoria / ORAZETTI Nadia[cite: 2]. Comisión 240015-03: DE ROSE Roberto / MOLERO Sandra / MENENDEZ Natalia[cite: 2]. Comisión 240015-04: FELIPPE Mirela / TANUZ Leila / CEVALLOS Luciana[cite: 2]. Comisión 240015-05: FELIPPE Mirela / FERREYRA Brenda / FORMICA Esteban[cite: 2]. Comisión 240015-06: FELIPPE Mirela / GUISER Julieta / FREGA Laura[cite: 2]."
+    },
+    {
+      "categoria": "Cuerpo Docente por Comisión (2° Cuatrimestre)",
+      "pregunta": "¿Quiénes son los profesores asignados a cada comisión de Tecnología II (240016)?",
+      "respuesta": "Comisión 240016-01: JAUREGUI Marianela / FERREYRA Brenda / ORAZETTI Nadia[cite: 2]. Comisión 240016-02: JAUREGUI Marianela / CIAN Mariana / ESCUDERO Romina[cite: 2]. Comisión 240016-03: JAUREGUI Marianela / ZERBINO Florencia / MENENDEZ Natalia[cite: 2]. Comisión 240016-04: CIVIELLO Soledad / TANUZ Leila / FORMICA Esteban[cite: 2]. Comisión 240016-05: CIVIELLO Soledad / GUISER Julieta / FREGA Laura[cite: 2]. Comisión 240016-06: CIVIELLO Soledad / CEVALLOS Luciana[cite: 2]."
+    },
+    {
+      "categoria": "Cuerpo Docente por Comisión (2° Cuatrimestre)",
+      "pregunta": "¿Quiénes son los profesores asignados a cada comisión de Morfología (240017)?",
+      "respuesta": "Comisión 240017-01: FELIPPE Mirela / ROMERO MARCHESINI Nadia / CRESPO Facundo[cite: 2]. Comisión 240017-02: FELIPPE Mirela / FORMICA Esteban / CEVALLOS Luciana[cite: 2]. Comisión 240017-03: FELIPPE Mirela / BENEDETTI Gustavo[cite: 2]. Comisión 240017-04: CHERNY Laura / SAVIA Micaela Victoria / ORAZETTI Nadia[cite: 2]. Comisión 240017-05: CHERNY Laura / LÓPEZ Andrea / ZUFRIATEGUI Macarena[cite: 2]."
+    },
+    {
+      "categoria": "Cuerpo Docente por Comisión (2° Cuatrimestre)",
+      "pregunta": "¿Quiénes son los profesores asignados a cada comisión de Problemas Socioeconómicos Argentinos (240018)?",
+      "respuesta": "Comisión 240018-01: DAMATO Marisa / MONTEAGUDO Paula[cite: 2]. Comisión 240018-02: GIORGETTI Daniel / MONTEAGUDO Paula[cite: 2]. Comisión 240018-03: VICENTE Maximiliano Gastón / ZAMBON Mariel (Reemplaza VIGO DE ANDREIS Mariano)[cite: 2]. Comisión 240018-04: ZAMBON Mariel Beatriz (Reemplazan ACKERMAN Esteban / MONTEAGUDO Paula)[cite: 2]. Comisión 240018-05: SOTELO Julian / CAPRIA Nicolas Antonio[cite: 2]. Comisión 240018-06: TARUSELLI Gabriel Darío / CAPRIA Nicolas Antonio[cite: 2]. Comisión 240018-07: SANCHEZ Ignacio / CARLOS Roxana[cite: 2]. Comisión 240018-08: MENENDEZ Graciela / CARLOS Roxana[cite: 2]. Comisión 240018-09: DAMATO Marisa / VIGO DE ANDREIS Mariano[cite: 2]. Comisión 240018-10: MANTEROLA Juan / VIGO DE ANDREIS Mariano[cite: 2]. Comisión 240018-11: SANCHEZ Ignacio[cite: 2]."
+    },
+    {
+      "categoria": "Aulas y Sedes de Cursada",
+      "pregunta": "¿Dónde se cursan las materias presenciales del 2° cuatrimestre según comisión?",
+      "respuesta": "Taller de Diseño II: comisiones 01 y 02 en 7 DARACT II; comisión 03 en 4 DORREGO; comisión 04 en 5 DORREGO; comisión 05 en 18 DARACT I; comisión 06 en 19 DARACT I[cite: 2]. Tecnología II: comisiones 01 y 03 en 7 DARACT II; comisión 02 en 4 DORREGO; comisión 04 en 5 DORREGO; comisión 05 en 18 DARACT I; comisión 06 en 19 DARACT I[cite: 2]. Morfología: comisión 01 en 18 DARACT I; comisión 02 en 19 DARACT I; comisión 03 en 1 DARACT I; comisión 04 en 4 DORREGO; comisión 05 en J101[cite: 2]. Problemas Socioeconómicos Argentinos: comisiones 01, 02, 04, 05, 06 y 07 en aula G001; comisión 03 en D001; comisiones 08 y 09 en P005; comisiones 10 y 11 en H001[cite: 2]."
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+bin/models/*.bin filter=lfs diff=lfs merge=lfs -text
+bin/piper/*.onnx filter=lfs diff=lfs merge=lfs -text
