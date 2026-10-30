@@ -3,195 +3,218 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Asistente de Voz Empático - Prueba Local</title>
-    <style>
-      * {
-        box-sizing: border-box;
-        font-family:
-          system-ui,
-          -apple-system,
-          sans-serif;
-      }
-      body {
-        margin: 0;
-        background: #f4f6f9;
-        color: #1e293b;
-        display: flex;
-        flex-direction: column;
-        height: 100vh;
-      }
-      header {
-        background: #1e3a8a;
-        color: #fff;
-        padding: 14px 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      #login-bar {
-        background: #e2e8f0;
-        padding: 10px 20px;
-        display: flex;
-        gap: 10px;
-        align-items: center;
-      }
-      #login-bar input {
-        padding: 8px 12px;
-        border: 1px solid #cbd5e1;
-        border-radius: 6px;
-        flex: 1;
-      }
-      #login-bar button {
-        padding: 8px 16px;
-        background: #2563eb;
-        color: white;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-      }
-      #chat-container {
-        flex: 1;
-        overflow-y: auto;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-      }
-      .msg {
-        max-width: 80%;
-        padding: 12px 16px;
-        border-radius: 12px;
-        line-height: 1.45;
-      }
-      .msg.user {
-        align-self: flex-end;
-        background: #2563eb;
-        color: white;
-        border-bottom-right-radius: 2px;
-      }
-      .msg.assistant {
-        align-self: flex-start;
-        background: white;
-        border: 1px solid #e2e8f0;
-        border-bottom-left-radius: 2px;
-      }
-      .msg audio {
-        margin-top: 8px;
-        width: 100%;
-        height: 36px;
-      }
-      footer {
-        padding: 16px;
-        background: white;
-        border-top: 1px solid #e2e8f0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 8px;
-      }
-      #record-btn {
-        width: 72px;
-        height: 72px;
-        border-radius: 50%;
-        border: none;
-        background: #10b981;
-        color: white;
-        font-size: 15px;
-        font-weight: 600;
-        cursor: pointer;
-        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
-        transition:
-          transform 0.15s,
-          background 0.2s;
-      }
-      #record-btn.recording {
-        background: #ef4444;
-        transform: scale(1.08);
-        box-shadow: 0 4px 14px rgba(239, 68, 68, 0.45);
-      }
-      #status {
-        font-size: 13px;
-        color: #64748b;
-      }
-    </style>
+    <title>Asistente UNM</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header>
-      <strong>Asistente de Voz Local</strong>
-      <span id="user-badge">Sin sesión</span>
+      <strong>Asistente UNM</strong>
+      <div id="a11y" role="group" aria-label="Ajustes de lectura">
+        <button id="letra-menos" aria-label="Achicar letra">A−</button>
+        <button id="letra-mas" aria-label="Agrandar letra">A+</button>
+        <button id="contraste-btn" aria-label="Activar o desactivar alto contraste">Contraste</button>
+      </div>
+      <span id="user-badge"></span>
+      <div id="sesion-btns">
+        <button id="cuenta-btn">Mi cuenta</button>
+        <button id="admin-btn" hidden>Administrar</button>
+        <button id="salir-btn">Salir</button>
+      </div>
     </header>
 
-    <div id="login-bar">
-      <input
-        type="text"
-        id="client-name"
-        placeholder="Tu nombre o código de cliente (ej. Ana_01)"
-      />
-      <button id="start-session-btn">Cargar / Iniciar Sesión</button>
-    </div>
+    <main id="auth-view">
+      <form id="auth-form">
+        <h1>Ingresá al asistente</h1>
+        <label for="auth-usuario">Usuario</label>
+        <input id="auth-usuario" autocomplete="username" required />
+        <label for="auth-clave">Contraseña</label>
+        <input id="auth-clave" type="password" autocomplete="current-password" required />
+        <p id="auth-error" role="alert"></p>
+        <button type="submit">Entrar</button>
+        <p>¿Primera vez? Elegí un usuario y una contraseña (mínimo 6 caracteres) y tocá:</p>
+        <button type="button" id="registro-btn">Crear cuenta nueva</button>
+      </form>
+    </main>
 
-    <div id="chat-container"></div>
+    <dialog id="dlg-cuenta" aria-labelledby="cuenta-titulo">
+      <form id="cuenta-form">
+        <h2 id="cuenta-titulo">Mi cuenta</h2>
+        <p id="cuenta-aviso" hidden>Tu contraseña es la inicial. Elegí una nueva para proteger tu cuenta.</p>
+        <label for="cuenta-usuario">Usuario</label>
+        <input id="cuenta-usuario" autocomplete="username" />
+        <label for="cuenta-actual">Contraseña actual</label>
+        <input id="cuenta-actual" type="password" autocomplete="current-password" required />
+        <label for="cuenta-nueva">Contraseña nueva (opcional, mínimo 6 caracteres)</label>
+        <input id="cuenta-nueva" type="password" autocomplete="new-password" />
+        <p id="cuenta-error" role="alert"></p>
+        <div class="acciones"><button type="submit">Guardar</button><button type="button" id="cuenta-cerrar">Cerrar</button></div>
+      </form>
+    </dialog>
+
+    <dialog id="dlg-admin" aria-labelledby="admin-titulo">
+      <h2 id="admin-titulo">Administrar usuarios</h2>
+      <p id="admin-msg" role="status"></p>
+      <div id="admin-lista"></div>
+      <div class="acciones"><button type="button" id="admin-cerrar">Cerrar</button></div>
+    </dialog>
+
+    <div id="chat-container" role="log" aria-label="Conversación"></div>
 
     <footer>
-      <button id="record-btn" disabled>Hablar</button>
-      <div id="status">Ingresa tu nombre arriba para activar el micrófono</div>
+      <div id="composer">
+        <button id="record-btn" aria-label="Grabar mensaje de voz" disabled>Hablar</button>
+        <input type="text" id="text-input" aria-label="Escribí tu consulta" placeholder="Escribí tu consulta..." maxlength="500" autocomplete="off" disabled />
+        <button id="send-btn" disabled>Enviar</button>
+      </div>
+      <div id="anuncio" class="solo-lector" role="status" aria-live="polite"></div>
+      <div id="options">
+        <span id="status">Ingresá tu nombre para empezar</span>
+        <label><input type="checkbox" id="audio-toggle" checked /> Escuchar respuesta</label>
+      </div>
     </footer>
 
     <script>
-      let sessionId = localStorage.getItem("voice_session_id") || "";
-      let clientName = localStorage.getItem("voice_client_name") || "";
-      let mediaRecorder = null;
-      let audioChunks = [];
-      let isRecording = false;
+      let usuario = null;
+      
+      let OPCIONES = [];
+      let mediaRecorder = null, audioChunks = [], isRecording = false, busy = false;
 
-      const nameInput = document.getElementById("client-name");
-      const startBtn = document.getElementById("start-session-btn");
-      const userBadge = document.getElementById("user-badge");
-      const chatContainer = document.getElementById("chat-container");
-      const recordBtn = document.getElementById("record-btn");
-      const statusText = document.getElementById("status");
+      const $ = (id) => document.getElementById(id);
+      const userBadge = $("user-badge");
+      const chatContainer = $("chat-container"), recordBtn = $("record-btn");
+      const textInput = $("text-input"), sendBtn = $("send-btn");
+      const statusText = $("status"), audioToggle = $("audio-toggle");
 
-      if (clientName) {
-        nameInput.value = clientName;
-        initSession(clientName);
+      const PASOS = {
+        escuchando: "Escuchando tu mensaje",
+        buscando: "Buscando en la base de la UNM",
+        pensando: "Armando una respuesta",
+        audio: "Preparando el audio",
+      };
+
+      // ---------- Estado de los controles ----------
+      function actualizarControles() {
+        const listo = !!usuario && !busy;
+        textInput.disabled = !listo || isRecording;
+        sendBtn.disabled = !listo || isRecording || !textInput.value.trim();
+        recordBtn.disabled = !usuario || busy;
+        audioToggle.disabled = busy;
+        document.querySelectorAll(".menu button").forEach((b) => (b.disabled = !listo));
       }
+      function setBusy(valor) { busy = valor; actualizarControles(); }
+      textInput.addEventListener("input", actualizarControles);
 
-      startBtn.addEventListener("click", () => {
-        const name = nameInput.value.trim();
-        if (!name) return alert("Por favor ingresa tu nombre.");
-        initSession(name);
-      });
-
-      async function initSession(name) {
-        clientName = name;
-        // Genera un ID estable por nombre para recuperar el historial del mismo cliente
-        sessionId = "sess_" + name.toLowerCase().replace(/[^a-z0-9]/g, "_");
-        localStorage.setItem("voice_session_id", sessionId);
-        localStorage.setItem("voice_client_name", clientName);
-        userBadge.textContent = `Cliente: ${clientName}`;
-        recordBtn.disabled = false;
-        statusText.textContent =
-          'Toca "Hablar" para grabar tu mensaje y vuelve a tocar para enviarlo';
-
-        const res = await fetch("/api/session", {
+      // ---------- Cuenta y sesión ----------
+      async function api(url, datos) {
+        const res = await fetch(url, datos === undefined ? {} : {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ sessionId, clientName }),
+          body: JSON.stringify(datos),
         });
-        const data = await res.json();
-        chatContainer.innerHTML = "";
-        (data.history || []).forEach((m) =>
-          appendMessage(m.role, m.content, m.audio_url, false),
-        );
+        const json = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(json.error || "Error inesperado");
+        return json;
       }
 
-      function appendMessage(role, text, audioUrl, autoPlay = false) {
+      function mostrarLogin() {
+        usuario = null;
+        document.body.classList.add("sin-sesion");
+        chatContainer.innerHTML = "";
+        actualizarControles();
+        $("auth-usuario").focus();
+      }
+
+      async function autenticar(url) {
+        $("auth-error").textContent = "";
+        try {
+          const { user } = await api(url, { username: $("auth-usuario").value, password: $("auth-clave").value });
+          $("auth-clave").value = "";
+          await iniciarApp(user);
+        } catch (err) { $("auth-error").textContent = err.message; }
+      }
+      $("auth-form").addEventListener("submit", (e) => { e.preventDefault(); autenticar("/api/login"); });
+      $("registro-btn").addEventListener("click", () => autenticar("/api/register"));
+
+      async function iniciarApp(user) {
+        usuario = user;
+        document.body.classList.remove("sin-sesion");
+        userBadge.textContent = user.username;
+        $("admin-btn").hidden = user.role !== "admin";
+        actualizarControles();
+        OPCIONES = await api("/api/opciones");
+        const { history } = await api("/api/history");
+        chatContainer.innerHTML = "";
+        history.forEach((m) => appendMessage(m.role, m.content, m.audio_url, false));
+        if (!history.length) {
+          appendMessage("assistant", "Hola, soy el asistente de la UNM. Podés escribir, hablar o elegir un tema.");
+          mostrarMenu();
+        }
+        statusText.textContent = 'Escribí o tocá "Hablar" para consultar';
+        if (user.mustChange) abrirCuenta(true);
+      }
+
+      $("salir-btn").addEventListener("click", async () => { await api("/api/logout", {}); mostrarLogin(); });
+
+      // Mi cuenta: cambiar usuario y contraseña
+      function abrirCuenta(aviso) {
+        $("cuenta-aviso").hidden = !aviso;
+        $("cuenta-usuario").value = usuario.username;
+        $("cuenta-actual").value = "";
+        $("cuenta-nueva").value = "";
+        $("cuenta-error").textContent = "";
+        $("dlg-cuenta").showModal();
+      }
+      $("cuenta-btn").addEventListener("click", () => abrirCuenta(usuario.mustChange));
+      $("cuenta-cerrar").addEventListener("click", () => $("dlg-cuenta").close());
+      $("cuenta-form").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        try {
+          const { user } = await api("/api/account", {
+            currentPassword: $("cuenta-actual").value,
+            username: $("cuenta-usuario").value,
+            password: $("cuenta-nueva").value,
+          });
+          usuario = user;
+          userBadge.textContent = user.username;
+          $("dlg-cuenta").close();
+        } catch (err) { $("cuenta-error").textContent = err.message; }
+      });
+
+      // Administrador: cambiar usuario o contraseña de cualquier persona
+      async function abrirAdmin() {
+        const lista = await api("/api/admin/users");
+        const cont = $("admin-lista");
+        cont.innerHTML = "";
+        lista.filter((u) => u.role === "user").forEach((u) => {
+          const f = document.createElement("form");
+          f.className = "fila-admin";
+          f.innerHTML = '<input class="n" aria-label="Usuario" /><input class="p" type="password" aria-label="Nueva contraseña" placeholder="Nueva contraseña" autocomplete="new-password" /><button>Guardar</button><span class="info"></span>';
+          f.querySelector(".n").value = u.username;
+          f.querySelector(".info").textContent = `${u.preguntas} consultas${u.mustChange ? " · contraseña inicial" : ""}`;
+          f.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            try {
+              await api("/api/admin/users/" + u.id, { username: f.querySelector(".n").value, password: f.querySelector(".p").value });
+              await abrirAdmin();
+              $("admin-msg").textContent = "Cambios guardados. Si cambiaste la contraseña, la persona deberá elegir una nueva al entrar.";
+            } catch (err) { $("admin-msg").textContent = err.message; }
+          });
+          cont.appendChild(f);
+        });
+        if (!$("dlg-admin").open) $("dlg-admin").showModal();
+      }
+      $("admin-btn").addEventListener("click", () => { $("admin-msg").textContent = ""; abrirAdmin(); });
+      $("admin-cerrar").addEventListener("click", () => $("dlg-admin").close());
+
+      // ---------- Mensajes ----------
+      function scrollAbajo() { chatContainer.scrollTop = chatContainer.scrollHeight; }
+
+      function appendMessage(role, text, audioUrl, autoPlay = false, antesDe = null) {
         const div = document.createElement("div");
         div.className = `msg ${role}`;
         const p = document.createElement("div");
         p.textContent = text;
         div.appendChild(p);
-
         if (audioUrl) {
           const audio = document.createElement("audio");
           audio.controls = true;
@@ -199,71 +222,211 @@
           div.appendChild(audio);
           if (autoPlay) audio.play().catch(() => {});
         }
-        chatContainer.appendChild(div);
-        chatContainer.scrollTop = chatContainer.scrollHeight;
+        chatContainer.insertBefore(div, antesDe);
+        scrollAbajo();
+        return div;
       }
 
+      // ---------- Menú de opciones ----------
+      function mostrarMenu() {
+        document.querySelectorAll(".menu").forEach((m) => m.remove());
+        const menu = document.createElement("div");
+        menu.className = "menu";
+        menu.setAttribute("role", "group");
+        menu.setAttribute("aria-label", "Temas disponibles");
+        OPCIONES.forEach((o) => {
+          const b = document.createElement("button");
+          b.textContent = `${o.n}. ${o.etiqueta}`;
+          b.addEventListener("click", () => enviarTexto(o.pregunta));
+          menu.appendChild(b);
+        });
+        chatContainer.appendChild(menu);
+        scrollAbajo();
+      }
+
+      // ---------- Accesibilidad: tamaño de letra y alto contraste ----------
+      let escala = Number(localStorage.getItem("escala")) || 115;
+      function aplicarVista() {
+        document.documentElement.style.fontSize = escala + "%";
+        document.body.classList.toggle("contraste", localStorage.getItem("contraste") === "1");
+      }
+      function cambiarEscala(delta) {
+        escala = Math.min(175, Math.max(85, escala + delta));
+        localStorage.setItem("escala", escala);
+        aplicarVista();
+      }
+      $("letra-mas").addEventListener("click", () => cambiarEscala(15));
+      $("letra-menos").addEventListener("click", () => cambiarEscala(-15));
+      $("contraste-btn").addEventListener("click", () => {
+        localStorage.setItem("contraste", localStorage.getItem("contraste") === "1" ? "0" : "1");
+        aplicarVista();
+      });
+      aplicarVista();
+
+      // ---------- Burbuja de progreso ----------
+      function crearProgreso(claves) {
+        const el = document.createElement("div");
+        el.className = "msg assistant progress";
+        el.innerHTML = '<div class="prog-note" hidden></div><ul class="steps"></ul>';
+        const ul = el.querySelector(".steps");
+        const nota = el.querySelector(".prog-note");
+        const items = {};
+        claves.forEach((c) => {
+          const li = document.createElement("li");
+          li.className = "pending";
+          li.innerHTML = '<span class="dot"></span><span class="txt"></span>';
+          li.querySelector(".txt").textContent = PASOS[c];
+          ul.appendChild(li);
+          items[c] = li;
+        });
+        chatContainer.appendChild(el);
+        scrollAbajo();
+        return {
+          el,
+          setStage(stage) {
+            if (stage === "cola") {
+              nota.hidden = false;
+              nota.textContent = "Hay otra consulta en curso. Tu mensaje espera su turno...";
+              return;
+            }
+            nota.hidden = true;
+            const idx = claves.indexOf(stage);
+            if (idx < 0) return;
+            $("anuncio").textContent = PASOS[stage];
+            claves.forEach((c, i) => {
+              items[c].className = i < idx ? "done" : i === idx ? "active" : "pending";
+            });
+            scrollAbajo();
+          },
+          remove() { el.remove(); },
+        };
+      }
+
+      // ---------- Lectura del stream del servidor ----------
+      async function leerStream(res, onEvent) {
+        const reader = res.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = "";
+        while (true) {
+          const { value, done } = await reader.read();
+          if (done) break;
+          buffer += decoder.decode(value, { stream: true });
+          const lineas = buffer.split("\n");
+          buffer = lineas.pop();
+          for (const l of lineas) if (l.trim()) onEvent(JSON.parse(l));
+        }
+        if (buffer.trim()) onEvent(JSON.parse(buffer));
+      }
+
+      // ---------- Envío (común para texto y voz) ----------
+      async function enviar(url, opciones, claves) {
+        setBusy(true);
+        statusText.textContent = "Procesando tu consulta...";
+        const progreso = crearProgreso(claves);
+        let termino = false;
+        try {
+          const res = await fetch(url, opciones);
+          if (res.status === 401) { progreso.remove(); mostrarLogin(); return; }
+          if (!res.ok || !res.body) throw new Error("Respuesta inválida del servidor");
+          await leerStream(res, (ev) => {
+            if (ev.type === "stage") progreso.setStage(ev.stage);
+            else if (ev.type === "transcript") appendMessage("user", ev.text, null, false, progreso.el);
+            else if (ev.type === "done") {
+              termino = true;
+              progreso.remove();
+              appendMessage("assistant", ev.assistantText, ev.audioUrl, true);
+              if (ev.sinInfo) mostrarMenu();
+            } else if (ev.type === "error") {
+              termino = true;
+              progreso.remove();
+              appendMessage("error", ev.message);
+            }
+          });
+          if (!termino) {
+            progreso.remove();
+            appendMessage("error", "Se cortó la conexión con el servidor.");
+          }
+        } catch (err) {
+          progreso.remove();
+          appendMessage("error", "No se pudo conectar con el servidor local.");
+        } finally {
+          statusText.textContent = 'Listo. Escribí o tocá "Hablar" para otra consulta';
+          setBusy(false);
+          if (!textInput.disabled) textInput.focus();
+        }
+      }
+
+      // ---------- Texto ----------
+      function enviarTexto(forzado) {
+        const text = (forzado || textInput.value).trim();
+        if (!text || busy || !usuario) return;
+        document.querySelectorAll(".menu").forEach((m) => m.remove());
+        if (!forzado) textInput.value = "";
+        appendMessage("user", text);
+        const conAudio = audioToggle.checked;
+        const claves = conAudio ? ["buscando", "pensando", "audio"] : ["buscando", "pensando"];
+        enviar(
+          "/api/text-chat",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ text, conAudio }),
+          },
+          claves,
+        );
+      }
+      sendBtn.addEventListener("click", () => enviarTexto());
+      textInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); enviarTexto(); }
+      });
+
+      // ---------- Voz ----------
       recordBtn.addEventListener("click", async () => {
         if (!isRecording) {
           try {
-            const stream = await navigator.mediaDevices.getUserMedia({
-              audio: true,
-            });
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
             mediaRecorder = new MediaRecorder(stream);
             audioChunks = [];
-            mediaRecorder.ondataavailable = (e) => {
-              if (e.data.size > 0) audioChunks.push(e.data);
-            };
-            mediaRecorder.onstop = sendAudioToServer;
+            mediaRecorder.ondataavailable = (e) => { if (e.data.size > 0) audioChunks.push(e.data); };
+            mediaRecorder.onstop = enviarAudio;
             mediaRecorder.start();
             isRecording = true;
             recordBtn.textContent = "Enviar";
+            recordBtn.setAttribute("aria-label", "Terminar y enviar la grabación");
             recordBtn.classList.add("recording");
-            statusText.textContent =
-              'Grabando... toca "Enviar" cuando termines de hablar';
+            statusText.textContent = 'Grabando... tocá "Enviar" cuando termines';
+            actualizarControles();
           } catch (err) {
-            alert(
-              "No se pudo acceder al micrófono. Verifica estar conectado por HTTPS o localhost.",
-            );
+            alert("No se pudo acceder al micrófono. Verificá estar conectado por HTTPS o localhost.");
           }
         } else {
-          mediaRecorder.stop();
-          mediaRecorder.stream.getTracks().forEach((t) => t.stop());
           isRecording = false;
           recordBtn.textContent = "Hablar";
+          recordBtn.setAttribute("aria-label", "Grabar mensaje de voz");
           recordBtn.classList.remove("recording");
-          recordBtn.disabled = true;
-          statusText.textContent =
-            "Escuchando y preparando una respuesta empática...";
+          setBusy(true); // bloquea todo desde que se toca "Enviar"
+          mediaRecorder.stop();
+          mediaRecorder.stream.getTracks().forEach((t) => t.stop());
         }
       });
 
-      async function sendAudioToServer() {
-        const blob = new Blob(audioChunks, { type: "audio/webm" });
+      function enviarAudio() {
+        const mime = mediaRecorder.mimeType || "audio/webm";
+        const blob = new Blob(audioChunks, { type: mime });
         const formData = new FormData();
-        formData.append("audio", blob, "mensaje.webm");
-        formData.append("sessionId", sessionId);
-        formData.append("clientName", clientName);
-
-        try {
-          const res = await fetch("/api/voice-chat", {
-            method: "POST",
-            body: formData,
-          });
-          const data = await res.json();
-          if (data.error) {
-            statusText.textContent = "Error: " + data.error;
-          } else {
-            appendMessage("user", data.userText);
-            appendMessage("assistant", data.assistantText, data.audioUrl, true);
-            statusText.textContent = 'Listo. Toca "Hablar" para responder';
-          }
-        } catch (err) {
-          statusText.textContent = "Error de conexión con el servidor local.";
-        } finally {
-          recordBtn.disabled = false;
-        }
+        formData.append("audio", blob, mime.includes("mp4") ? "mensaje.m4a" : "mensaje.webm");
+        
+        
+        formData.append("conAudio", audioToggle.checked);
+        const claves = audioToggle.checked
+          ? ["escuchando", "buscando", "pensando", "audio"]
+          : ["escuchando", "buscando", "pensando"];
+        enviar("/api/voice-chat", { method: "POST", body: formData }, claves);
       }
+
+      actualizarControles();
+    document.body.classList.add("sin-sesion");
+      api("/api/me").then(({ user }) => iniciarApp(user)).catch(() => mostrarLogin());
     </script>
   </body>
 </html>
