@@ -1,0 +1,80 @@
+{
+  "preguntas_frecuentes": [
+    {
+      "categoria": "Contacto",
+      "etiqueta": "Dirección y teléfonos",
+      "pregunta": "¿Cuál es la dirección y el teléfono de la UNM?",
+      "respuesta": "La Universidad Nacional de Moreno está en Avenida Bartolomé Mitre 1891, Moreno, provincia de Buenos Aires. Los teléfonos son 0237 460-9300 y 011 2078-9170, líneas rotativas. Los correos generales son unm@unm.edu.ar e info@unm.edu.ar.",
+      "palabras_clave": [
+        "dirección",
+        "teléfono",
+        "cómo llegar",
+        "mail",
+        "contacto general",
+        "dónde queda"
+      ],
+      "fuente": "unm.edu.ar (pie de página y sección Estudiantes)",
+      "actualizado": "2026-10-27"
+    },
+    {
+      "categoria": "Contacto",
+      "etiqueta": "Departamento de Alumnos",
+      "pregunta": "¿Dónde queda el Departamento de Alumnos y cómo lo contacto?",
+      "respuesta": "El Departamento de Alumnos está en la oficina B001, Edificio Histórico, Ala Oeste, planta baja, interno 3253. Atiende de lunes a viernes de 9 a 19 horas. El correo es alumnos@unm.edu.ar.",
+      "palabras_clave": [
+        "alumnos",
+        "oficina de alumnos",
+        "B001",
+        "interno 3253"
+      ],
+      "fuente": "unm.edu.ar (pie de página y sección Estudiantes)",
+      "actualizado": "2026-10-27"
+    },
+    {
+      "categoria": "Contacto",
+      "etiqueta": "Biblioteca",
+      "pregunta": "¿Dónde está la biblioteca y cómo la contacto?",
+      "respuesta": "La Biblioteca y Centro de Documentación está en el Edificio Daract II, planta baja, interno 3200. El correo es biblioteca@unm.edu.ar y el catálogo se consulta en línea.",
+      "palabras_clave": [
+        "biblioteca",
+        "libros",
+        "daract",
+        "catálogo"
+      ],
+      "fuente": "unm.edu.ar (pie de página y sección Estudiantes)",
+      "actualizado": "2026-10-27"
+    },
+    {
+      "categoria": "Contacto",
+      "etiqueta": "Bienestar y enfermería",
+      "pregunta": "¿Cómo contacto a Bienestar Estudiantil o a Enfermería?",
+      "respuesta": "Bienestar Estudiantil está en la oficina E001, interno 3126, correo bienestaruniversitario@unm.edu.ar. Enfermería depende de la Secretaría de Extensión Universitaria, oficina E003, interno 3777, correo sec.extension@unm.edu.ar.",
+      "palabras_clave": [
+        "bienestar",
+        "enfermería",
+        "salud",
+        "extensión",
+        "E001",
+        "E003"
+      ],
+      "fuente": "unm.edu.ar (pie de página y sección Estudiantes)",
+      "actualizado": "2026-10-27"
+    },
+    {
+      "categoria": "Contacto",
+      "etiqueta": "Departamentos académicos",
+      "pregunta": "¿Cómo contacto a mi departamento académico?",
+      "respuesta": "Ciencias Aplicadas y Tecnología, donde están las carreras de Diseño, está en la oficina B203, interno 3129, correo dcayt@unm.edu.ar. Ciencias Económicas y Jurídicas, oficina A101, interno 3621, dceyj@unm.edu.ar. Humanidades y Ciencias Sociales, oficina D101, interno 3044, dhycs@unm.edu.ar. Todas están en el Edificio Histórico, Ala Oeste.",
+      "palabras_clave": [
+        "departamento",
+        "DCAYT",
+        "DCEYJ",
+        "DHYCS",
+        "dirección de carrera",
+        "coordinación"
+      ],
+      "fuente": "unm.edu.ar (pie de página y sección Estudiantes)",
+      "actualizado": "2026-10-27"
+    }
+  ]
+}

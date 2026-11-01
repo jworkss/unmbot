@@ -213,7 +213,27 @@
         const div = document.createElement("div");
         div.className = `msg ${role}`;
         const p = document.createElement("div");
-        p.textContent = text;
+        if (role === "assistant") {
+          const patron = /(https?:\/\/[^\s]+|[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,})/gi;
+          let cursor = 0;
+          for (const match of text.matchAll(patron)) {
+            const valor = match[0];
+            const final = valor.match(/[.,!?;:)\]]+$/)?.[0] || "";
+            const enlace = valor.slice(0, valor.length - final.length);
+            p.appendChild(document.createTextNode(text.slice(cursor, match.index)));
+            const a = document.createElement("a");
+            a.href = enlace.startsWith("http") ? enlace : `mailto:${enlace}`;
+            a.textContent = enlace;
+            a.target = "_blank";
+            a.rel = "noopener noreferrer";
+            p.appendChild(a);
+            if (final) p.appendChild(document.createTextNode(final));
+            cursor = match.index + valor.length;
+          }
+          p.appendChild(document.createTextNode(text.slice(cursor)));
+        } else {
+          p.textContent = text;
+        }
         div.appendChild(p);
         if (audioUrl) {
           const audio = document.createElement("audio");
@@ -241,6 +261,37 @@
           menu.appendChild(b);
         });
         chatContainer.appendChild(menu);
+        scrollAbajo();
+      }
+
+      function mostrarSelectorDepartamentos(opciones) {
+        const form = document.createElement("form");
+        form.className = "menu department-selector";
+        const label = document.createElement("label");
+        label.textContent = "Elegí un departamento";
+        const select = document.createElement("select");
+        select.required = true;
+        const placeholder = document.createElement("option");
+        placeholder.value = "";
+        placeholder.textContent = "Seleccioná una opción";
+        placeholder.disabled = true;
+        placeholder.selected = true;
+        select.appendChild(placeholder);
+        opciones.forEach((opcion) => {
+          const option = document.createElement("option");
+          option.value = opcion.pregunta;
+          option.textContent = opcion.etiqueta;
+          select.appendChild(option);
+        });
+        const submit = document.createElement("button");
+        submit.type = "submit";
+        submit.textContent = "Ver carreras";
+        form.append(label, select, submit);
+        form.addEventListener("submit", (event) => {
+          event.preventDefault();
+          if (select.value) enviarTexto(select.value);
+        });
+        chatContainer.appendChild(form);
         scrollAbajo();
       }
 
@@ -335,7 +386,8 @@
               termino = true;
               progreso.remove();
               appendMessage("assistant", ev.assistantText, ev.audioUrl, true);
-              if (ev.sinInfo) mostrarMenu();
+              if (ev.selectorOptions) mostrarSelectorDepartamentos(ev.selectorOptions);
+              else if (ev.sinInfo) mostrarMenu();
             } else if (ev.type === "error") {
               termino = true;
               progreso.remove();

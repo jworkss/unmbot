@@ -1,0 +1,222 @@
+{
+  "preguntas_frecuentes": [
+    {
+      "categoria": "Estudiar en la UNM",
+      "etiqueta": "Costo y sede",
+      "pregunta": "¿Hay que pagar arancel y dónde se cursa?",
+      "respuesta": "No. La UNM es pública y gratuita, y la inscripción no tiene ningún arancel. Las carreras se cursan completas en la sede de Moreno, en Avenida Bartolomé Mitre 1891.",
+      "palabras_clave": [
+        "arancel",
+        "gratis",
+        "gratuita",
+        "cuánto cuesta",
+        "dirección",
+        "sede",
+        "dónde queda"
+      ],
+      "fuente": "unm.edu.ar (estudiar en la UNM, estudiantes, carreras y bienestar)",
+      "actualizado": "2026-10-27"
+    },
+    {
+      "categoria": "Estudiar en la UNM",
+      "etiqueta": "Carreras que ofrece la UNM",
+      "pregunta": "¿Qué carreras ofrece la UNM?",
+      "respuesta": "La UNM ofrece 15 carreras de grado y ciclos de licenciatura. En Ciencias Aplicadas y Tecnología: Ingeniería en Electrónica, Gestión Ambiental, Arquitectura, Biotecnología, Diseño Multimedial, Comunicación Visual, Diseño de Indumentaria y Diseño Industrial. En Ciencias Económicas y Jurídicas: Relaciones del Trabajo, Administración, Economía, Contador Público y Abogacía. En Humanidades y Ciencias Sociales: Trabajo Social y Comunicación Social. También ofrece ciclos de licenciatura en Educación y el Profesorado Universitario.",
+      "palabras_clave": [
+        "oferta académica",
+        "carreras",
+        "carreras disponibles",
+        "carreras que existen",
+        "qué carreras hay",
+        "quiero averiguar por las carreras disponibles",
+        "información sobre las carreras",
+        "qué se puede estudiar",
+        "tecnicaturas",
+        "departamentos"
+      ],
+      "fuente": "unm.edu.ar (estudiar en la UNM, estudiantes, carreras y bienestar)",
+      "actualizado": "2026-10-27"
+    },
+    {
+      "categoria": "Estudiar en la UNM",
+      "etiqueta": "Horarios de cursada",
+      "pregunta": "¿En qué horarios se cursan las materias?",
+      "respuesta": "Las franjas son mañana de 8 a 14, tarde de 14 a 18 y noche de 18 a 23. Elegís la comisión al inscribirte en línea, según tu preferencia y hasta agotar la capacidad. Las carreras de Diseño se cursan principalmente en el turno tarde.",
+      "palabras_clave": [
+        "bandas horarias",
+        "turnos de cursada",
+        "comisiones",
+        "elegir comisión"
+      ],
+      "fuente": "unm.edu.ar (estudiar en la UNM, estudiantes, carreras y bienestar)",
+      "actualizado": "2026-10-27"
+    },
+    {
+      "categoria": "Gestiones",
+      "etiqueta": "Cambio de carrera y segunda carrera",
+      "pregunta": "¿Puedo cursar dos carreras a la vez o cambiarme de carrera?",
+      "respuesta": "No se pueden cursar dos carreras en simultáneo: para anotarte en una segunda necesitás tener al menos el 25 por ciento de la primera. Sí podés cambiarte de carrera presentando un formulario de solicitud en los plazos del Calendario Académico. Orientación te ayuda a decidir.",
+      "palabras_clave": [
+        "cambio de carrera",
+        "dos carreras",
+        "segunda carrera",
+        "25 por ciento"
+      ],
+      "fuente": "unm.edu.ar (estudiar en la UNM, estudiantes, carreras y bienestar)",
+      "actualizado": "2026-10-27"
+    },
+    {
+      "categoria": "Gestiones",
+      "etiqueta": "Equivalencias de otra universidad",
+      "pregunta": "Tengo materias aprobadas en otra universidad, ¿me las reconocen?",
+      "respuesta": "Podés iniciar un trámite personal de equivalencias. Se evalúa caso por caso, según el contenido de las materias y el plan de estudios de la carrera. Antes tenés que inscribirte y hacer el COPRUN, salvo que estés eximido según el reglamento vigente.",
+      "palabras_clave": [
+        "equivalencias",
+        "otra universidad",
+        "materias aprobadas",
+        "reconocimiento"
+      ],
+      "fuente": "unm.edu.ar (estudiar en la UNM, estudiantes, carreras y bienestar)",
+      "actualizado": "2026-10-27"
+    },
+    {
+      "categoria": "Gestiones",
+      "etiqueta": "Sistemas online de la UNM",
+      "pregunta": "¿Qué sistemas online usa un estudiante de la UNM?",
+      "respuesta": "Gestión On-line sirve para inscripciones, trámites, datos personales y la credencial. El Campus Virtual es donde se cursa online, y hay uno específico para el COPRUN. También hay Biblioteca en línea, Banco de asignaturas, la oferta académica de cada cuatrimestre y el Calendario Académico, todo desde la sección Estudiantes de unm.edu.ar.",
+      "palabras_clave": [
+        "gestión online",
+        "campus virtual",
+        "credencial",
+        "calendario académico",
+        "sistema",
+        "usuario"
+      ],
+      "fuente": "unm.edu.ar (estudiar en la UNM, estudiantes, carreras y bienestar)",
+      "actualizado": "2026-10-27"
+    },
+    {
+      "categoria": "Gestiones",
+      "etiqueta": "Calendario Académico",
+      "pregunta": "¿Dónde veo el Calendario Académico y las fechas de trámites?",
+      "respuesta": "El Calendario Académico se publica en la sección Estudiantes del sitio de la UNM. Ahí figuran los plazos de inscripción, cambios de carrera y otros trámites. Si tenés dudas sobre una fecha, consultá al Departamento de Alumnos.",
+      "palabras_clave": [
+        "calendario",
+        "fechas",
+        "plazos",
+        "trámites"
+      ],
+      "fuente": "unm.edu.ar (estudiar en la UNM, estudiantes, carreras y bienestar)",
+      "actualizado": "2026-10-27"
+    },
+    {
+      "categoria": "Bienestar",
+      "etiqueta": "Becas",
+      "pregunta": "¿Hay becas en la UNM y quién puede pedirlas?",
+      "respuesta": "Sí. La UNM tiene becas internas propias y participa de programas de otros organismos. En general se necesita haber ingresado a la carrera, demostrar una situación económica que lo justifique, tener buen desempeño académico y cumplir los requisitos de cada beca. Consultas: bienestaruniversitario@unm.edu.ar.",
+      "palabras_clave": [
+        "beca",
+        "becas internas",
+        "becas externas",
+        "ayuda económica"
+      ],
+      "fuente": "unm.edu.ar (estudiar en la UNM, estudiantes, carreras y bienestar)",
+      "actualizado": "2026-10-27"
+    },
+    {
+      "categoria": "Bienestar",
+      "etiqueta": "Bienestar, salud y deporte",
+      "pregunta": "¿Qué servicios de bienestar ofrece la universidad?",
+      "respuesta": "El Departamento de Bienestar y Asuntos Estudiantiles ofrece información sobre becas, pasantías, boleto estudiantil, convivencia universitaria, servicio de salud y deportes. Las actividades deportivas son gratuitas para estudiantes, docentes y nodocentes. Está en la oficina E001, interno 3126.",
+      "palabras_clave": [
+        "boleto estudiantil",
+        "pasantías",
+        "deporte",
+        "salud",
+        "convivencia",
+        "bienestar"
+      ],
+      "fuente": "unm.edu.ar (estudiar en la UNM, estudiantes, carreras y bienestar)",
+      "actualizado": "2026-10-27"
+    },
+    {
+      "categoria": "Orientación",
+      "etiqueta": "Orientación para elegir carrera",
+      "pregunta": "No sé qué carrera elegir, ¿hay orientación?",
+      "respuesta": "Sí. La División de Orientación te atiende antes de elegir carrera, antes de un cambio o si tenés dudas sobre cómo cursar. Hay charlas informativas por carrera, talleres y entrevistas de orientación, y la Expo UNM. Escribí a orientacion@unm.edu.ar o andá a la oficina C005, interno 3210.",
+      "palabras_clave": [
+        "orientación",
+        "elegir carrera",
+        "vocacional",
+        "expo unm",
+        "charlas"
+      ],
+      "fuente": "unm.edu.ar (estudiar en la UNM, estudiantes, carreras y bienestar)",
+      "actualizado": "2026-10-27"
+    },
+    {
+      "categoria": "Orientación",
+      "etiqueta": "Accesibilidad y discapacidad",
+      "pregunta": "Tengo una discapacidad, ¿qué apoyos me da la universidad?",
+      "respuesta": "La División de Orientación y Accesibilidad acompaña tu trayectoria. Primero te convoca a una entrevista inicial y, según lo que necesites, genera apoyos como adaptación del material bibliográfico, accesibilidad de las clases, mobiliario adaptado e intérprete de lengua de señas. Escribí a orientacion@unm.edu.ar o andá a la oficina C005, interno 3210.",
+      "palabras_clave": [
+        "accesibilidad",
+        "discapacidad",
+        "ciego",
+        "baja visión",
+        "sordo",
+        "lengua de señas",
+        "apoyos"
+      ],
+      "fuente": "unm.edu.ar (estudiar en la UNM, estudiantes, carreras y bienestar)",
+      "actualizado": "2026-10-27"
+    },
+    {
+      "id": "carreras-aplicadas-tecnologia",
+      "categoria": "Estudiar en la UNM",
+      "etiqueta": "Ciencias Aplicadas y Tecnología",
+      "pregunta": "¿Qué carreras ofrece el Departamento de Ciencias Aplicadas y Tecnología?",
+      "respuesta": "El Departamento de Ciencias Aplicadas y Tecnología ofrece Ingeniería en Electrónica, Gestión Ambiental, Arquitectura, Biotecnología, Diseño Multimedial, Comunicación Visual, Diseño de Indumentaria y Diseño Industrial.",
+      "palabras_clave": [
+        "carreras de Ciencias Aplicadas y Tecnología",
+        "carreras del Departamento de Ciencias Aplicadas y Tecnología",
+        "carreras de tecnología",
+        "carreras de diseño"
+      ],
+      "fuente": "unm.edu.ar (estudiar en la UNM, estudiantes, carreras y bienestar)",
+      "actualizado": "2026-10-27"
+    },
+    {
+      "id": "carreras-economicas-juridicas",
+      "categoria": "Estudiar en la UNM",
+      "etiqueta": "Ciencias Económicas y Jurídicas",
+      "pregunta": "¿Qué carreras ofrece el Departamento de Ciencias Económicas y Jurídicas?",
+      "respuesta": "El Departamento de Ciencias Económicas y Jurídicas ofrece Relaciones del Trabajo, Administración, Economía, Contador Público y Abogacía.",
+      "palabras_clave": [
+        "carreras de Ciencias Económicas y Jurídicas",
+        "carreras del Departamento de Ciencias Económicas y Jurídicas",
+        "carreras de economía",
+        "carreras de derecho"
+      ],
+      "fuente": "unm.edu.ar (estudiar en la UNM, estudiantes, carreras y bienestar)",
+      "actualizado": "2026-10-27"
+    },
+    {
+      "id": "carreras-humanidades-sociales",
+      "categoria": "Estudiar en la UNM",
+      "etiqueta": "Humanidades y Ciencias Sociales",
+      "pregunta": "¿Qué carreras ofrece el Departamento de Humanidades y Ciencias Sociales?",
+      "respuesta": "El Departamento de Humanidades y Ciencias Sociales ofrece Trabajo Social y Comunicación Social. La UNM también ofrece ciclos de licenciatura en Educación y el Profesorado Universitario.",
+      "palabras_clave": [
+        "carreras de Humanidades y Ciencias Sociales",
+        "carreras del Departamento de Humanidades y Ciencias Sociales",
+        "carreras de humanidades",
+        "carreras sociales",
+        "ciclo de licenciatura en Educación",
+        "Profesorado Universitario"
+      ],
+      "fuente": "unm.edu.ar (estudiar en la UNM, estudiantes, carreras y bienestar)",
+      "actualizado": "2026-10-27"
+    }
+  ]
+}

@@ -12,16 +12,12 @@ const Database = require("better-sqlite3");
 const qrcode = require("qrcode-terminal");
 const { initKB, buscar } = require("./kb");
 
-initKB()
-  .then(() => console.log("Base de la UNM cargada"))
-  .catch(console.error);
-
 const execFileAsync = util.promisify(execFile);
 const app = express();
 const PORT = 3000;
 
 // 1. Base de datos SQLite para el historial de chats
-const db = new Database("historial_chats.db");
+const db = new Database(process.env.HISTORIAL_DB_PATH || "historial_chats.db");
 db.exec(`
   CREATE TABLE IF NOT EXISTS sessions (
     id TEXT PRIMARY KEY,
@@ -53,17 +49,17 @@ const WHISPER_MODEL = path.join(__dirname, "bin", "models", "ggml-small.bin");
 const PIPER_BIN = path.join(__dirname, "bin", "piper", "piper.exe");
 const PIPER_VOICE = path.join(__dirname, "bin", "piper", "es_AR-daniela-high.onnx");
 
-const SYSTEM_PROMPT = `Eres un asistente de voz de la Universidad Nacional de Moreno (UNM), cercano, cálido y empático.
+const SYSTEM_PROMPT = `Eres el asistente de la Universidad Nacional de Moreno (UNM).
 Reglas:
 1. Responde SOLO con la información oficial que se te entrega abajo. Nunca inventes fechas, requisitos, carreras ni datos de contacto.
-2. Si la información no está disponible, dilo con amabilidad y sugiere consultar los canales oficiales de la universidad.
-3. Si la consulta no tiene que ver con la UNM, explica amablemente que solo puedes ayudar con temas de la universidad.
-4. Valida con calidez la situación de la persona antes de informar.
-5. Tu respuesta se leerá en voz alta: 2 a 4 oraciones breves, sin listas, asteriscos, emojis ni formato Markdown.
-6. Habla en español neutro y amable.
-7. Si la información tiene muchas comisiones o aulas y la persona no dijo cuál le interesa, pregúntale primero cuál es en vez de enumerarlas todas.
-8. No leas códigos de materia a menos que te los pidan; nombra las materias de forma natural.
-9. Nunca ofrezcas buscar en internet, enviar correos ni hacer acciones que no puedas hacer. Si falta información, sugiere contactar al Departamento de Alumnos (alumnos@unm.edu.ar).`;
+2. Contesta de forma directa y concisa, responde solo lo que preguntaron y evita saludos, preámbulos, repeticiones y validaciones emocionales. Si preguntan por una lista, incluye todos los elementos disponibles en la información oficial aunque la respuesta necesite más de dos frases.
+3. Si falta información, dilo en una frase y ofrece un contacto concreto incluido en la información oficial.
+4. Usa la información oficial proporcionada para contestar directamente. Si esa información responde la pregunta, no derives a la persona al sitio web ni a otra fuente en lugar de darle la respuesta. Si recomiendas verificar o ampliar información, incluye el correo o la URL exacta proporcionada; nunca digas solamente "consulta los canales oficiales". No ofrezcas fuentes si no son necesarias para responder.
+5. Si la consulta no tiene que ver con la UNM, indica brevemente que solo puedes ayudar con temas de la universidad.
+6. Tu respuesta se leerá en voz alta: no uses listas, emojis ni formato Markdown.
+7. Si hay muchas comisiones o aulas y no se especificó cuál, pregunta cuál le interesa.
+8. No leas códigos de materia a menos que te los pidan.
+9. No ofrezcas enviar correos ni hacer acciones que no puedes realizar. No menciones las fechas internas de actualización salvo que te pregunten por ellas.`;
 
 // Migración: marca las respuestas en las que el bot no pudo ayudar
 try { db.exec("ALTER TABLE messages ADD COLUMN sin_info INTEGER DEFAULT 0"); } catch (e) {}
@@ -76,9 +72,39 @@ const OPCIONES = [
   { n: 4, etiqueta: "Contactar a Alumnos", pregunta: "¿Cuál es el horario y el correo del Departamento de Alumnos?" },
 ];
 const NUMEROS = { 1: 1, uno: 1, 2: 2, dos: 2, 3: 3, tres: 3, 4: 4, cuatro: 4 };
-const MENU_HABLADO = "Si querés, elegí un tema diciendo o escribiendo el número: uno, inscripción; dos, carreras; tres, cursada y horarios; cuatro, contactar a Alumnos.";
 const SIN_INFO = /no (tengo|puedo|cuento|dispongo)[^.]*(informaci[oó]n|brindar)|canales oficiales/i;
+const DERIVACION_GENERICA = /\b(?:pod[eé]s|puedes) encontrar (?:la )?(?:informaci[oó]n|respuesta)[^.]*\b(?:sitio|p[aá]gina|secci[oó]n|web)\b|\b(?:consult[aá]|revis[aá]) (?:el |la )?(?:sitio|p[aá]gina|secci[oó]n|web)\b/i;
 const CHARLA = /^(hola|buen[oa]s?|gracias|chau|adi[oó]s|ok|dale)\b/i;
+const OPCIONES_DEPARTAMENTOS = [
+  {
+    etiqueta: "Ciencias Aplicadas y Tecnología",
+    pregunta: "¿Qué carreras ofrece el Departamento de Ciencias Aplicadas y Tecnología?",
+  },
+  {
+    etiqueta: "Ciencias Económicas y Jurídicas",
+    pregunta: "¿Qué carreras ofrece el Departamento de Ciencias Económicas y Jurídicas?",
+  },
+  {
+    etiqueta: "Humanidades y Ciencias Sociales",
+    pregunta: "¿Qué carreras ofrece el Departamento de Humanidades y Ciencias Sociales?",
+  },
+];
+const normalizarTexto = (texto) =>
+  texto.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+function esConsultaAmpliaDeCarreras(texto) {
+  const normalizada = normalizarTexto(texto);
+  if (!/\b(carreras?|oferta academica|que estudiar)\b/.test(normalizada)) return false;
+  return !/\b(aplicadas|tecnologia|economicas|juridicas|humanidades|sociales|diseno|arquitectura|electronica|biotecnologia|administracion|economia|abogacia|trabajo social|comunicacion social|indumentaria|industrial)\b/.test(normalizada);
+}
+
+function urlFuente(fuente) {
+  if (/inscripcion2027/i.test(fuente)) return "https://www.unm.edu.ar/inscripcion2027";
+  if (/estudiar-en-la-unm/i.test(fuente)) {
+    return "https://www.unm.edu.ar/estudiar-en-la-unm/quiero-estudiar-en-la-unm";
+  }
+  if (/unm\.edu\.ar/i.test(fuente)) return "https://www.unm.edu.ar/";
+  return "";
+}
 
 function resolverOpcion(texto) {
   const limpio = texto.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
@@ -366,33 +392,53 @@ async function procesarConsulta({ userText, sessionId, clientName, conAudio, emi
   console.log("Pregunta:", userText, "| Fragmentos:", fragmentos.map((f) => f.id));
 
   const contexto = fragmentos.length
-    ? fragmentos.map((f) => `- ${f.tema} (${f.pregunta}): ${f.texto}`).join("\n")
+    ? fragmentos.map((f) => {
+      const titulo = f.etiqueta ? `${f.tema} / ${f.etiqueta}` : f.tema;
+      const metadata = [
+        f.fuente && `fuente: ${urlFuente(f.fuente) || f.fuente}`,
+        f.actualizado && `actualizado: ${f.actualizado}`,
+      ].filter(Boolean).join("; ");
+      return `- ${titulo} (${f.pregunta}): ${f.texto}${metadata ? ` [${metadata}]` : ""}`;
+    }).join("\n")
     : "No hay información disponible sobre esta consulta.";
 
-  // Etapa: armar la respuesta con el LLM
-  emit({ type: "stage", stage: "pensando" });
-  const llmResponse = await fetch(OLLAMA_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      model: OLLAMA_MODEL,
-      messages: [
-        { role: "system", content: `${SYSTEM_PROMPT}\n\nINFORMACIÓN OFICIAL:\n${contexto}` },
-        ...pastMessages,
-      ],
-      stream: false,
-      keep_alive: "30m",
-      options: { temperature: 0.3, num_ctx: 4096, num_predict: 150 },
-    }),
-  });
-  if (!llmResponse.ok) throw new Error("Ollama respondió " + llmResponse.status);
-  const llmData = await llmResponse.json();
-  let assistantText =
-    llmData.message?.content?.trim() ||
-    "Disculpá, no pude procesar tu consulta. ¿Podés repetirla?";
+  let assistantText;
+  let selectorOptions;
+  if (esConsultaAmpliaDeCarreras(userText)) {
+    assistantText = "La oferta académica se organiza en tres departamentos: Ciencias Aplicadas y Tecnología, Ciencias Económicas y Jurídicas, y Humanidades y Ciencias Sociales. ¿De cuál te gustaría conocer las carreras?";
+    selectorOptions = OPCIONES_DEPARTAMENTOS;
+  } else {
+    // Etapa: armar la respuesta con el LLM
+    emit({ type: "stage", stage: "pensando" });
+    const llmResponse = await fetch(OLLAMA_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: OLLAMA_MODEL,
+        messages: [
+          { role: "system", content: `${SYSTEM_PROMPT}\n\nINFORMACIÓN OFICIAL:\n${contexto}` },
+          ...pastMessages,
+        ],
+        stream: false,
+        keep_alive: "30m",
+        options: { temperature: 0.2, num_ctx: 4096, num_predict: 180 },
+      }),
+    });
+    if (!llmResponse.ok) throw new Error("Ollama respondió " + llmResponse.status);
+    const llmData = await llmResponse.json();
+    assistantText =
+      llmData.message?.content?.trim() ||
+      "Disculpá, no pude procesar tu consulta. ¿Podés repetirla?";
+
+    if (fragmentos.length && DERIVACION_GENERICA.test(assistantText)) {
+      assistantText = fragmentos[0].texto;
+    }
+  }
 
   const sinInfo = !CHARLA.test(userText) && (fragmentos.length === 0 || SIN_INFO.test(assistantText));
-  if (sinInfo) assistantText += " " + MENU_HABLADO;
+  if (sinInfo) {
+    assistantText = "No tengo ese dato. Consultá https://www.unm.edu.ar/ o escribí a alumnos@unm.edu.ar.";
+  }
 
   // Etapa: preparar el audio (solo si la persona lo quiere)
   let audioUrl = null;
@@ -406,7 +452,7 @@ async function procesarConsulta({ userText, sessionId, clientName, conAudio, emi
   db.prepare("INSERT INTO messages (session_id, role, content, audio_url, sin_info) VALUES (?, ?, ?, ?, ?)").run(
     sessionId, "assistant", assistantText, audioUrl, sinInfo ? 1 : 0,
   );
-  emit({ type: "done", assistantText, audioUrl, sinInfo });
+  emit({ type: "done", assistantText, audioUrl, sinInfo, selectorOptions });
 }
 
 // 7. Endpoint de VOZ
@@ -463,21 +509,29 @@ function obtenerIPLocal() {
   return "127.0.0.1";
 }
 
-const keyPath = path.join(__dirname, "certs", "key.pem");
-const certPath = path.join(__dirname, "certs", "cert.pem");
+if (require.main === module) {
+  initKB()
+    .then(() => console.log("Base de la UNM cargada"))
+    .catch(console.error);
 
-if (fs.existsSync(keyPath) && fs.existsSync(certPath)) {
-  const credentials = { key: fs.readFileSync(keyPath), cert: fs.readFileSync(certPath) };
-  https.createServer(credentials, app).listen(PORT, "0.0.0.0", () => {
-    const url = `https://${obtenerIPLocal()}:${PORT}`;
-    console.log(`\n✅ Servidor HTTPS listo en red local: ${url}`);
-    qrcode.generate(url, { small: true }, (qr) => console.log(qr));
-  });
-} else {
-  http.createServer(app).listen(PORT, "0.0.0.0", () => {
-    const url = `http://${obtenerIPLocal()}:${PORT}`;
-    console.log(`\n⚠️ Servidor HTTP listo en: ${url}`);
-    console.log("(Para usar el micrófono desde otros dispositivos, agrega certs/key.pem y certs/cert.pem)\n");
-    qrcode.generate(url, { small: true }, (qr) => console.log(qr));
-  });
+  const keyPath = path.join(__dirname, "certs", "key.pem");
+  const certPath = path.join(__dirname, "certs", "cert.pem");
+
+  if (fs.existsSync(keyPath) && fs.existsSync(certPath)) {
+    const credentials = { key: fs.readFileSync(keyPath), cert: fs.readFileSync(certPath) };
+    https.createServer(credentials, app).listen(PORT, "0.0.0.0", () => {
+      const url = `https://${obtenerIPLocal()}:${PORT}`;
+      console.log(`\n✅ Servidor HTTPS listo en red local: ${url}`);
+      qrcode.generate(url, { small: true }, (qr) => console.log(qr));
+    });
+  } else {
+    http.createServer(app).listen(PORT, "0.0.0.0", () => {
+      const url = `http://${obtenerIPLocal()}:${PORT}`;
+      console.log(`\n⚠️ Servidor HTTP listo en: ${url}`);
+      console.log("(Para usar el micrófono desde otros dispositivos, agrega certs/key.pem y certs/cert.pem)\n");
+      qrcode.generate(url, { small: true }, (qr) => console.log(qr));
+    });
+  }
 }
+
+module.exports = { app, db };

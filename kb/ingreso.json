@@ -1,0 +1,29 @@
+{
+  "preguntas_frecuentes": [
+    {
+      "categoria": "Inscripciones y Admisión",
+      "etiqueta": "Datos para crear el usuario",
+      "pregunta": "¿Qué datos se solicitan para generar el usuario de preinscripción en el sistema?",
+      "respuesta": "Se requiere completar: género, fecha de nacimiento, nacionalidad, país emisor del documento, tipo y número de documento (con repetición), apellidos y nombres completos (idénticos al DNI), nombre de pila elegido bajo la Ley de Identidad de Género N° 26.743, número de celular, pregunta y respuesta secreta de recuperación, correo electrónico principal y contraseña."
+    },
+    {
+      "categoria": "Inscripciones y Admisión",
+      "etiqueta": "Contacto de Alumnos",
+      "pregunta": "¿Cuáles son los horarios de atención y datos de contacto del Departamento de Alumnos?",
+      "respuesta": "El Departamento de Alumnos atiende de lunes a viernes en el horario de 9:00 a 19:00 horas, y su correo electrónico oficial de contacto es alumnos@unm.edu.ar.",
+      "palabras_clave": [
+        "horario",
+        "correo",
+        "mail",
+        "contacto",
+        "alumnos"
+      ]
+    },
+    {
+      "categoria": "Ingreso a la Universidad",
+      "etiqueta": "Articulación con escuelas secundarias",
+      "pregunta": "¿Qué acciones realiza el área de Articulación con Escuelas Secundarias?",
+      "respuesta": "Desarrolla actividades de promoción de estudios superiores, difusión de la oferta académica de la UNM y programas de aproximación a la vida universitaria para estudiantes secundarios y la comunidad general."
+    }
+  ]
+}

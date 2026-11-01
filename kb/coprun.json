@@ -1,0 +1,93 @@
+{
+  "preguntas_frecuentes": [
+    {
+      "categoria": "COPRUN",
+      "etiqueta": "Qué es el COPRUN",
+      "pregunta": "¿Qué es el COPRUN y es obligatorio?",
+      "respuesta": "El COPRUN es el Curso de Orientación y Preparación Universitaria. Es obligatorio para todos los aspirantes a carreras de grado, excepto los ciclos de licenciatura y profesorado. Tiene tres talleres: Vida Universitaria, Lectura y Escritura Académicas, y Matemática.",
+      "palabras_clave": [
+        "curso de ingreso",
+        "coprun",
+        "talleres",
+        "obligatorio"
+      ],
+      "fuente": "unm.edu.ar/estudiar-en-la-unm/quiero-estudiar-en-la-unm",
+      "actualizado": "2026-10-27"
+    },
+    {
+      "categoria": "COPRUN",
+      "etiqueta": "Cuándo se cursa el COPRUN",
+      "pregunta": "¿Cuándo se cursa el COPRUN y cuánto dura?",
+      "respuesta": "El COPRUN intensivo se cursa en febrero y marzo y dura 6 semanas. Quienes no cumplan con los talleres pueden rendir el recuperatorio: la inscripción es del 23 al 31 de marzo de 2027 y se cursa durante el primer cuatrimestre. Si hace falta, la universidad puede abrir otras modalidades y las informa por sus canales oficiales.",
+      "palabras_clave": [
+        "intensivo",
+        "febrero",
+        "marzo",
+        "recuperatorio",
+        "duración"
+      ],
+      "fuente": "unm.edu.ar/estudiar-en-la-unm/quiero-estudiar-en-la-unm",
+      "actualizado": "2026-10-27"
+    },
+    {
+      "categoria": "COPRUN",
+      "etiqueta": "Horarios y turnos del COPRUN",
+      "pregunta": "¿En qué turnos y horarios se cursa el COPRUN?",
+      "respuesta": "Hay tres turnos: mañana de 8 a 12, tarde de 14 a 18 y noche de 18 a 22. Tenés que elegir un único turno para todas las actividades. Diseño Multimedial, Comunicación Visual, Indumentaria e Industrial se cursan solo en el turno tarde. Abogacía, solo mañana o tarde.",
+      "palabras_clave": [
+        "turno",
+        "mañana",
+        "tarde",
+        "noche",
+        "horario",
+        "diseño"
+      ],
+      "fuente": "unm.edu.ar/estudiar-en-la-unm/quiero-estudiar-en-la-unm",
+      "actualizado": "2026-10-27"
+    },
+    {
+      "categoria": "COPRUN",
+      "etiqueta": "Modalidad del COPRUN",
+      "pregunta": "¿El COPRUN es presencial o virtual y necesito computadora?",
+      "respuesta": "El COPRUN 2027 es presencial, con algunas actividades virtuales en el Campus Virtual COPRUN. Necesitás un dispositivo, como PC, tableta o celular, y conexión a internet. El material de estudio es gratuito, está en versión digital en UNM Editora y también en el aula virtual.",
+      "palabras_clave": [
+        "presencial",
+        "virtual",
+        "campus virtual",
+        "material de estudio",
+        "conexión"
+      ],
+      "fuente": "unm.edu.ar/estudiar-en-la-unm/quiero-estudiar-en-la-unm",
+      "actualizado": "2026-10-27"
+    },
+    {
+      "categoria": "COPRUN",
+      "etiqueta": "Cómo se aprueba el COPRUN",
+      "pregunta": "¿Cómo se aprueba el COPRUN y qué asistencia piden?",
+      "respuesta": "Se aprueba cumpliendo el mínimo de participación y de entregas de actividades y trabajos prácticos en cada taller. La evaluación es diagnóstica y formativa. La asistencia a las clases presenciales es obligatoria, con un mínimo del 80 por ciento en cada taller.",
+      "palabras_clave": [
+        "aprobar",
+        "asistencia",
+        "80 por ciento",
+        "evaluación",
+        "trabajos prácticos"
+      ],
+      "fuente": "unm.edu.ar/estudiar-en-la-unm/quiero-estudiar-en-la-unm",
+      "actualizado": "2026-10-27"
+    },
+    {
+      "categoria": "COPRUN",
+      "etiqueta": "Eximición de talleres del COPRUN",
+      "pregunta": "¿Puedo pedir eximición de talleres del COPRUN?",
+      "respuesta": "Sí, se puede solicitar la eximición de los talleres de Lectura y Escritura Académicas y de Matemática. Hay que presentar en las fechas previstas una nota de solicitud y el certificado de estudios que acredite las condiciones, además de la documentación habitual. Las condiciones están en el sitio de la UNM.",
+      "palabras_clave": [
+        "eximición",
+        "eximir",
+        "exceptuado",
+        "talleres"
+      ],
+      "fuente": "unm.edu.ar/estudiar-en-la-unm/quiero-estudiar-en-la-unm",
+      "actualizado": "2026-10-27"
+    }
+  ]
+}
