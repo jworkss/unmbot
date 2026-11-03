@@ -1,0 +1,63 @@
+{
+  "institucion": "Universidad Nacional de Moreno (UNM)",
+  "departamento": "Departamento de Humanidades y Ciencias Sociales",
+  "oferta_id": "humanidades-sociales",
+  "actualizado": "2026-11-03",
+  "fuente": "https://www.unm.edu.ar/?oferta-academica=carreras-de-pregrado-y-grado",
+  "carreras": [
+    {
+      "id": "dhycs-trabajo-social",
+      "nombre": "Licenciatura en Trabajo Social",
+      "tipo": "grado",
+      "perfil": "La carrera forma profesionales para analizar e intervenir en problemáticas sociales con herramientas de investigación, planificación y trabajo territorial. Sus ámbitos incluyen el acompañamiento familiar y grupal, la organización comunitaria, el diseño de políticas públicas y los proyectos sociales e institucionales.",
+      "palabras_clave": ["trabajo social", "intervención social", "políticas públicas", "comunidad"],
+      "fuente": "https://www.unm.edu.ar/?oferta-academica=licenciatura-en-trabajo-social-3"
+    },
+    {
+      "id": "dhycs-comunicacion-social",
+      "nombre": "Licenciatura en Comunicación Social",
+      "tipo": "grado",
+      "perfil": "Prepara profesionales para analizar fenómenos comunicativos y planificar, gestionar, asesorar y evaluar comunicaciones en organizaciones públicas, privadas y del tercer sector.",
+      "palabras_clave": ["comunicación", "medios", "producción de contenidos"],
+      "fuente": "https://www.unm.edu.ar/?oferta-academica=licenciatura-en-comunicacion-social-3",
+      "orientaciones": [
+        "Científica, enfocada en divulgación y difusión del conocimiento",
+        "Producción Multimedial, centrada en producir contenidos para entornos tecnológicos"
+      ]
+    },
+    {
+      "id": "dhycs-licenciatura-educacion-secundaria",
+      "nombre": "Licenciatura en Educación Secundaria",
+      "tipo": "ciclo",
+      "perfil": "El ciclo profundiza la enseñanza en el nivel secundario y prepara para tareas de orientación y tutoría, asesoramiento educativo, diseño de materiales y análisis de políticas.",
+      "palabras_clave": ["ciclo de licenciatura", "educación secundaria", "docentes"],
+      "fuente": "https://www.unm.edu.ar/?oferta-academica=licenciatura-en-educacion-secundaria-3",
+      "requisitos": "Se dirige a docentes de EGB 3/Polimodal o equivalentes y a graduados de disciplinas vinculadas. Otros antecedentes docentes pueden evaluarse mediante entrevista."
+    },
+    {
+      "id": "dhycs-licenciatura-educacion-inicial",
+      "nombre": "Licenciatura en Educación Inicial",
+      "tipo": "ciclo",
+      "perfil": "El ciclo complementa la formación de docentes y profesionales de la primera infancia. Aborda innovación educativa, diagnósticos y políticas educativas, investigación y asesoramiento institucional.",
+      "palabras_clave": ["ciclo de licenciatura", "primera infancia", "docentes"],
+      "fuente": "https://www.unm.edu.ar/?oferta-academica=licenciatura-en-educacion-inicial-2",
+      "requisitos": "Se solicita título de Profesor/a de Educación Inicial o equivalente (mínimo 1.500 horas y tres años) o título universitario afín. Otros antecedentes docentes pueden evaluarse en entrevista."
+    },
+    {
+      "id": "dhycs-profesorado-universitario",
+      "nombre": "Profesorado Universitario en Educación Secundaria y Superior",
+      "tipo": "profesorado",
+      "perfil": "La propuesta 2026 forma docentes para planificar e implementar intervenciones educativas situadas, reflexionar sobre la práctica y participar en formación, asesoramiento e investigación educativa.",
+      "palabras_clave": ["profesorado universitario", "educación secundaria y superior", "docencia"],
+      "fuente": "https://www.unm.edu.ar/?oferta-academica=profesorado-universitario-en-educacion-secundaria-y-superior",
+      "requisitos": "Se requiere título universitario de grado con un mínimo de 2.600 horas o título de tecnicatura superior con al menos 1.650 horas y tres años de cursada."
+    },
+    {
+      "id": "dhycs-tecnicatura-gestion-universitaria",
+      "nombre": "Tecnicatura Universitaria en Gestión Universitaria",
+      "tipo": "tecnicatura",
+      "estado": "proximamente",
+      "palabras_clave": ["gestión universitaria"]
+    }
+  ]
+}

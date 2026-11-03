@@ -57,7 +57,7 @@ const PIPER_VOICE = path.join(
 const SYSTEM_PROMPT = `Eres el asistente de la Universidad Nacional de Moreno (UNM).
 Reglas:
 1. Responde SOLO con la información oficial que se te entrega abajo. Nunca inventes fechas, requisitos, carreras ni datos de contacto.
-2. Contesta de forma directa y concisa, responde solo lo que preguntaron y evita saludos, preámbulos, repeticiones y validaciones emocionales. Si preguntan por una lista, incluye todos los elementos disponibles en la información oficial aunque la respuesta necesite más de dos frases.
+2. Contesta de forma directa y breve, idealmente en una o dos frases. Evita saludos, preámbulos, repeticiones y validaciones emocionales. Si piden una lista extensa, ofrece primero un resumen y pregunta si quieren escuchar el detalle; da la lista completa solo si la piden expresamente.
 3. Si falta información, dilo brevemente. Incluye datos de contacto solo si la persona pregunta expresamente cómo contactar al área o departamento.
 4. Usa la información oficial proporcionada para contestar directamente. Si esa información responde la pregunta, no derives a la persona al sitio web ni a otra fuente en lugar de darle la respuesta. Si recomiendas verificar o ampliar información, incluye el correo o la URL exacta proporcionada; nunca digas solamente "consulta los canales oficiales". No ofrezcas fuentes si no son necesarias para responder.
 5. Incluye datos de contacto de un departamento solo si la persona pregunta específicamente cómo contactarlo. El Departamento de Alumnos es el único responsable de brindar información de inscripción; responde sobre inscripción solo con información de ese tema incluida en la base y no la atribuyas a otra área.
@@ -65,7 +65,9 @@ Reglas:
 7. Tu respuesta se leerá en voz alta: responde en prosa, sin enumeraciones numeradas, listas, emojis ni formato Markdown.
 8. Si hay muchas comisiones o aulas y no se especificó cuál, pregunta cuál le interesa.
 9. No leas códigos de materia a menos que te los pidan.
-10. No ofrezcas enviar correos ni hacer acciones que no puedes realizar. No menciones las fechas internas de actualización salvo que te pregunten por ellas.`;
+10. No ofrezcas enviar correos ni hacer acciones que no puedes realizar. No menciones las fechas internas de actualización salvo que te pregunten por ellas.
+11. Si preguntan por las materias o el plan de estudios sin indicar una carrera, no enumeres materias ni supongas la carrera: pregunta solamente «¿De qué carrera querés conocer las materias?».
+12. La respuesta se usa con lector de pantalla y puede escucharse en voz alta. Usa lenguaje claro y frases cortas; prioriza una sola idea por respuesta y evita información extensa que no hayan pedido.`;
 
 // Migración: marca las respuestas en las que el bot no pudo ayudar
 try {
@@ -146,6 +148,17 @@ function esConsultaAmpliaDeCarreras(texto) {
     return false;
   return !/\b(aplicadas|tecnologia|economicas|juridicas|humanidades|sociales|diseno|arquitectura|electronica|biotecnologia|administracion|economia|abogacia|trabajo social|comunicacion social|indumentaria|industrial)\b/.test(
     normalizada,
+  );
+}
+function esConsultaGeneralMaterias(texto) {
+  const normalizada = normalizarTexto(texto);
+  return (
+    /\b(materias?|asignaturas?|plan de estudios)\b/.test(normalizada) &&
+    !carreraMencionada(texto) &&
+    !REFERENCIA_CARRERA.test(texto) &&
+    !/\b(horarios?|turnos?|anual|cuatrimestral|correlatividades|equivalencias?|inscrip\w*|carga horaria|comisiones?|aulas?|duracion|dura)\b/.test(
+      normalizada,
+    )
   );
 }
 
@@ -599,6 +612,19 @@ app.post("/api/register", (req, res) => {
   }
 });
 
+app.post("/api/guest", (req, res) => {
+  const username = `Invitado-${crypto.randomBytes(4).toString("hex")}`;
+  const password = crypto.randomBytes(32).toString("hex");
+  const sessionId = "sess_" + crypto.randomBytes(6).toString("hex");
+  const result = db
+    .prepare(
+      "INSERT INTO users (username, pass_hash, role, session_id) VALUES (?, ?, 'guest', ?)",
+    )
+    .run(username, hashPass(password), sessionId);
+  iniciarSesion(req, res, result.lastInsertRowid);
+  res.json({ user: perfil({ username, role: "guest", must_change: 0 }) });
+});
+
 app.post("/api/login", (req, res) => {
   const username = (req.body.username || "").trim();
   const clave = `${req.ip}|${username.toLowerCase()}`;
@@ -678,6 +704,49 @@ app.get("/api/history", requireAuth, (req, res) => {
       )
       .all(req.user.session_id),
   });
+});
+const TEXTO_BIENVENIDA = [
+  "Hola, soy el asistente de la UNM. ¿Cómo te puedo ayudar?",
+  `Podés elegir una consulta frecuente: ${OPCIONES.map((opcion, indice) => `${indice + 1}, ${opcion.etiqueta}`).join(", ")}`,
+  "También podés escribir o grabar tu consulta.",
+].join(" ");
+const ARCHIVO_AUDIO_BIENVENIDA = `bienvenida_${crypto
+  .createHash("sha256")
+  .update(TEXTO_BIENVENIDA)
+  .digest("hex")
+  .slice(0, 16)}.wav`;
+let audioBienvenidaEnCurso = null;
+app.get("/api/welcome-audio", requireAuth, async (req, res, next) => {
+  const audioPath = path.join(__dirname, "audio_out", ARCHIVO_AUDIO_BIENVENIDA);
+  try {
+    let archivoDisponible = false;
+    try {
+      const archivo = await fs.promises.stat(audioPath);
+      archivoDisponible = archivo.isFile() && archivo.size > 0;
+    } catch (error) {
+      if (error.code !== "ENOENT") throw error;
+    }
+
+    if (!archivoDisponible) {
+      if (!audioBienvenidaEnCurso) {
+        audioBienvenidaEnCurso = generateSpeech(
+          TEXTO_BIENVENIDA,
+          audioPath,
+        ).finally(() => {
+          audioBienvenidaEnCurso = null;
+        });
+      }
+      await audioBienvenidaEnCurso;
+    }
+    res.type("audio/wav").sendFile(audioPath, (error) => {
+      if (error) next(error);
+    });
+  } catch (error) {
+    console.error("Error preparando el audio de bienvenida:", error.message);
+    if (!res.headersSent)
+      res.status(500).json({ error: "No se pudo preparar el audio de bienvenida." });
+    else next(error);
+  }
 });
 app.get("/audio_out/:file", requireAuth, (req, res) => {
   const archivo = path.basename(req.params.file);
@@ -850,12 +919,15 @@ async function procesarConsulta({
 
   let assistantText;
   const consultaAmplia = esConsultaAmpliaDeCarreras(userText);
+  const consultaGeneralMaterias = esConsultaGeneralMaterias(userText);
   const webLink = enlaceSolicitado(userText, fragmentos);
   if (webLink) {
     assistantText = webLink;
   } else if (consultaAmplia) {
     assistantText =
       "La oferta académica se organiza en tres departamentos: Ciencias Aplicadas y Tecnología, Ciencias Económicas y Jurídicas, y Humanidades y Ciencias Sociales. ¿Cuál departamento te interesa? Podés responder con su nombre.";
+  } else if (consultaGeneralMaterias) {
+    assistantText = "¿De qué carrera querés conocer las materias?";
   } else {
     // Etapa: armar la respuesta con el LLM
     emit({ type: "stage", stage: "pensando" });
@@ -891,6 +963,7 @@ async function procesarConsulta({
   const sinInfo =
     !CHARLA.test(userText) &&
     !consultaAmplia &&
+    !consultaGeneralMaterias &&
     !webLink &&
     (fragmentos.length === 0 || SIN_INFO.test(assistantText));
   if (sinInfo) {

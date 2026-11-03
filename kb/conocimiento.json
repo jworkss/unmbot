@@ -14,43 +14,13 @@
     },
     {
       "categoria": "Inscripciones y Admisión",
-      "pregunta": "¿Qué datos se solicitan para generar el usuario de preinscripción en el sistema?",
-      "respuesta": "Se requiere completar: género, fecha de nacimiento, nacionalidad, país emisor del documento, tipo y número de documento (con repetición), apellidos y nombres completos (idénticos al DNI), nombre de pila elegido bajo la Ley de Identidad de Género N° 26.743, número de celular, pregunta y respuesta secreta de recuperación, correo electrónico principal y contraseña."
-    },
-    {
-      "categoria": "Inscripciones y Admisión",
       "pregunta": "¿Qué documentación general se debe presentar?",
       "respuesta": "Original y fotocopia del DNI, título secundario legalizado o certificado de título en trámite (sin adeudar asignaturas), el formulario de preinscripción impreso y firmado, junto con fotos carnet."
-    },
-    {
-      "categoria": "Inscripciones y Admisión",
-      "pregunta": "¿Cuáles son los horarios de atención y datos de contacto del Departamento de Alumnos?",
-      "respuesta": "El Departamento de Alumnos atiende de lunes a viernes en el horario de 9:00 a 19:00 horas, y su correo electrónico oficial de contacto es alumnos@unm.edu.ar."
     },
     {
       "categoria": "Ingreso a la Universidad",
       "pregunta": "¿Existe un curso de ingreso obligatorio en la UNM?",
       "respuesta": "Sí. El COPRUN (Curso de Orientación y Preparación Universitaria) es obligatorio para aspirantes a carreras de grado, excepto los ciclos de licenciatura y profesorado."
-    },
-    {
-      "categoria": "Ingreso a la Universidad",
-      "pregunta": "¿Qué acciones realiza el área de Articulación con Escuelas Secundarias?",
-      "respuesta": "Desarrolla actividades de promoción de estudios superiores, difusión de la oferta académica de la UNM y programas de aproximación a la vida universitaria para estudiantes secundarios y la comunidad general."
-    },
-    {
-      "categoria": "Carreras de Diseño",
-      "pregunta": "¿Qué carreras integran el área de diseño en la UNM y cuáles son sus títulos intermedios?",
-      "respuesta": "La UNM dicta cuatro carreras de grado de 5 años de duración pertenecientes al área de diseño: 1) Licenciatura en Diseño Industrial (Título intermedio de 3 años: Técnico/a Universitario/a en Prototipado Rápido y Renderización); 2) Licenciatura en Diseño de Indumentaria (Título intermedio de 3 años: Técnico/a Universitario/a en Planificación y Confección de Indumentaria); 3) Licenciatura en Diseño Multimedial (Título intermedio de 3 años: Técnico/a Universitario/a en Animación Digital); 4) Licenciatura en Diseño en Comunicación Visual (Título intermedio de 3 años: Técnico/a Universitario/a en Desarrollo de Imagen e Identidad Corporativa)."
-    },
-    {
-      "categoria": "Carreras de Diseño",
-      "pregunta": "¿Cuál es el perfil profesional de Diseño Industrial y Diseño de Indumentaria?",
-      "respuesta": "El/la Diseñador/a Industrial se capacita para proyectar y dirigir procesos y productos industriales con solvencia estética, rigor tecnológico y sustentabilidad ambiental. El/la Diseñador/a de Indumentaria se forma para planificar, diseñar y definir los elementos del vestir y la producción textil con criterios estéticos, técnicos, éticos y socioculturales."
-    },
-    {
-      "categoria": "Carreras de Diseño",
-      "pregunta": "¿Cuál es el perfil profesional de Diseño Multimedial y Diseño en Comunicación Visual?",
-      "respuesta": "El/la Diseñador/a Multimedial domina el desarrollo de contenidos audiovisuales animados, páginas web interactivas y aplicaciones digitales articulando arte y tecnología. El/la Diseñador/a en Comunicación Visual proyecta estrategias integrales de identidad, piezas gráficas y codificación de mensajes visuales en soportes tradicionales y digitales."
     },
     {
       "categoria": "Régimen y Turnos de Cursada",

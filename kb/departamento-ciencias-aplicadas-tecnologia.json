@@ -1,0 +1,130 @@
+{
+  "institucion": "Universidad Nacional de Moreno (UNM)",
+  "departamento": "Departamento de Ciencias Aplicadas y Tecnología",
+  "oferta_id": "aplicadas-tecnologia",
+  "actualizado": "2026-11-03",
+  "fuente": "https://www.unm.edu.ar/?oferta-academica=carreras-de-pregrado-y-grado",
+  "carreras": [
+    {
+      "id": "dcayt-ingenieria-electronica",
+      "nombre": "Ingeniería en Electrónica",
+      "tipo": "grado",
+      "perfil": "La carrera prepara profesionales para desarrollar soluciones tecnológicas para la industria, la ciencia y las telecomunicaciones. Incluye áreas como automatización, robótica, sistemas digitales, Internet de las Cosas, fibra óptica y comunicaciones satelitales.",
+      "palabras_clave": ["electrónica", "robótica", "automatización", "telecomunicaciones", "IoT"],
+      "fuente": "https://www.unm.edu.ar/?oferta-academica=ingenieria-en-electronica-3",
+      "titulo_intermedio": {
+        "id": "dcayt-tecnicatura-electronica",
+        "nombre": "Tecnicatura Universitaria en Electrónica",
+        "perfil": "La tecnicatura forma para colaborar en el diseño y la programación de sistemas, equipos y componentes electrónicos, y para construir, instalar, operar y ensayar sistemas de generación y transmisión de señales. También incorpora conocimientos de calidad, liderazgo y desarrollo emprendedor.",
+        "palabras_clave": ["técnico en electrónica", "sistemas electrónicos", "señales"],
+        "fuente": "https://www.unm.edu.ar/?oferta-academica=tecnicatura-universitaria-en-electronica"
+      }
+    },
+    {
+      "id": "dcayt-licenciatura-gestion-ambiental",
+      "nombre": "Licenciatura en Gestión Ambiental",
+      "tipo": "grado",
+      "perfil": "Forma profesionales para estudiar políticas ambientales y participar en el diseño y la implementación de planes y proyectos. Su campo abarca prevención, corrección y remediación de impactos, planificación territorial y funciones de control y regulación, tanto en el sector público como en el privado.",
+      "palabras_clave": ["gestión ambiental", "ambiente", "políticas ambientales", "sustentabilidad"],
+      "fuente": "https://www.unm.edu.ar/?oferta-academica=licenciatura-en-gestion-ambiental-3",
+      "titulo_intermedio": {
+        "id": "dcayt-tecnicatura-gestion-ambiental",
+        "nombre": "Tecnicatura Universitaria en Gestión Ambiental",
+        "perfil": "La tecnicatura prepara para colaborar en la implementación de políticas, planes y proyectos ambientales, aplicar herramientas de prevención, corrección y remediación, y brindar asistencia técnica a organizaciones públicas o privadas.",
+        "palabras_clave": ["técnico en gestión ambiental", "prevención", "remediación"],
+        "fuente": "https://www.unm.edu.ar/?oferta-academica=tecnicatura-universitaria-en-gestion-ambiental"
+      }
+    },
+    {
+      "id": "dcayt-arquitectura",
+      "nombre": "Arquitectura",
+      "tipo": "grado",
+      "perfil": "La formación habilita para proyectar, dirigir y ejecutar obras para el hábitat, además de intervenir en estructuras, instalaciones y recuperación o renovación de edificios. También aborda la planificación urbana y territorial. El ejercicio profesional puede desarrollarse en el sector público o privado, de forma independiente o en equipos.",
+      "palabras_clave": ["arquitecto", "obras", "hábitat", "planificación urbana", "alcance profesional"],
+      "fuente": "https://www.unm.edu.ar/?oferta-academica=arquitectura-2"
+    },
+    {
+      "id": "dcayt-licenciatura-biotecnologia",
+      "nombre": "Licenciatura en Biotecnología",
+      "tipo": "grado",
+      "perfil": "Forma profesionales para participar en la creación, el desarrollo y la innovación de procesos y productos biotecnológicos en organizaciones públicas, privadas y mixtas. Incluye biología molecular, bioprocesos, control de calidad, trabajo de laboratorio y aplicaciones de diagnóstico en salud humana, animal y vegetal.",
+      "palabras_clave": ["biotecnología", "biología molecular", "bioprocesos", "laboratorio"],
+      "fuente": "https://www.unm.edu.ar/?oferta-academica=licenciatura-en-biotecnologia-3",
+      "titulo_intermedio": {
+        "id": "dcayt-tecnicatura-biotecnologia",
+        "nombre": "Tecnicatura Universitaria en Biotecnología",
+        "perfil": "La tecnicatura prepara para asistir en procesos biotecnológicos, análisis de materiales de origen animal y vegetal, análisis de alimentos y tareas de investigación y enseñanza científica. También incluye apoyo en análisis de productos cosméticos y en gestión de producción y calidad de bioprocesos.",
+        "palabras_clave": ["técnico en biotecnología", "análisis de alimentos", "bioprocesos"],
+        "fuente": "https://www.unm.edu.ar/?oferta-academica=tecnicatura-universitaria-en-biotecnologia"
+      }
+    },
+    {
+      "id": "dcayt-diseno-industrial",
+      "nombre": "Licenciatura en Diseño Industrial",
+      "tipo": "grado",
+      "perfil": "El/la Diseñador/a Industrial se capacita para proyectar y dirigir procesos y productos industriales con solvencia estética, rigor tecnológico y sustentabilidad ambiental.",
+      "duracion_anos": 5,
+      "palabras_clave": ["diseño industrial", "diseño de productos"],
+      "fuente": "https://www.unm.edu.ar/?oferta-academica=diseno-industrial",
+      "titulo_intermedio": {
+        "id": "dcayt-tecnicatura-prototipado",
+        "nombre": "Tecnicatura Universitaria en Prototipado Rápido y Renderización",
+        "duracion_anos": 3,
+        "perfil": "Título intermedio de la Licenciatura en Diseño Industrial.",
+        "palabras_clave": ["prototipado rápido", "renderización"],
+        "fuente": "https://www.unm.edu.ar/?oferta-academica=diseno-industrial"
+      }
+    },
+    {
+      "id": "dcayt-diseno-indumentaria",
+      "nombre": "Licenciatura en Diseño de Indumentaria",
+      "tipo": "grado",
+      "perfil": "El/la Diseñador/a de Indumentaria se forma para planificar, diseñar y definir los elementos del vestir y la producción textil con criterios estéticos, técnicos, éticos y socioculturales.",
+      "duracion_anos": 5,
+      "palabras_clave": ["diseño de indumentaria", "indumentaria"],
+      "fuente": "https://www.unm.edu.ar/?oferta-academica=diseno-de-indumentaria",
+      "titulo_intermedio": {
+        "id": "dcayt-tecnicatura-indumentaria",
+        "nombre": "Tecnicatura Universitaria en Planificación y Confección de Indumentaria",
+        "duracion_anos": 3,
+        "perfil": "Título intermedio de la Licenciatura en Diseño de Indumentaria.",
+        "palabras_clave": ["planificación de indumentaria", "confección"],
+        "fuente": "https://www.unm.edu.ar/?oferta-academica=diseno-de-indumentaria"
+      }
+    },
+    {
+      "id": "dcayt-diseno-multimedial",
+      "nombre": "Licenciatura en Diseño Multimedial",
+      "tipo": "grado",
+      "perfil": "El/la Diseñador/a Multimedial domina el desarrollo de contenidos audiovisuales animados, páginas web interactivas y aplicaciones digitales articulando arte y tecnología.",
+      "duracion_anos": 5,
+      "palabras_clave": ["diseño multimedial", "animación digital", "multimedia"],
+      "fuente": "https://www.unm.edu.ar/?oferta-academica=diseno-multimedial",
+      "titulo_intermedio": {
+        "id": "dcayt-tecnicatura-animacion-digital",
+        "nombre": "Tecnicatura Universitaria en Animación Digital",
+        "duracion_anos": 3,
+        "perfil": "Título intermedio de la Licenciatura en Diseño Multimedial.",
+        "palabras_clave": ["animación digital"],
+        "fuente": "https://www.unm.edu.ar/?oferta-academica=diseno-multimedial"
+      }
+    },
+    {
+      "id": "dcayt-diseno-comunicacion-visual",
+      "nombre": "Licenciatura en Diseño en Comunicación Visual",
+      "tipo": "grado",
+      "perfil": "El/la Diseñador/a en Comunicación Visual proyecta estrategias integrales de identidad, piezas gráficas y codificación de mensajes visuales en soportes tradicionales y digitales.",
+      "duracion_anos": 5,
+      "palabras_clave": ["comunicación visual", "diseño gráfico", "identidad corporativa"],
+      "fuente": "https://www.unm.edu.ar/?oferta-academica=diseno-en-comunicacion-visual",
+      "titulo_intermedio": {
+        "id": "dcayt-tecnicatura-imagen-identidad",
+        "nombre": "Tecnicatura Universitaria en Desarrollo de Imagen e Identidad Corporativa",
+        "duracion_anos": 3,
+        "perfil": "Título intermedio de la Licenciatura en Diseño en Comunicación Visual.",
+        "palabras_clave": ["desarrollo de imagen", "identidad corporativa"],
+        "fuente": "https://www.unm.edu.ar/?oferta-academica=diseno-en-comunicacion-visual"
+      }
+    }
+  ]
+}

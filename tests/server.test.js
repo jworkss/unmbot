@@ -48,6 +48,8 @@ describe("API del asistente", () => {
   it("mantiene autenticación, permisos e historial aislado por usuario", async () => {
     const sinSesion = await fetch(`${baseUrl}/api/history`);
     assert.equal(sinSesion.status, 401);
+    const audioSinSesion = await fetch(`${baseUrl}/api/welcome-audio`);
+    assert.equal(audioSinSesion.status, 401);
 
     const alta = await fetch(`${baseUrl}/api/register`, {
       method: "POST",
@@ -101,6 +103,23 @@ describe("API del asistente", () => {
       headers: { Cookie: cookie },
     });
     assert.equal(admin.status, 403);
+  });
+
+  it("permite iniciar una sesión aislada como invitado", async () => {
+    const respuesta = await fetch(`${baseUrl}/api/guest`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({}),
+    });
+    assert.equal(respuesta.status, 200);
+    const { user } = await respuesta.json();
+    assert.match(user.username, /^Invitado-[a-f0-9]{8}$/);
+    assert.equal(user.role, "guest");
+    const cookieInvitado = respuesta.headers.get("set-cookie").split(";")[0];
+    const opciones = await fetch(`${baseUrl}/api/opciones`, {
+      headers: { Cookie: cookieInvitado },
+    });
+    assert.equal(opciones.status, 200);
   });
 
   it("expone cuatro opciones que corresponden a preguntas de la base de conocimiento", async () => {
@@ -180,14 +199,36 @@ describe("API del asistente", () => {
   });
 
   it("sirve la hoja de estilos enlazada desde la página principal", async () => {
-    const [pagina, estilos] = await Promise.all([
+    const [pagina, estilos, avatar] = await Promise.all([
       fetch(`${baseUrl}/`),
       fetch(`${baseUrl}/styles.css`),
+      fetch(`${baseUrl}/img/avatar-bot.png`),
     ]);
     assert.equal(pagina.status, 200);
-    assert.match(await pagina.text(), /href="\/styles\.css"/);
+    const html = await pagina.text();
+    assert.match(html, /href="\/styles\.css"/);
+    assert.match(html, /id="dlg-auth"/);
+    assert.match(html, /id="guest-btn"/);
+    assert.match(html, /id="pause-btn"/);
+    assert.match(html, /página de prueba simulada/i);
+    assert.match(html, /Hola, soy el asistente de la UNM/);
+    assert.match(html, /\/api\/welcome-audio/);
+    assert.match(html, /src="\/img\/avatar-bot\.png"/);
+    assert.match(html, /class="chat-heading-avatar"[\s\S]*?src="\/img\/avatar-bot\.png"/);
+    assert.doesNotMatch(html, /id="(?:home-login-btn|nav-login-btn|auth-close-btn)"/);
     assert.equal(estilos.status, 200);
-    assert.match(await estilos.text(), /#chat-container\s*\{/);
+    const css = await estilos.text();
+    assert.match(css, /#chat-container\s*\{/);
+    assert.match(css, /\.assistant-message-avatar\s*\{/);
+    assert.match(css, /\.site-navigation\s*\{[^}]*position:\s*sticky/s);
+    assert.match(css, /overflow-y:\s*scroll/);
+    assert.match(css, /#chat-widget\s*\{[^}]*z-index:\s*30/s);
+    assert.match(css, /#chat-panel\.contraste/);
+    assert.doesNotMatch(css, /body\.contraste/);
+    assert.match(css, /var\(--chat-scale/);
+    assert.match(html, /chatPanel\.style\.setProperty\("--chat-scale"/);
+    assert.doesNotMatch(html, /document\.documentElement\.style\.fontSize/);
+    assert.equal(avatar.status, 200);
   });
 
   it("usa una respuesta segura de respaldo y configura el límite de tokens", async () => {
@@ -311,6 +352,77 @@ describe("API del asistente", () => {
       assert.doesNotMatch(resultado.assistantText, /\b[123]\./);
       assert.equal(resultado.selectorOptions, undefined);
       assert.equal(llamadasAlModelo, 0);
+    } finally {
+      global.fetch = originalFetch;
+    }
+  });
+
+  it("pregunta brevemente la carrera antes de responder una consulta general sobre materias", async () => {
+    const alta = await fetch(`${baseUrl}/api/register`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: "consulta general materias",
+        password: "clave-materias-1",
+      }),
+    });
+    const cookieMaterias = alta.headers.get("set-cookie").split(";")[0];
+    const originalFetch = global.fetch;
+    let llamadasAlModelo = 0;
+    let instruccionesModelo = "";
+    global.fetch = async (input, options) => {
+      if (new URL(input).port === "11434") {
+        llamadasAlModelo++;
+        instruccionesModelo = JSON.parse(options.body).messages[0].content;
+        return new Response(
+          JSON.stringify({ message: { content: "Respuesta de prueba." } }),
+          { status: 200, headers: { "Content-Type": "application/json" } },
+        );
+      }
+      return originalFetch(input, options);
+    };
+
+    try {
+      const general = await fetch(`${baseUrl}/api/text-chat`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Cookie: cookieMaterias,
+        },
+        body: JSON.stringify({
+          text: "Materias de la Universidad",
+          conAudio: false,
+        }),
+      });
+      const eventosGenerales = (await general.text())
+        .trim()
+        .split("\n")
+        .map((linea) => JSON.parse(linea));
+      const respuestaGeneral = eventosGenerales.find(
+        (evento) => evento.type === "done",
+      );
+      assert.equal(
+        respuestaGeneral.assistantText,
+        "¿De qué carrera querés conocer las materias?",
+      );
+      assert.equal(respuestaGeneral.sinInfo, false);
+      assert.equal(llamadasAlModelo, 0);
+
+      const especifica = await fetch(`${baseUrl}/api/text-chat`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Cookie: cookieMaterias,
+        },
+        body: JSON.stringify({
+          text: "¿En qué horarios se cursan las materias?",
+          conAudio: false,
+        }),
+      });
+      assert.equal(especifica.status, 200);
+      assert.equal(llamadasAlModelo, 1);
+      assert.match(instruccionesModelo, /frases cortas/i);
+      assert.match(instruccionesModelo, /una o dos frases/i);
     } finally {
       global.fetch = originalFetch;
     }

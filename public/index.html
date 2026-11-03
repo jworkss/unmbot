@@ -15,6 +15,9 @@
             alt="Universidad Nacional de Moreno"
           />
         </a>
+        <p class="masthead-note">
+          Página de prueba simulada del asistente de la Universidad Nacional de Moreno
+        </p>
         <p>Nuestro derecho, nuestro lugar,<br />nuestro futuro...</p>
       </div>
     </header>
@@ -119,16 +122,16 @@
         aria-controls="chat-panel"
         aria-expanded="false"
       >
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 3.5c-5.3 0-9.5 3.6-9.5 8.1 0 2.3 1.2 4.4 3.2 5.9l-.8 3 3.8-1.3c1 .3 2.1.5 3.3.5 5.3 0 9.5-3.6 9.5-8.1S17.3 3.5 12 3.5Z" />
-          <circle cx="8" cy="11.5" r="1" />
-          <circle cx="12" cy="11.5" r="1" />
-          <circle cx="16" cy="11.5" r="1" />
-        </svg>
+        <img src="/img/avatar-bot.png" alt="" />
         <span>Consultá a la UNM</span>
       </button>
-      <section id="chat-panel" role="dialog" aria-labelledby="chat-title" hidden>
+      <section id="chat-panel" aria-labelledby="chat-title" hidden>
         <div class="chat-panel-heading">
+          <img
+            class="chat-heading-avatar"
+            src="/img/avatar-bot.png"
+            alt=""
+          />
           <div>
             <span>Asistente virtual</span>
             <h2 id="chat-title">Universidad Nacional de Moreno</h2>
@@ -156,38 +159,31 @@
       </div>
       </header>
 
-    <section id="auth-view">
-      <form id="auth-form">
-        <h1>Ingresá al asistente</h1>
-        <label for="auth-usuario">Usuario</label>
-        <input id="auth-usuario" autocomplete="username" required />
-        <label for="auth-clave">Contraseña</label>
-        <input
-          id="auth-clave"
-          type="password"
-          autocomplete="current-password"
-          required
-        />
-        <p id="auth-error" role="alert"></p>
-        <button type="submit">Entrar</button>
-        <p>
-          ¿Primera vez? Elegí un usuario y una contraseña (mínimo 6 caracteres)
-          y tocá:
-        </p>
-        <button type="button" id="registro-btn">Crear cuenta nueva</button>
-      </form>
-    </section>
-
     <div id="chat-container" role="log" aria-label="Conversación"></div>
 
     <footer>
       <div id="composer">
         <button
           id="record-btn"
-          aria-label="Hablar para grabar una consulta"
+          type="button"
+          aria-label="Grabar una consulta"
           disabled
         >
-          Hablar
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 14a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v5a3 3 0 0 0 3 3Z" />
+            <path d="M19 11a7 7 0 0 1-14 0m7 7v3m-4 0h8" />
+          </svg>
+        </button>
+        <button
+          id="pause-btn"
+          type="button"
+          aria-label="Pausar grabación"
+          title="Pausar grabación"
+          disabled
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8 5v14m8-14v14" />
+          </svg>
         </button>
         <input
           type="text"
@@ -198,7 +194,12 @@
           autocomplete="off"
           disabled
         />
-        <button id="send-btn" disabled>Enviar</button>
+        <button id="send-btn" type="button" aria-label="Enviar mensaje" disabled>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m22 2-7 20-4-9-9-4 20-7ZM22 2 11 13" />
+          </svg>
+          <span>Enviar</span>
+        </button>
       </div>
       <div
         id="anuncio"
@@ -220,6 +221,50 @@
       </div>
       </section>
     </div>
+
+    <dialog id="dlg-auth" aria-labelledby="auth-title">
+      <div class="auth-dialog-heading">
+        <span class="auth-kicker">Asistente virtual UNM</span>
+        <h2 id="auth-title">Ingresá al asistente</h2>
+        <p>
+          Esta es una página de prueba simulada de la Universidad Nacional de Moreno.
+        </p>
+      </div>
+      <div class="mic-suggestion">
+        <span class="mic-suggestion-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 14a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v5a3 3 0 0 0 3 3Z" />
+            <path d="M19 11a7 7 0 0 1-14 0m7 7v3m-4 0h8" />
+          </svg>
+        </span>
+        <div>
+          <strong>Probá las consultas por voz</strong>
+          <p>Podés habilitar el micrófono ahora o hacerlo cuando quieras grabar.</p>
+        </div>
+        <button id="mic-permission-btn" type="button">Habilitar micrófono</button>
+        <p id="mic-permission-status" role="status" aria-live="polite"></p>
+      </div>
+      <form id="auth-form">
+        <label for="auth-usuario">Usuario</label>
+        <input id="auth-usuario" autocomplete="username" required />
+        <label for="auth-clave">Contraseña</label>
+        <input
+          id="auth-clave"
+          type="password"
+          autocomplete="current-password"
+          required
+        />
+        <p id="auth-error" role="alert"></p>
+        <button type="submit" id="auth-submit-btn">Iniciar sesión</button>
+        <p class="auth-register-copy">
+          ¿Primera vez? Elegí un usuario y una contraseña (mínimo 6 caracteres).
+        </p>
+        <button type="button" id="registro-btn">Crear cuenta</button>
+        <button type="button" id="guest-btn" class="guest-btn">
+          Continuar como invitado
+        </button>
+      </form>
+    </dialog>
 
     <dialog id="dlg-cuenta" aria-labelledby="cuenta-titulo">
       <form id="cuenta-form">
@@ -266,6 +311,10 @@
       let mediaRecorder = null,
         audioChunks = [],
         isRecording = false,
+        isPaused = false,
+        audioBlob = null,
+        enviarAlDetener = false,
+        recordingStarting = false,
         busy = false;
 
       const $ = (id) => document.getElementById(id);
@@ -279,10 +328,14 @@
           if (usuario) {
             textInput.focus({ preventScroll: true });
           } else {
-            $("auth-usuario").focus({ preventScroll: true });
-            $("auth-view").scrollTop = 0;
+            abrirDialogoAuth();
           }
         }
+      }
+      function abrirDialogoAuth() {
+        const dialogo = $("dlg-auth");
+        if (!dialogo.open) dialogo.showModal();
+        $("auth-usuario").focus({ preventScroll: true });
       }
       $("chat-toggle").addEventListener("click", () =>
         cambiarChatAbierto(chatPanel.hidden),
@@ -290,6 +343,12 @@
       $("chat-close").addEventListener("click", () =>
         cambiarChatAbierto(false),
       );
+      $("dlg-auth").addEventListener("click", (event) => {
+        if (event.target === event.currentTarget) $("dlg-auth").close();
+      });
+      $("dlg-auth").addEventListener("close", () => {
+        if (!usuario) cambiarChatAbierto(false);
+      });
 
       const userBadge = $("user-badge");
       const chatContainer = $("chat-container"),
@@ -314,9 +373,21 @@
       // ---------- Estado de los controles ----------
       function actualizarControles() {
         const listo = !!usuario && !busy;
-        textInput.disabled = !listo || isRecording;
-        sendBtn.disabled = !listo || isRecording || !textInput.value.trim();
-        recordBtn.disabled = !usuario || busy;
+        textInput.disabled = !listo || isRecording || !!audioBlob;
+        sendBtn.disabled =
+          !listo ||
+          (!isRecording && !audioBlob && !textInput.value.trim());
+        recordBtn.disabled =
+          !usuario || busy || isRecording || recordingStarting;
+        $("pause-btn").disabled = !isRecording || busy;
+        $("pause-btn").setAttribute(
+          "aria-label",
+          isPaused ? "Reanudar grabación" : "Pausar grabación",
+        );
+        $("pause-btn").title = isPaused
+          ? "Reanudar grabación"
+          : "Pausar grabación";
+        $("pause-btn").classList.toggle("paused", isPaused);
         audioToggle.disabled = busy;
         document
           .querySelectorAll(".menu button")
@@ -350,10 +421,6 @@
         document.body.classList.add("sin-sesion");
         chatContainer.innerHTML = "";
         actualizarControles();
-        if (!chatPanel.hidden) {
-          $("auth-usuario").focus({ preventScroll: true });
-          $("auth-view").scrollTop = 0;
-        }
       }
 
       async function autenticar(url) {
@@ -365,6 +432,8 @@
           });
           $("auth-clave").value = "";
           await iniciarApp(user);
+          $("dlg-auth").close();
+          cambiarChatAbierto(true);
         } catch (err) {
           $("auth-error").textContent = err.message;
         }
@@ -376,6 +445,35 @@
       $("registro-btn").addEventListener("click", () =>
         autenticar("/api/register"),
       );
+      $("guest-btn").addEventListener("click", async () => {
+        $("auth-error").textContent = "";
+        try {
+          const { user } = await api("/api/guest", {});
+          await iniciarApp(user);
+          $("dlg-auth").close();
+          cambiarChatAbierto(true);
+        } catch (err) {
+          $("auth-error").textContent = err.message;
+        }
+      });
+      $("mic-permission-btn").addEventListener("click", async () => {
+        const estado = $("mic-permission-status");
+        estado.textContent = "";
+        try {
+          if (!navigator.mediaDevices?.getUserMedia)
+            throw new Error("Este navegador no permite habilitar el micrófono.");
+          const stream = await navigator.mediaDevices.getUserMedia({
+            audio: true,
+          });
+          stream.getTracks().forEach((track) => track.stop());
+          estado.textContent = "Micrófono habilitado. Ya podés probar las consultas por voz.";
+        } catch (err) {
+          estado.textContent =
+            err.name === "NotAllowedError"
+              ? "No se habilitó el micrófono. Podés cambiar el permiso en tu navegador."
+              : err.message;
+        }
+      });
 
       async function iniciarApp(user) {
         usuario = user;
@@ -393,6 +491,8 @@
           appendMessage(
             "assistant",
             "Hola, soy el asistente de la UNM. ¿Cómo te puedo ayudar?",
+            "/api/welcome-audio",
+            audioToggle.checked,
           );
           mostrarMenu();
         }
@@ -404,6 +504,7 @@
       $("salir-btn").addEventListener("click", async () => {
         await api("/api/logout", {});
         mostrarLogin();
+        abrirDialogoAuth();
       });
 
       // Mi cuenta: cambiar usuario y contraseña
@@ -488,8 +589,19 @@
         autoPlay = false,
         antesDe = null,
       ) {
+        const assistantRow =
+          role === "assistant" ? document.createElement("div") : null;
         const div = document.createElement("div");
         div.className = `msg ${role}`;
+        if (assistantRow) {
+          assistantRow.className = "assistant-message";
+          const avatar = document.createElement("img");
+          avatar.className = "assistant-message-avatar";
+          avatar.src = "/img/avatar-bot.png";
+          avatar.alt = "";
+          avatar.setAttribute("aria-hidden", "true");
+          assistantRow.append(avatar, div);
+        }
         const p = document.createElement("div");
         if (role === "assistant") {
           const patron =
@@ -519,13 +631,26 @@
         if (audioUrl) {
           const audio = document.createElement("audio");
           audio.controls = true;
+          if (audioUrl === "/api/welcome-audio") audio.preload = "auto";
           audio.src = audioUrl;
+          if (audioUrl === "/api/welcome-audio") {
+            audio.addEventListener("error", () => {
+              statusText.textContent =
+                "No se pudo preparar el audio de bienvenida. Podés leer el saludo y las opciones en pantalla.";
+            });
+          }
           div.appendChild(audio);
-          if (autoPlay) audio.play().catch(() => {});
+          if (autoPlay)
+            audio.play().catch(() => {
+              if (audioUrl === "/api/welcome-audio")
+                statusText.textContent =
+                  "El audio de bienvenida está listo. Usá el control de audio para escucharlo.";
+            });
         }
-        chatContainer.insertBefore(div, antesDe);
+        const message = assistantRow || div;
+        chatContainer.insertBefore(message, antesDe);
         scrollAbajo();
-        return div;
+        return message;
       }
 
       // ---------- Menú de opciones ----------
@@ -565,8 +690,8 @@
       // ---------- Accesibilidad: tamaño de letra y alto contraste ----------
       let escala = Number(localStorage.getItem("escala")) || 115;
       function aplicarVista() {
-        document.documentElement.style.fontSize = escala + "%";
-        document.body.classList.toggle(
+        chatPanel.style.setProperty("--chat-scale", String(escala / 115));
+        chatPanel.classList.toggle(
           "contraste",
           localStorage.getItem("contraste") === "1",
         );
@@ -663,6 +788,7 @@
           if (res.status === 401) {
             progreso.remove();
             mostrarLogin();
+            abrirDialogoAuth();
             return;
           }
           if (!res.ok || !res.body)
@@ -749,7 +875,20 @@
           claves,
         );
       }
-      sendBtn.addEventListener("click", () => enviarTexto());
+      sendBtn.addEventListener("click", () => {
+        if (isRecording) {
+          enviarAlDetener = true;
+          statusText.textContent = "Preparando el audio para enviarlo...";
+          sendBtn.disabled = true;
+          mediaRecorder.stop();
+          return;
+        }
+        if (audioBlob) {
+          enviarAudio();
+          return;
+        }
+        enviarTexto();
+      });
       textInput.addEventListener("keydown", (e) => {
         if (e.key === "Enter" && !e.shiftKey) {
           e.preventDefault();
@@ -759,56 +898,98 @@
 
       // ---------- Voz ----------
       recordBtn.addEventListener("click", async () => {
-        if (!isRecording) {
-          try {
-            const stream = await navigator.mediaDevices.getUserMedia({
-              audio: true,
-            });
-            mediaRecorder = new MediaRecorder(stream);
-            audioChunks = [];
-            mediaRecorder.ondataavailable = (e) => {
-              if (e.data.size > 0) audioChunks.push(e.data);
-            };
-            mediaRecorder.onstop = enviarAudio;
-            mediaRecorder.start();
-            isRecording = true;
-            recordBtn.textContent = "Enviar audio";
-            recordBtn.setAttribute(
-              "aria-label",
-              "Terminar la grabación y enviar el audio",
-            );
-            recordBtn.classList.add("recording");
-            statusText.textContent =
-              'Grabando... tocá "Enviar audio" cuando termines';
-            actualizarControles();
-          } catch (err) {
-            alert(
-              "No se pudo acceder al micrófono. Verificá estar conectado por HTTPS o localhost.",
-            );
-          }
-        } else {
-          isRecording = false;
-          recordBtn.textContent = "Hablar";
-          recordBtn.setAttribute(
-            "aria-label",
-            "Hablar para grabar una consulta",
+        recordingStarting = true;
+        actualizarControles();
+        let stream;
+        try {
+          if (!navigator.mediaDevices?.getUserMedia || !window.MediaRecorder)
+            throw new Error("Este navegador no permite grabar audio.");
+          stream = await navigator.mediaDevices.getUserMedia({
+            audio: true,
+          });
+          audioBlob = null;
+          audioChunks = [];
+          const tipo = ["audio/webm;codecs=opus", "audio/webm", "audio/mp4"].find(
+            (mime) => MediaRecorder.isTypeSupported(mime),
           );
-          recordBtn.classList.remove("recording");
-          setBusy(true); // bloquea todo desde que se toca "Enviar"
-          mediaRecorder.stop();
-          mediaRecorder.stream.getTracks().forEach((t) => t.stop());
+          mediaRecorder = new MediaRecorder(
+            stream,
+            tipo ? { mimeType: tipo } : undefined,
+          );
+          const grabador = mediaRecorder;
+          grabador.ondataavailable = (event) => {
+            if (event.data.size > 0) audioChunks.push(event.data);
+          };
+          grabador.onstop = () => {
+            const mime = grabador.mimeType || audioChunks[0]?.type || "audio/webm";
+            audioBlob = new Blob(audioChunks, { type: mime });
+            audioChunks = [];
+            mediaRecorder = null;
+            isRecording = false;
+            isPaused = false;
+            stream.getTracks().forEach((track) => track.stop());
+            recordBtn.classList.remove("recording");
+            actualizarControles();
+            if (enviarAlDetener) {
+              enviarAlDetener = false;
+              enviarAudio();
+            } else {
+              statusText.textContent =
+                "Audio listo. Tocá Enviar para mandar la consulta.";
+            }
+          };
+          grabador.start();
+          recordingStarting = false;
+          isRecording = true;
+          isPaused = false;
+          recordBtn.classList.add("recording");
+          statusText.textContent = "Grabando... pausá o tocá Enviar cuando termines.";
+          actualizarControles();
+        } catch (err) {
+          recordingStarting = false;
+          stream?.getTracks().forEach((track) => track.stop());
+          statusText.textContent =
+            err.name === "NotAllowedError"
+              ? "No se habilitó el micrófono. Revisá los permisos del navegador."
+              : err.message;
+          actualizarControles();
         }
       });
 
+      $("pause-btn").addEventListener("click", () => {
+        if (!mediaRecorder || !isRecording) return;
+        if (isPaused) {
+          mediaRecorder.resume();
+          isPaused = false;
+          statusText.textContent =
+            "Grabando... pausá o tocá Enviar cuando termines.";
+        } else {
+          mediaRecorder.pause();
+          isPaused = true;
+          statusText.textContent =
+            "Grabación pausada. Reanudá o tocá Enviar para continuar.";
+        }
+        $("pause-btn").innerHTML = isPaused
+          ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7z" /></svg>'
+          : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14m8-14v14" /></svg>';
+        actualizarControles();
+      });
+
       function enviarAudio() {
-        const mime = mediaRecorder.mimeType || "audio/webm";
-        const blob = new Blob(audioChunks, { type: mime });
+        const blob = audioBlob;
+        if (!blob?.size) {
+          audioBlob = null;
+          statusText.textContent =
+            "No se grabó audio. Probá de nuevo o escribí tu consulta.";
+          actualizarControles();
+          return;
+        }
+        audioBlob = null;
+        actualizarControles();
+        const mime = blob.type || "audio/webm";
         const formData = new FormData();
-        formData.append(
-          "audio",
-          blob,
-          mime.includes("mp4") ? "mensaje.m4a" : "mensaje.webm",
-        );
+        const extension = mime.includes("mp4") ? "m4a" : "webm";
+        formData.append("audio", blob, `mensaje.${extension}`);
 
         formData.append("conAudio", audioToggle.checked);
         const claves = audioToggle.checked

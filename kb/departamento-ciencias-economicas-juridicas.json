@@ -1,0 +1,63 @@
+{
+  "institucion": "Universidad Nacional de Moreno (UNM)",
+  "departamento": "Departamento de Ciencias Económicas y Jurídicas",
+  "oferta_id": "economicas-juridicas",
+  "actualizado": "2026-11-03",
+  "fuente": "https://www.unm.edu.ar/?oferta-academica=carreras-de-pregrado-y-grado",
+  "carreras": [
+    {
+      "id": "dceyj-relaciones-del-trabajo",
+      "nombre": "Licenciatura en Relaciones del Trabajo",
+      "tipo": "grado",
+      "perfil": "La carrera aborda el trabajo desde sus dimensiones sociales, económicas, jurídicas y de gestión. Forma profesionales para intervenir en organizaciones públicas y privadas, sindicatos y otras entidades; promover la participación de trabajadores, colaborar en políticas laborales y gestionar relaciones del trabajo y recursos humanos.",
+      "palabras_clave": ["relaciones laborales", "trabajo", "sindicatos", "recursos humanos"],
+      "fuente": "https://www.unm.edu.ar/?oferta-academica=licenciatura-en-relaciones-del-trabajo-4"
+    },
+    {
+      "id": "dceyj-administracion",
+      "nombre": "Licenciatura en Administración",
+      "tipo": "grado",
+      "perfil": "Forma profesionales para crear, gestionar, asesorar y dirigir organizaciones de distintos tipos, tanto privadas como públicas y sociales. Incluye gestión de personas y recursos, innovación y diseño de estrategias para responder a necesidades organizacionales y del sector público.",
+      "palabras_clave": ["administración", "gestión de organizaciones", "organizaciones públicas", "empresas"],
+      "fuente": "https://www.unm.edu.ar/?oferta-academica=licenciatura-en-administracion-2"
+    },
+    {
+      "id": "dceyj-economia",
+      "nombre": "Licenciatura en Economía",
+      "tipo": "grado",
+      "perfil": "La carrera estudia las relaciones sociales de producción y la distribución del ingreso desde perspectivas económicas diversas. Prepara para analizar problemas del sector público, empresas y organizaciones sociales, y para asesorar, diseñar políticas y contribuir a la investigación o la docencia.",
+      "palabras_clave": ["economía", "política económica", "distribución del ingreso", "econometría"],
+      "fuente": "https://www.unm.edu.ar/?oferta-academica=licenciatura-en-economia-3"
+    },
+    {
+      "id": "dceyj-contador-publico",
+      "nombre": "Contador Público Nacional",
+      "tipo": "grado",
+      "perfil": "La carrera forma profesionales para diseñar, gestionar y auditar sistemas de información contable en organizaciones públicas, privadas y sin fines de lucro. Incluye una práctica preprofesional supervisada.",
+      "palabras_clave": ["contador público", "contabilidad", "auditoría"],
+      "fuente": "https://www.unm.edu.ar/?oferta-academica=contador-a-publico-a-nacional",
+      "titulo_intermedio": {
+        "id": "dceyj-tecnicatura-impositivo-contable",
+        "nombre": "Tecnicatura Universitaria Impositivo Contable",
+        "perfil": "La tecnicatura prepara para producir y analizar información contable, elaborar liquidaciones de sueldos y jornales y trabajar con obligaciones tributarias. Sus ámbitos posibles incluyen entidades públicas y privadas, con o sin fines de lucro.",
+        "palabras_clave": ["técnico contable", "impuestos", "liquidación de sueldos", "información contable"],
+        "fuente": "https://www.unm.edu.ar/?oferta-academica=tecnicatura-universitaria-impositivo-contable"
+      }
+    },
+    {
+      "id": "dceyj-abogacia",
+      "nombre": "Abogacía",
+      "tipo": "grado",
+      "perfil": "La carrera propone una formación jurídica con enfoque ético, respeto por la Constitución y los derechos humanos, y perspectiva de género. Incluye problemáticas como familia, trabajo, consumo, contratación, Estado y derecho informático, y prepara para el ejercicio profesional en ámbitos públicos y privados.",
+      "palabras_clave": ["abogado", "derecho", "derechos humanos", "justicia"],
+      "fuente": "https://www.unm.edu.ar/?oferta-academica=abogacia",
+      "titulo_intermedio": {
+        "id": "dceyj-tecnicatura-derecho",
+        "nombre": "Tecnicatura Universitaria en Derecho",
+        "perfil": "La tecnicatura forma para redactar documentos jurídicos, hacer seguimiento de expedientes y realizar tareas técnico-administrativas en organismos y entidades públicas o privadas. También contempla colaborar en proyectos de investigación jurídica.",
+        "palabras_clave": ["técnico en derecho", "expedientes", "documentación jurídica"],
+        "fuente": "https://www.unm.edu.ar/?oferta-academica=tecnicatura-universitaria-en-derecho"
+      }
+    }
+  ]
+}

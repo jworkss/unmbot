@@ -31,27 +31,177 @@ function cargarItems() {
     .filter((nombre) => nombre.endsWith(".json") && nombre !== path.basename(CACHE_PATH))
     .sort();
 
-  const items = archivos.flatMap((archivo) => {
+  const items = [];
+  const departamentos = [];
+  archivos.forEach((archivo) => {
     const ruta = path.join(KB_DIR, archivo);
     const raw = JSON.parse(fs.readFileSync(ruta, "utf8"));
-    if (!Array.isArray(raw.preguntas_frecuentes)) {
-      throw new Error(`El archivo ${archivo} no contiene preguntas_frecuentes.`);
+    if (Array.isArray(raw.preguntas_frecuentes)) {
+      items.push(...raw.preguntas_frecuentes.map((e, i) => ({
+        id: e.id || `${path.basename(archivo, ".json")}-faq-${i + 1}`,
+        archivo,
+        tema: e.categoria || "Información general",
+        etiqueta: e.etiqueta ? limpiar(e.etiqueta) : "",
+        pregunta: limpiar(e.pregunta),
+        texto: limpiar(e.respuesta),
+        palabrasClave: Array.isArray(e.palabras_clave)
+          ? e.palabras_clave.map(limpiar)
+          : [],
+        fuente: e.fuente ? limpiar(e.fuente) : "",
+        actualizado: e.actualizado || "",
+      })));
+      return;
     }
 
-    return raw.preguntas_frecuentes.map((e, i) => ({
-      id: e.id || `${path.basename(archivo, ".json")}-faq-${i + 1}`,
+    if (
+      Array.isArray(raw.carreras) &&
+      raw.departamento &&
+      raw.oferta_id &&
+      raw.fuente &&
+      raw.actualizado
+    ) {
+      departamentos.push({ archivo, ...raw });
+      return;
+    }
+
+    throw new Error(`El archivo ${archivo} no contiene preguntas_frecuentes ni un catálogo de carreras válido.`);
+  });
+
+  if (!departamentos.length) {
+    throw new Error("No hay catálogos de carreras por departamento.");
+  }
+
+  const ofertas = departamentos.flatMap(({
+    archivo,
+    carreras,
+    departamento,
+    oferta_id,
+    fuente,
+    actualizado,
+  }) => {
+    const disponibles = carreras.filter((carrera) => carrera.estado !== "proximamente");
+    const nombres = disponibles.map((carrera) => {
+      const nombre = carrera.nombre.replace(/^Licenciatura en /, "");
+      const ciclo = carrera.tipo === "ciclo" ? " (Ciclo de Licenciatura)" : "";
+      const titulo = carrera.titulo_intermedio
+        ? ` (título intermedio: ${carrera.titulo_intermedio.nombre})`
+        : "";
+      const orientaciones = carrera.orientaciones?.length
+        ? ` (orientaciones: ${carrera.orientaciones.join(" y ")})`
+        : "";
+      return `${nombre}${ciclo}${titulo}${orientaciones}`;
+    });
+    const area = departamento.replace(/^Departamento de /, "");
+    const preguntas = [{
+      id: `carreras-${oferta_id}`,
+      categoria: "Estudiar en la UNM",
+      etiqueta: area,
+      pregunta: `¿Qué carreras ofrece el ${departamento}?`,
+      respuesta: `${area} ofrece ${nombres.join("; ")}.`,
+      palabras_clave: [
+        `carreras de ${area}`,
+        `carreras del ${departamento}`,
+        `oferta académica de ${area}`,
+      ],
+      fuente,
+      actualizado,
+    }, ...disponibles.flatMap((carrera) => {
+      const duracion = carrera.duracion_anos
+        ? ` La carrera tiene una duración de ${carrera.duracion_anos} años.`
+        : "";
+      const orientaciones = carrera.orientaciones?.length
+        ? ` La carrera tiene las orientaciones ${carrera.orientaciones.join(" y ")}.`
+        : "";
+      const titulo = carrera.titulo_intermedio
+        ? ` Ofrece el título intermedio de ${carrera.titulo_intermedio.nombre}${carrera.titulo_intermedio.duracion_anos ? `, con una duración de ${carrera.titulo_intermedio.duracion_anos} años` : ""}.`
+        : "";
+      const requisitos = carrera.requisitos
+        ? ` Requisitos de ingreso: ${carrera.requisitos}`
+        : "";
+      const itemsCarrera = [];
+      if (carrera.perfil) {
+        itemsCarrera.push({
+          id: carrera.id,
+          categoria: `Carreras - ${area}`,
+          etiqueta: carrera.nombre,
+          pregunta: carrera.titulo_intermedio
+            ? `¿Qué perfil tiene ${carrera.nombre} y qué título intermedio ofrece?`
+            : carrera.orientaciones?.length
+              ? `¿Qué perfil y orientaciones tiene ${carrera.nombre}?`
+              : ["ciclo", "profesorado"].includes(carrera.tipo)
+                ? `¿Qué perfil y requisitos tiene ${carrera.nombre}?`
+                : `¿Qué perfil tiene ${carrera.nombre}?`,
+          respuesta: `${carrera.perfil}${duracion}${orientaciones}${titulo}${requisitos}`,
+          palabras_clave: [carrera.nombre, ...carrera.palabras_clave],
+          fuente: carrera.fuente || fuente,
+          actualizado,
+        });
+      }
+      if (carrera.titulo_intermedio) {
+        itemsCarrera.push({
+          id: carrera.titulo_intermedio.id,
+          categoria: `Carreras - ${area}`,
+          etiqueta: carrera.titulo_intermedio.nombre,
+          pregunta: `¿Qué tareas puede realizar quien egresa de ${carrera.titulo_intermedio.nombre}?`,
+          respuesta: `${carrera.titulo_intermedio.perfil}${carrera.titulo_intermedio.duracion_anos ? ` Tiene una duración de ${carrera.titulo_intermedio.duracion_anos} años.` : ""}`,
+          palabras_clave: [
+            carrera.titulo_intermedio.nombre,
+            ...carrera.titulo_intermedio.palabras_clave,
+          ],
+          fuente: carrera.titulo_intermedio.fuente || carrera.fuente || fuente,
+          actualizado,
+        });
+      }
+      return itemsCarrera;
+    })];
+
+    return preguntas.map((e) => ({
+      ...e,
       archivo,
-      tema: e.categoria || "Información general",
-      etiqueta: e.etiqueta ? limpiar(e.etiqueta) : "",
+      tema: e.categoria,
+      etiqueta: limpiar(e.etiqueta),
       pregunta: limpiar(e.pregunta),
       texto: limpiar(e.respuesta),
-      palabrasClave: Array.isArray(e.palabras_clave)
-        ? e.palabras_clave.map(limpiar)
-        : [],
-      fuente: e.fuente ? limpiar(e.fuente) : "",
-      actualizado: e.actualizado || "",
+      palabrasClave: e.palabras_clave.map(limpiar),
     }));
   });
+
+  const ofertaGeneral = {
+    id: "oferta-academica-general",
+    archivo: departamentos[0].archivo,
+    tema: "Estudiar en la UNM",
+    etiqueta: "Carreras que ofrece la UNM",
+    pregunta: "¿Qué carreras ofrece la UNM?",
+    texto: `La UNM ofrece carreras y ciclos de formación en sus departamentos. ${departamentos.map(({ departamento, carreras }) => {
+      const ofertas = carreras
+        .filter((carrera) => carrera.estado !== "proximamente")
+        .map((carrera) => {
+          const titulo = carrera.titulo_intermedio
+            ? ` (título intermedio: ${carrera.titulo_intermedio.nombre})`
+            : "";
+          const orientaciones = carrera.orientaciones?.length
+            ? ` (orientaciones: ${carrera.orientaciones.join(" y ")})`
+            : "";
+          return `${carrera.nombre}${titulo}${orientaciones}`;
+        });
+      return `${departamento.replace(/^Departamento de /, "")}: ${ofertas.join(", ")}`;
+    }).join(". ")}.`,
+    palabrasClave: [
+      "oferta académica",
+      "carreras",
+      "carreras disponibles",
+      "carreras que existen",
+      "qué carreras hay",
+      "quiero averiguar por las carreras disponibles",
+      "información sobre las carreras",
+      "qué se puede estudiar",
+      "tecnicaturas",
+      "departamentos",
+    ],
+    fuente: departamentos[0].fuente,
+    actualizado: departamentos[0].actualizado,
+  };
+  items.push(...ofertas, ofertaGeneral);
 
   const unicos = new Map();
   items.forEach((item) => {
@@ -196,8 +346,18 @@ async function buscar(pregunta, k = 3, minScore = 0.45) {
         const frase = normalizar(keyword).replace(/[^a-z0-9]+/g, " ").trim();
         return frase.includes(" ") && preguntaNormalizada.includes(frase);
       });
+      const preguntaExacta =
+        normalizar(it.pregunta).replace(/[^a-z0-9]+/g, " ").trim() ===
+        preguntaNormalizada;
       const score = cosine(q, it.embedding) + boost;
-      return { it, score: fraseCoincide ? Math.max(score, 0.55) : score };
+      return {
+        it,
+        score: preguntaExacta
+          ? score + 1
+          : fraseCoincide
+            ? Math.max(score, 0.55)
+            : score,
+      };
     })
     .sort((a, b) => b.score - a.score)
     .slice(0, k)

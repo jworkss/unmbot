@@ -19,26 +19,6 @@
     },
     {
       "categoria": "Estudiar en la UNM",
-      "etiqueta": "Carreras que ofrece la UNM",
-      "pregunta": "¿Qué carreras ofrece la UNM?",
-      "respuesta": "La UNM ofrece 15 carreras de grado y ciclos de licenciatura. En Ciencias Aplicadas y Tecnología: Ingeniería en Electrónica, Gestión Ambiental, Arquitectura, Biotecnología, Diseño Multimedial, Comunicación Visual, Diseño de Indumentaria y Diseño Industrial. En Ciencias Económicas y Jurídicas: Relaciones del Trabajo, Administración, Economía, Contador Público y Abogacía. En Humanidades y Ciencias Sociales: Trabajo Social y Comunicación Social. También ofrece ciclos de licenciatura en Educación y el Profesorado Universitario.",
-      "palabras_clave": [
-        "oferta académica",
-        "carreras",
-        "carreras disponibles",
-        "carreras que existen",
-        "qué carreras hay",
-        "quiero averiguar por las carreras disponibles",
-        "información sobre las carreras",
-        "qué se puede estudiar",
-        "tecnicaturas",
-        "departamentos"
-      ],
-      "fuente": "unm.edu.ar (estudiar en la UNM, estudiantes, carreras y bienestar)",
-      "actualizado": "2026-10-27"
-    },
-    {
-      "categoria": "Estudiar en la UNM",
       "etiqueta": "Horarios de cursada",
       "pregunta": "¿En qué horarios se cursan las materias?",
       "respuesta": "Las franjas son mañana de 8 a 14, tarde de 14 a 18 y noche de 18 a 23. Elegís la comisión al inscribirte en línea, según tu preferencia y hasta agotar la capacidad. Las carreras de Diseño se cursan principalmente en el turno tarde.",
@@ -167,53 +147,6 @@
         "sordo",
         "lengua de señas",
         "apoyos"
-      ],
-      "fuente": "unm.edu.ar (estudiar en la UNM, estudiantes, carreras y bienestar)",
-      "actualizado": "2026-10-27"
-    },
-    {
-      "id": "carreras-aplicadas-tecnologia",
-      "categoria": "Estudiar en la UNM",
-      "etiqueta": "Ciencias Aplicadas y Tecnología",
-      "pregunta": "¿Qué carreras ofrece el Departamento de Ciencias Aplicadas y Tecnología?",
-      "respuesta": "El Departamento de Ciencias Aplicadas y Tecnología ofrece Ingeniería en Electrónica, Gestión Ambiental, Arquitectura, Biotecnología, Diseño Multimedial, Comunicación Visual, Diseño de Indumentaria y Diseño Industrial.",
-      "palabras_clave": [
-        "carreras de Ciencias Aplicadas y Tecnología",
-        "carreras del Departamento de Ciencias Aplicadas y Tecnología",
-        "carreras de tecnología",
-        "carreras de diseño"
-      ],
-      "fuente": "unm.edu.ar (estudiar en la UNM, estudiantes, carreras y bienestar)",
-      "actualizado": "2026-10-27"
-    },
-    {
-      "id": "carreras-economicas-juridicas",
-      "categoria": "Estudiar en la UNM",
-      "etiqueta": "Ciencias Económicas y Jurídicas",
-      "pregunta": "¿Qué carreras ofrece el Departamento de Ciencias Económicas y Jurídicas?",
-      "respuesta": "El Departamento de Ciencias Económicas y Jurídicas ofrece Relaciones del Trabajo, Administración, Economía, Contador Público y Abogacía.",
-      "palabras_clave": [
-        "carreras de Ciencias Económicas y Jurídicas",
-        "carreras del Departamento de Ciencias Económicas y Jurídicas",
-        "carreras de economía",
-        "carreras de derecho"
-      ],
-      "fuente": "unm.edu.ar (estudiar en la UNM, estudiantes, carreras y bienestar)",
-      "actualizado": "2026-10-27"
-    },
-    {
-      "id": "carreras-humanidades-sociales",
-      "categoria": "Estudiar en la UNM",
-      "etiqueta": "Humanidades y Ciencias Sociales",
-      "pregunta": "¿Qué carreras ofrece el Departamento de Humanidades y Ciencias Sociales?",
-      "respuesta": "El Departamento de Humanidades y Ciencias Sociales ofrece Trabajo Social y Comunicación Social. La UNM también ofrece ciclos de licenciatura en Educación y el Profesorado Universitario.",
-      "palabras_clave": [
-        "carreras de Humanidades y Ciencias Sociales",
-        "carreras del Departamento de Humanidades y Ciencias Sociales",
-        "carreras de humanidades",
-        "carreras sociales",
-        "ciclo de licenciatura en Educación",
-        "Profesorado Universitario"
       ],
       "fuente": "unm.edu.ar (estudiar en la UNM, estudiantes, carreras y bienestar)",
       "actualizado": "2026-10-27"
