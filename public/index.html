@@ -3,16 +3,150 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Asistente UNM</title>
-    <link rel="stylesheet" href="styles.css" />
+    <title>Universidad Nacional de Moreno</title>
+    <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <header>
-      <strong>Asistente UNM</strong>
+    <header class="unm-masthead">
+      <div class="masthead-inner">
+        <a href="https://www.unm.edu.ar/" aria-label="Universidad Nacional de Moreno, inicio">
+          <img
+            src="https://www.unm.edu.ar/wp-content/uploads/2024/04/Fondo-oscuroOK-300x149-1.png"
+            alt="Universidad Nacional de Moreno"
+          />
+        </a>
+        <p>Nuestro derecho, nuestro lugar,<br />nuestro futuro...</p>
+      </div>
+    </header>
+
+    <nav class="site-navigation" aria-label="Navegación principal">
+      <a href="https://www.unm.edu.ar/">Inicio</a>
+      <a href="https://www.unm.edu.ar/estudiar-en-la-unm/quiero-estudiar-en-la-unm/">Ingresantes</a>
+      <a href="https://www.unm.edu.ar/estudiantes/">Estudiantes</a>
+      <a href="https://www.unm.edu.ar/posgrado2027/">Posgrado</a>
+      <a href="https://www.unm.edu.ar/convocatorias/">Investigación</a>
+      <form action="https://www.unm.edu.ar/" method="get" role="search">
+        <label class="solo-lector" for="site-search">Buscar en el sitio</label>
+        <input id="site-search" type="search" name="s" placeholder="Buscar..." />
+      </form>
+    </nav>
+
+    <main id="site-content">
+      <section class="unm-hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p>Universidad pública y gratuita</p>
+          <h1 id="hero-title">Universidad Nacional de Moreno</h1>
+          <a href="https://www.unm.edu.ar/estudiar-en-la-unm/quiero-estudiar-en-la-unm/" class="hero-link">
+            Conocé la UNM
+          </a>
+        </div>
+        <a class="mi-unm-link" href="https://www.unm.edu.ar/estudiantes/" aria-label="Mi UNM">
+          Mi UNM
+        </a>
+      </section>
+
+      <section class="quick-access" aria-label="Accesos principales">
+        <a href="https://www.unm.edu.ar/estudiar-en-la-unm/quiero-estudiar-en-la-unm/">
+          <span>01</span><strong>Ingresantes</strong>
+        </a>
+        <a href="https://www.unm.edu.ar/estudiantes/">
+          <span>02</span><strong>Estudiantes</strong>
+        </a>
+        <a href="https://www.unm.edu.ar/posgrado2027/">
+          <span>03</span><strong>Posgrado</strong>
+        </a>
+        <a href="https://www.unm.edu.ar/comunidad/">
+          <span>04</span><strong>Comunidad UNM</strong>
+        </a>
+      </section>
+
+      <section class="news-section" aria-labelledby="news-title">
+        <div class="section-heading">
+          <p>Actualidad</p>
+          <h2 id="news-title">Novedades UNM</h2>
+        </div>
+        <div class="news-grid">
+          <a class="news-card" href="https://www.unm.edu.ar/posgrado2027/">
+            <img
+              src="https://www.unm.edu.ar/wp-content/uploads/2026/10/IMG_5121-1024x683.jpg"
+              alt=""
+              loading="lazy"
+            />
+            <div>
+              <span>Posgrado</span>
+              <h3>Abrió la inscripción 2027 para las carreras de Posgrado y Diplomaturas</h3>
+              <p>Conocé la oferta académica y el proceso de inscripción.</p>
+            </div>
+          </a>
+          <a class="news-card" href="https://www.unm.edu.ar/convocatoria-investigacion/">
+            <img
+              src="https://www.unm.edu.ar/wp-content/uploads/2026/10/IMG_1394-1024x683.jpg"
+              alt=""
+              loading="lazy"
+            />
+            <div>
+              <span>Investigación</span>
+              <h3>Convocatorias para estudiantes auxiliares de investigación</h3>
+              <p>Conocé proyectos, requisitos y fechas en el sitio oficial.</p>
+            </div>
+          </a>
+          <a class="news-card" href="https://www.unm.edu.ar/convocatorias/">
+            <img
+              src="https://www.unm.edu.ar/wp-content/uploads/2026/10/IMG_5900-1024x683.jpg"
+              alt=""
+              loading="lazy"
+            />
+            <div>
+              <span>Comunidad</span>
+              <h3>Proyectos de investigación científica y desarrollo tecnológico</h3>
+              <p>Más información sobre las convocatorias vigentes.</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section class="site-contact" aria-label="Información de contacto">
+        <strong>Universidad Nacional de Moreno</strong>
+        <span>Av. Bartolomé Mitre 1891, Moreno, Buenos Aires</span>
+        <a href="https://www.unm.edu.ar/">www.unm.edu.ar</a>
+      </section>
+    </main>
+
+    <div id="chat-widget">
+      <button
+        id="chat-toggle"
+        type="button"
+        aria-controls="chat-panel"
+        aria-expanded="false"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 3.5c-5.3 0-9.5 3.6-9.5 8.1 0 2.3 1.2 4.4 3.2 5.9l-.8 3 3.8-1.3c1 .3 2.1.5 3.3.5 5.3 0 9.5-3.6 9.5-8.1S17.3 3.5 12 3.5Z" />
+          <circle cx="8" cy="11.5" r="1" />
+          <circle cx="12" cy="11.5" r="1" />
+          <circle cx="16" cy="11.5" r="1" />
+        </svg>
+        <span>Consultá a la UNM</span>
+      </button>
+      <section id="chat-panel" role="dialog" aria-labelledby="chat-title" hidden>
+        <div class="chat-panel-heading">
+          <div>
+            <span>Asistente virtual</span>
+            <h2 id="chat-title">Universidad Nacional de Moreno</h2>
+          </div>
+          <button id="chat-close" type="button" aria-label="Cerrar chat">×</button>
+        </div>
+      <div class="chat-app">
+      <header class="chat-app-header">
+        <strong>Asistente UNM</strong>
       <div id="a11y" role="group" aria-label="Ajustes de lectura">
         <button id="letra-menos" aria-label="Achicar letra">A−</button>
         <button id="letra-mas" aria-label="Agrandar letra">A+</button>
-        <button id="contraste-btn" aria-label="Activar o desactivar alto contraste">Contraste</button>
+        <button
+          id="contraste-btn"
+          aria-label="Activar o desactivar alto contraste"
+        >
+          Contraste
+        </button>
       </div>
       <span id="user-badge"></span>
       <div id="sesion-btns">
@@ -20,34 +154,97 @@
         <button id="admin-btn" hidden>Administrar</button>
         <button id="salir-btn">Salir</button>
       </div>
-    </header>
+      </header>
 
-    <main id="auth-view">
+    <section id="auth-view">
       <form id="auth-form">
         <h1>Ingresá al asistente</h1>
         <label for="auth-usuario">Usuario</label>
         <input id="auth-usuario" autocomplete="username" required />
         <label for="auth-clave">Contraseña</label>
-        <input id="auth-clave" type="password" autocomplete="current-password" required />
+        <input
+          id="auth-clave"
+          type="password"
+          autocomplete="current-password"
+          required
+        />
         <p id="auth-error" role="alert"></p>
         <button type="submit">Entrar</button>
-        <p>¿Primera vez? Elegí un usuario y una contraseña (mínimo 6 caracteres) y tocá:</p>
+        <p>
+          ¿Primera vez? Elegí un usuario y una contraseña (mínimo 6 caracteres)
+          y tocá:
+        </p>
         <button type="button" id="registro-btn">Crear cuenta nueva</button>
       </form>
-    </main>
+    </section>
+
+    <div id="chat-container" role="log" aria-label="Conversación"></div>
+
+    <footer>
+      <div id="composer">
+        <button
+          id="record-btn"
+          aria-label="Hablar para grabar una consulta"
+          disabled
+        >
+          Hablar
+        </button>
+        <input
+          type="text"
+          id="text-input"
+          aria-label="Escribí tu consulta"
+          placeholder="Escribí tu consulta..."
+          maxlength="500"
+          autocomplete="off"
+          disabled
+        />
+        <button id="send-btn" disabled>Enviar</button>
+      </div>
+      <div
+        id="anuncio"
+        class="solo-lector"
+        role="status"
+        aria-live="polite"
+      ></div>
+      <div id="options">
+        <span id="status">Ingresá tu nombre para empezar</span>
+        <label
+          ><input type="checkbox" id="audio-toggle" checked /> Escuchar
+          respuesta</label
+        >
+        <a id="feedback-link" hidden target="_blank" rel="noopener noreferrer"
+          >Dejanos sugerencias para mejorar</a
+        >
+      </div>
+    </footer>
+      </div>
+      </section>
+    </div>
 
     <dialog id="dlg-cuenta" aria-labelledby="cuenta-titulo">
       <form id="cuenta-form">
         <h2 id="cuenta-titulo">Mi cuenta</h2>
-        <p id="cuenta-aviso" hidden>Tu contraseña es la inicial. Elegí una nueva para proteger tu cuenta.</p>
+        <p id="cuenta-aviso" hidden>
+          Tu contraseña es la inicial. Elegí una nueva para proteger tu cuenta.
+        </p>
         <label for="cuenta-usuario">Usuario</label>
         <input id="cuenta-usuario" autocomplete="username" />
         <label for="cuenta-actual">Contraseña actual</label>
-        <input id="cuenta-actual" type="password" autocomplete="current-password" required />
-        <label for="cuenta-nueva">Contraseña nueva (opcional, mínimo 6 caracteres)</label>
+        <input
+          id="cuenta-actual"
+          type="password"
+          autocomplete="current-password"
+          required
+        />
+        <label for="cuenta-nueva"
+          >Contraseña nueva (opcional, mínimo 6 caracteres)</label
+        >
         <input id="cuenta-nueva" type="password" autocomplete="new-password" />
         <p id="cuenta-error" role="alert"></p>
-        <div class="acciones"><button type="submit">Guardar</button><button type="button" id="cuenta-cerrar">Cerrar</button></div>
+        <div class="acciones">
+          <button type="submit">Guardar</button
+          ><button type="button" id="cuenta-cerrar">Cerrar</button>
+        </div>
       </form>
     </dialog>
 
@@ -55,35 +252,57 @@
       <h2 id="admin-titulo">Administrar usuarios</h2>
       <p id="admin-msg" role="status"></p>
       <div id="admin-lista"></div>
-      <div class="acciones"><button type="button" id="admin-cerrar">Cerrar</button></div>
+      <div class="acciones">
+        <button type="button" id="admin-cerrar">Cerrar</button>
+      </div>
     </dialog>
 
-    <div id="chat-container" role="log" aria-label="Conversación"></div>
-
-    <footer>
-      <div id="composer">
-        <button id="record-btn" aria-label="Grabar mensaje de voz" disabled>Hablar</button>
-        <input type="text" id="text-input" aria-label="Escribí tu consulta" placeholder="Escribí tu consulta..." maxlength="500" autocomplete="off" disabled />
-        <button id="send-btn" disabled>Enviar</button>
-      </div>
-      <div id="anuncio" class="solo-lector" role="status" aria-live="polite"></div>
-      <div id="options">
-        <span id="status">Ingresá tu nombre para empezar</span>
-        <label><input type="checkbox" id="audio-toggle" checked /> Escuchar respuesta</label>
-      </div>
-    </footer>
-
     <script>
+      // Pegar aquí la URL del formulario cuando esté creado.
+      const GOOGLE_FORMS_URL = "";
       let usuario = null;
-      
+
       let OPCIONES = [];
-      let mediaRecorder = null, audioChunks = [], isRecording = false, busy = false;
+      let mediaRecorder = null,
+        audioChunks = [],
+        isRecording = false,
+        busy = false;
 
       const $ = (id) => document.getElementById(id);
+      const chatPanel = $("chat-panel");
+      const chatWidget = $("chat-widget");
+      function cambiarChatAbierto(abierto) {
+        chatPanel.hidden = !abierto;
+        chatWidget.classList.toggle("is-open", abierto);
+        $("chat-toggle").setAttribute("aria-expanded", String(abierto));
+        if (abierto) {
+          if (usuario) {
+            textInput.focus({ preventScroll: true });
+          } else {
+            $("auth-usuario").focus({ preventScroll: true });
+            $("auth-view").scrollTop = 0;
+          }
+        }
+      }
+      $("chat-toggle").addEventListener("click", () =>
+        cambiarChatAbierto(chatPanel.hidden),
+      );
+      $("chat-close").addEventListener("click", () =>
+        cambiarChatAbierto(false),
+      );
+
       const userBadge = $("user-badge");
-      const chatContainer = $("chat-container"), recordBtn = $("record-btn");
-      const textInput = $("text-input"), sendBtn = $("send-btn");
-      const statusText = $("status"), audioToggle = $("audio-toggle");
+      const chatContainer = $("chat-container"),
+        recordBtn = $("record-btn");
+      const textInput = $("text-input"),
+        sendBtn = $("send-btn");
+      const statusText = $("status"),
+        audioToggle = $("audio-toggle");
+      const feedbackLink = $("feedback-link");
+      if (GOOGLE_FORMS_URL) {
+        feedbackLink.href = GOOGLE_FORMS_URL;
+        feedbackLink.hidden = false;
+      }
 
       const PASOS = {
         escuchando: "Escuchando tu mensaje",
@@ -99,18 +318,28 @@
         sendBtn.disabled = !listo || isRecording || !textInput.value.trim();
         recordBtn.disabled = !usuario || busy;
         audioToggle.disabled = busy;
-        document.querySelectorAll(".menu button").forEach((b) => (b.disabled = !listo));
+        document
+          .querySelectorAll(".menu button")
+          .forEach((b) => (b.disabled = !listo));
       }
-      function setBusy(valor) { busy = valor; actualizarControles(); }
+      function setBusy(valor) {
+        busy = valor;
+        actualizarControles();
+      }
       textInput.addEventListener("input", actualizarControles);
 
       // ---------- Cuenta y sesión ----------
       async function api(url, datos) {
-        const res = await fetch(url, datos === undefined ? {} : {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(datos),
-        });
+        const res = await fetch(
+          url,
+          datos === undefined
+            ? {}
+            : {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(datos),
+              },
+        );
         const json = await res.json().catch(() => ({}));
         if (!res.ok) throw new Error(json.error || "Error inesperado");
         return json;
@@ -121,19 +350,32 @@
         document.body.classList.add("sin-sesion");
         chatContainer.innerHTML = "";
         actualizarControles();
-        $("auth-usuario").focus();
+        if (!chatPanel.hidden) {
+          $("auth-usuario").focus({ preventScroll: true });
+          $("auth-view").scrollTop = 0;
+        }
       }
 
       async function autenticar(url) {
         $("auth-error").textContent = "";
         try {
-          const { user } = await api(url, { username: $("auth-usuario").value, password: $("auth-clave").value });
+          const { user } = await api(url, {
+            username: $("auth-usuario").value,
+            password: $("auth-clave").value,
+          });
           $("auth-clave").value = "";
           await iniciarApp(user);
-        } catch (err) { $("auth-error").textContent = err.message; }
+        } catch (err) {
+          $("auth-error").textContent = err.message;
+        }
       }
-      $("auth-form").addEventListener("submit", (e) => { e.preventDefault(); autenticar("/api/login"); });
-      $("registro-btn").addEventListener("click", () => autenticar("/api/register"));
+      $("auth-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        autenticar("/api/login");
+      });
+      $("registro-btn").addEventListener("click", () =>
+        autenticar("/api/register"),
+      );
 
       async function iniciarApp(user) {
         usuario = user;
@@ -144,16 +386,25 @@
         OPCIONES = await api("/api/opciones");
         const { history } = await api("/api/history");
         chatContainer.innerHTML = "";
-        history.forEach((m) => appendMessage(m.role, m.content, m.audio_url, false));
+        history.forEach((m) =>
+          appendMessage(m.role, m.content, m.audio_url, false),
+        );
         if (!history.length) {
-          appendMessage("assistant", "Hola, soy el asistente de la UNM. Podés escribir, hablar o elegir un tema.");
+          appendMessage(
+            "assistant",
+            "Hola, soy el asistente de la UNM. ¿Cómo te puedo ayudar?",
+          );
           mostrarMenu();
         }
-        statusText.textContent = 'Escribí o tocá "Hablar" para consultar';
+        statusText.textContent =
+          "Elegí una pregunta, hablá o escribí tu consulta";
         if (user.mustChange) abrirCuenta(true);
       }
 
-      $("salir-btn").addEventListener("click", async () => { await api("/api/logout", {}); mostrarLogin(); });
+      $("salir-btn").addEventListener("click", async () => {
+        await api("/api/logout", {});
+        mostrarLogin();
+      });
 
       // Mi cuenta: cambiar usuario y contraseña
       function abrirCuenta(aviso) {
@@ -164,8 +415,12 @@
         $("cuenta-error").textContent = "";
         $("dlg-cuenta").showModal();
       }
-      $("cuenta-btn").addEventListener("click", () => abrirCuenta(usuario.mustChange));
-      $("cuenta-cerrar").addEventListener("click", () => $("dlg-cuenta").close());
+      $("cuenta-btn").addEventListener("click", () =>
+        abrirCuenta(usuario.mustChange),
+      );
+      $("cuenta-cerrar").addEventListener("click", () =>
+        $("dlg-cuenta").close(),
+      );
       $("cuenta-form").addEventListener("submit", async (e) => {
         e.preventDefault();
         try {
@@ -177,7 +432,9 @@
           usuario = user;
           userBadge.textContent = user.username;
           $("dlg-cuenta").close();
-        } catch (err) { $("cuenta-error").textContent = err.message; }
+        } catch (err) {
+          $("cuenta-error").textContent = err.message;
+        }
       });
 
       // Administrador: cambiar usuario o contraseña de cualquier persona
@@ -185,42 +442,66 @@
         const lista = await api("/api/admin/users");
         const cont = $("admin-lista");
         cont.innerHTML = "";
-        lista.filter((u) => u.role === "user").forEach((u) => {
-          const f = document.createElement("form");
-          f.className = "fila-admin";
-          f.innerHTML = '<input class="n" aria-label="Usuario" /><input class="p" type="password" aria-label="Nueva contraseña" placeholder="Nueva contraseña" autocomplete="new-password" /><button>Guardar</button><span class="info"></span>';
-          f.querySelector(".n").value = u.username;
-          f.querySelector(".info").textContent = `${u.preguntas} consultas${u.mustChange ? " · contraseña inicial" : ""}`;
-          f.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            try {
-              await api("/api/admin/users/" + u.id, { username: f.querySelector(".n").value, password: f.querySelector(".p").value });
-              await abrirAdmin();
-              $("admin-msg").textContent = "Cambios guardados. Si cambiaste la contraseña, la persona deberá elegir una nueva al entrar.";
-            } catch (err) { $("admin-msg").textContent = err.message; }
+        lista
+          .filter((u) => u.role === "user")
+          .forEach((u) => {
+            const f = document.createElement("form");
+            f.className = "fila-admin";
+            f.innerHTML =
+              '<input class="n" aria-label="Usuario" /><input class="p" type="password" aria-label="Nueva contraseña" placeholder="Nueva contraseña" autocomplete="new-password" /><button>Guardar</button><span class="info"></span>';
+            f.querySelector(".n").value = u.username;
+            f.querySelector(".info").textContent =
+              `${u.preguntas} consultas${u.mustChange ? " · contraseña inicial" : ""}`;
+            f.addEventListener("submit", async (e) => {
+              e.preventDefault();
+              try {
+                await api("/api/admin/users/" + u.id, {
+                  username: f.querySelector(".n").value,
+                  password: f.querySelector(".p").value,
+                });
+                await abrirAdmin();
+                $("admin-msg").textContent =
+                  "Cambios guardados. Si cambiaste la contraseña, la persona deberá elegir una nueva al entrar.";
+              } catch (err) {
+                $("admin-msg").textContent = err.message;
+              }
+            });
+            cont.appendChild(f);
           });
-          cont.appendChild(f);
-        });
         if (!$("dlg-admin").open) $("dlg-admin").showModal();
       }
-      $("admin-btn").addEventListener("click", () => { $("admin-msg").textContent = ""; abrirAdmin(); });
+      $("admin-btn").addEventListener("click", () => {
+        $("admin-msg").textContent = "";
+        abrirAdmin();
+      });
       $("admin-cerrar").addEventListener("click", () => $("dlg-admin").close());
 
       // ---------- Mensajes ----------
-      function scrollAbajo() { chatContainer.scrollTop = chatContainer.scrollHeight; }
+      function scrollAbajo() {
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+      }
 
-      function appendMessage(role, text, audioUrl, autoPlay = false, antesDe = null) {
+      function appendMessage(
+        role,
+        text,
+        audioUrl,
+        autoPlay = false,
+        antesDe = null,
+      ) {
         const div = document.createElement("div");
         div.className = `msg ${role}`;
         const p = document.createElement("div");
         if (role === "assistant") {
-          const patron = /(https?:\/\/[^\s]+|[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,})/gi;
+          const patron =
+            /(https?:\/\/[^\s]+|[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,})/gi;
           let cursor = 0;
           for (const match of text.matchAll(patron)) {
             const valor = match[0];
             const final = valor.match(/[.,!?;:)\]]+$/)?.[0] || "";
             const enlace = valor.slice(0, valor.length - final.length);
-            p.appendChild(document.createTextNode(text.slice(cursor, match.index)));
+            p.appendChild(
+              document.createTextNode(text.slice(cursor, match.index)),
+            );
             const a = document.createElement("a");
             a.href = enlace.startsWith("http") ? enlace : `mailto:${enlace}`;
             a.textContent = enlace;
@@ -248,50 +529,36 @@
       }
 
       // ---------- Menú de opciones ----------
-      function mostrarMenu() {
+      function mostrarMenu(
+        opciones = OPCIONES,
+        titulo = "Consultas frecuentes",
+      ) {
         document.querySelectorAll(".menu").forEach((m) => m.remove());
         const menu = document.createElement("div");
         menu.className = "menu";
         menu.setAttribute("role", "group");
-        menu.setAttribute("aria-label", "Temas disponibles");
-        OPCIONES.forEach((o) => {
-          const b = document.createElement("button");
-          b.textContent = `${o.n}. ${o.etiqueta}`;
-          b.addEventListener("click", () => enviarTexto(o.pregunta));
-          menu.appendChild(b);
+        menu.setAttribute(
+          "aria-label",
+          "Preguntas frecuentes de la base de conocimiento",
+        );
+        const label = document.createElement("p");
+        label.className = "menu-title";
+        label.textContent = titulo;
+        opciones.forEach((o, indice) => {
+          const boton = document.createElement("button");
+          boton.type = "button";
+          boton.disabled = !usuario || busy;
+          const numero = document.createElement("span");
+          numero.className = "menu-number";
+          numero.textContent = String(o.n ?? indice + 1);
+          const texto = document.createElement("span");
+          texto.textContent = o.etiqueta || o.pregunta || "Opción";
+          boton.append(numero, texto);
+          boton.addEventListener("click", () => enviarTexto(o.pregunta));
+          menu.appendChild(boton);
         });
+        menu.prepend(label);
         chatContainer.appendChild(menu);
-        scrollAbajo();
-      }
-
-      function mostrarSelectorDepartamentos(opciones) {
-        const form = document.createElement("form");
-        form.className = "menu department-selector";
-        const label = document.createElement("label");
-        label.textContent = "Elegí un departamento";
-        const select = document.createElement("select");
-        select.required = true;
-        const placeholder = document.createElement("option");
-        placeholder.value = "";
-        placeholder.textContent = "Seleccioná una opción";
-        placeholder.disabled = true;
-        placeholder.selected = true;
-        select.appendChild(placeholder);
-        opciones.forEach((opcion) => {
-          const option = document.createElement("option");
-          option.value = opcion.pregunta;
-          option.textContent = opcion.etiqueta;
-          select.appendChild(option);
-        });
-        const submit = document.createElement("button");
-        submit.type = "submit";
-        submit.textContent = "Ver carreras";
-        form.append(label, select, submit);
-        form.addEventListener("submit", (event) => {
-          event.preventDefault();
-          if (select.value) enviarTexto(select.value);
-        });
-        chatContainer.appendChild(form);
         scrollAbajo();
       }
 
@@ -299,7 +566,10 @@
       let escala = Number(localStorage.getItem("escala")) || 115;
       function aplicarVista() {
         document.documentElement.style.fontSize = escala + "%";
-        document.body.classList.toggle("contraste", localStorage.getItem("contraste") === "1");
+        document.body.classList.toggle(
+          "contraste",
+          localStorage.getItem("contraste") === "1",
+        );
       }
       function cambiarEscala(delta) {
         escala = Math.min(175, Math.max(85, escala + delta));
@@ -309,7 +579,10 @@
       $("letra-mas").addEventListener("click", () => cambiarEscala(15));
       $("letra-menos").addEventListener("click", () => cambiarEscala(-15));
       $("contraste-btn").addEventListener("click", () => {
-        localStorage.setItem("contraste", localStorage.getItem("contraste") === "1" ? "0" : "1");
+        localStorage.setItem(
+          "contraste",
+          localStorage.getItem("contraste") === "1" ? "0" : "1",
+        );
         aplicarVista();
       });
       aplicarVista();
@@ -318,7 +591,8 @@
       function crearProgreso(claves) {
         const el = document.createElement("div");
         el.className = "msg assistant progress";
-        el.innerHTML = '<div class="prog-note" hidden></div><ul class="steps"></ul>';
+        el.innerHTML =
+          '<div class="prog-note" hidden></div><ul class="steps"></ul>';
         const ul = el.querySelector(".steps");
         const nota = el.querySelector(".prog-note");
         const items = {};
@@ -337,7 +611,8 @@
           setStage(stage) {
             if (stage === "cola") {
               nota.hidden = false;
-              nota.textContent = "Hay otra consulta en curso. Tu mensaje espera su turno...";
+              nota.textContent =
+                "Hay otra consulta en curso. Tu mensaje espera su turno...";
               return;
             }
             nota.hidden = true;
@@ -345,11 +620,14 @@
             if (idx < 0) return;
             $("anuncio").textContent = PASOS[stage];
             claves.forEach((c, i) => {
-              items[c].className = i < idx ? "done" : i === idx ? "active" : "pending";
+              items[c].className =
+                i < idx ? "done" : i === idx ? "active" : "pending";
             });
             scrollAbajo();
           },
-          remove() { el.remove(); },
+          remove() {
+            el.remove();
+          },
         };
       }
 
@@ -370,24 +648,65 @@
       }
 
       // ---------- Envío (común para texto y voz) ----------
-      async function enviar(url, opciones, claves) {
+      async function enviar(
+        url,
+        opciones,
+        claves,
+        mensajeInicial = "Procesando tu consulta...",
+      ) {
         setBusy(true);
-        statusText.textContent = "Procesando tu consulta...";
+        statusText.textContent = mensajeInicial;
         const progreso = crearProgreso(claves);
         let termino = false;
         try {
           const res = await fetch(url, opciones);
-          if (res.status === 401) { progreso.remove(); mostrarLogin(); return; }
-          if (!res.ok || !res.body) throw new Error("Respuesta inválida del servidor");
+          if (res.status === 401) {
+            progreso.remove();
+            mostrarLogin();
+            return;
+          }
+          if (!res.ok || !res.body)
+            throw new Error("Respuesta inválida del servidor");
           await leerStream(res, (ev) => {
             if (ev.type === "stage") progreso.setStage(ev.stage);
-            else if (ev.type === "transcript") appendMessage("user", ev.text, null, false, progreso.el);
+            else if (ev.type === "transcript")
+              appendMessage("user", ev.text, null, false, progreso.el);
             else if (ev.type === "done") {
               termino = true;
               progreso.remove();
               appendMessage("assistant", ev.assistantText, ev.audioUrl, true);
-              if (ev.selectorOptions) mostrarSelectorDepartamentos(ev.selectorOptions);
-              else if (ev.sinInfo) mostrarMenu();
+              if (ev.fromOption) {
+                if (ev.suggestions?.length) {
+                  mostrarMenu(ev.suggestions, `Más sobre ${ev.selectedOption}`);
+                } else {
+                  appendMessage(
+                    "assistant",
+                    "Podés hacer una nueva consulta hablando o escribiendo.",
+                  );
+                }
+              }
+              if (ev.questionLimit?.remaining === 0) {
+                const hora = new Date(
+                  ev.questionLimit.resetAt,
+                ).toLocaleTimeString("es-AR", {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                });
+                appendMessage(
+                  "assistant",
+                  `Alcanzaste el límite de 5 preguntas. Podrás volver a consultar a las ${hora}.`,
+                );
+              }
+              if (
+                !ev.fromOption &&
+                ev.sinInfo &&
+                ev.questionLimit?.remaining !== 0
+              )
+                mostrarMenu();
+            } else if (ev.type === "limit") {
+              termino = true;
+              progreso.remove();
+              appendMessage("assistant", ev.message);
             } else if (ev.type === "error") {
               termino = true;
               progreso.remove();
@@ -402,9 +721,10 @@
           progreso.remove();
           appendMessage("error", "No se pudo conectar con el servidor local.");
         } finally {
-          statusText.textContent = 'Listo. Escribí o tocá "Hablar" para otra consulta';
+          statusText.textContent =
+            "Listo. Elegí una pregunta, hablá o escribí otra consulta";
           setBusy(false);
-          if (!textInput.disabled) textInput.focus();
+          if (!textInput.disabled) textInput.focus({ preventScroll: true });
         }
       }
 
@@ -416,7 +736,9 @@
         if (!forzado) textInput.value = "";
         appendMessage("user", text);
         const conAudio = audioToggle.checked;
-        const claves = conAudio ? ["buscando", "pensando", "audio"] : ["buscando", "pensando"];
+        const claves = conAudio
+          ? ["buscando", "pensando", "audio"]
+          : ["buscando", "pensando"];
         enviar(
           "/api/text-chat",
           {
@@ -429,32 +751,48 @@
       }
       sendBtn.addEventListener("click", () => enviarTexto());
       textInput.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); enviarTexto(); }
+        if (e.key === "Enter" && !e.shiftKey) {
+          e.preventDefault();
+          enviarTexto();
+        }
       });
 
       // ---------- Voz ----------
       recordBtn.addEventListener("click", async () => {
         if (!isRecording) {
           try {
-            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            const stream = await navigator.mediaDevices.getUserMedia({
+              audio: true,
+            });
             mediaRecorder = new MediaRecorder(stream);
             audioChunks = [];
-            mediaRecorder.ondataavailable = (e) => { if (e.data.size > 0) audioChunks.push(e.data); };
+            mediaRecorder.ondataavailable = (e) => {
+              if (e.data.size > 0) audioChunks.push(e.data);
+            };
             mediaRecorder.onstop = enviarAudio;
             mediaRecorder.start();
             isRecording = true;
-            recordBtn.textContent = "Enviar";
-            recordBtn.setAttribute("aria-label", "Terminar y enviar la grabación");
+            recordBtn.textContent = "Enviar audio";
+            recordBtn.setAttribute(
+              "aria-label",
+              "Terminar la grabación y enviar el audio",
+            );
             recordBtn.classList.add("recording");
-            statusText.textContent = 'Grabando... tocá "Enviar" cuando termines';
+            statusText.textContent =
+              'Grabando... tocá "Enviar audio" cuando termines';
             actualizarControles();
           } catch (err) {
-            alert("No se pudo acceder al micrófono. Verificá estar conectado por HTTPS o localhost.");
+            alert(
+              "No se pudo acceder al micrófono. Verificá estar conectado por HTTPS o localhost.",
+            );
           }
         } else {
           isRecording = false;
           recordBtn.textContent = "Hablar";
-          recordBtn.setAttribute("aria-label", "Grabar mensaje de voz");
+          recordBtn.setAttribute(
+            "aria-label",
+            "Hablar para grabar una consulta",
+          );
           recordBtn.classList.remove("recording");
           setBusy(true); // bloquea todo desde que se toca "Enviar"
           mediaRecorder.stop();
@@ -466,19 +804,29 @@
         const mime = mediaRecorder.mimeType || "audio/webm";
         const blob = new Blob(audioChunks, { type: mime });
         const formData = new FormData();
-        formData.append("audio", blob, mime.includes("mp4") ? "mensaje.m4a" : "mensaje.webm");
-        
-        
+        formData.append(
+          "audio",
+          blob,
+          mime.includes("mp4") ? "mensaje.m4a" : "mensaje.webm",
+        );
+
         formData.append("conAudio", audioToggle.checked);
         const claves = audioToggle.checked
           ? ["escuchando", "buscando", "pensando", "audio"]
           : ["escuchando", "buscando", "pensando"];
-        enviar("/api/voice-chat", { method: "POST", body: formData }, claves);
+        enviar(
+          "/api/voice-chat",
+          { method: "POST", body: formData },
+          claves,
+          "Enviando audio...",
+        );
       }
 
       actualizarControles();
-    document.body.classList.add("sin-sesion");
-      api("/api/me").then(({ user }) => iniciarApp(user)).catch(() => mostrarLogin());
+      document.body.classList.add("sin-sesion");
+      api("/api/me")
+        .then(({ user }) => iniciarApp(user))
+        .catch(() => mostrarLogin());
     </script>
   </body>
 </html>

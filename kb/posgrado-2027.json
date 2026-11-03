@@ -1,0 +1,71 @@
+{
+  "preguntas_frecuentes": [
+    {
+      "id": "posgrado-2027-oferta",
+      "categoria": "Posgrado y Diplomaturas 2027",
+      "etiqueta": "Oferta de posgrado 2027",
+      "pregunta": "¿Qué opciones de posgrado y diplomaturas ofrece la UNM para el ciclo lectivo 2027?",
+      "respuesta": "La oferta incluye el Doctorado en Ciencias Económicas; las especializaciones en Lectura y Escritura y en Docencia Universitaria; y las Diplomaturas de Estudios Avanzados en Producción y Gestión Integral del Hábitat, Finanzas Públicas y Procedimiento Tributario, Economía Política, Intervención Territorial en Políticas de Infancias y Adolescencias, Vivienda y Estudios Urbanos Latinoamericanos, y Modelado de Información para la Construcción (BIM).",
+      "palabras_clave": [
+        "posgrado",
+        "doctorado",
+        "especialización",
+        "diplomatura",
+        "oferta académica 2027"
+      ],
+      "fuente": "https://www.unm.edu.ar/posgrado2027/",
+      "actualizado": "2026-11-03"
+    },
+    {
+      "id": "posgrado-2027-inscripcion",
+      "categoria": "Posgrado y Diplomaturas 2027",
+      "etiqueta": "Inscripción a posgrado 2027",
+      "pregunta": "¿Cuándo es la inscripción para las propuestas de posgrado y diplomaturas 2027?",
+      "respuesta": "La inscripción para el ciclo lectivo 2027 está abierta desde el 2 de noviembre de 2026 hasta el 26 de febrero de 2027. La preinscripción se realiza en https://preinscripcionposgrado.unm.edu.ar/.",
+      "palabras_clave": [
+        "fechas",
+        "inscripción",
+        "preinscripción",
+        "posgrado",
+        "diplomatura",
+        "2027"
+      ],
+      "fuente": "https://www.unm.edu.ar/posgrado2027/",
+      "actualizado": "2026-11-03"
+    },
+    {
+      "id": "posgrado-2027-requisitos",
+      "categoria": "Posgrado y Diplomaturas 2027",
+      "etiqueta": "Requisitos de ingreso a posgrado",
+      "pregunta": "¿Cuáles son los requisitos para ingresar a las carreras de posgrado y diplomaturas?",
+      "respuesta": "Los requisitos dependen de cada propuesta. La página de Posgrado 2027 de la UNM reúne la información específica de ingreso y los enlaces a cada carrera y diplomatura: https://www.unm.edu.ar/posgrado2027/.",
+      "palabras_clave": [
+        "requisitos",
+        "ingreso",
+        "admisión",
+        "documentación",
+        "posgrado",
+        "diplomatura"
+      ],
+      "fuente": "https://www.unm.edu.ar/posgrado2027/",
+      "actualizado": "2026-11-03"
+    },
+    {
+      "id": "posgrado-2027-contacto",
+      "categoria": "Posgrado y Diplomaturas 2027",
+      "etiqueta": "Contacto de Posgrado",
+      "pregunta": "¿Cómo contacto a la Coordinación del Programa de Posgrado?",
+      "respuesta": "La Coordinación del Programa de Posgrado atiende en la oficina A 102 del Edificio Histórico, Ala Oeste, primer piso. Su interno es 3774 y su correo es posgrado@unm.edu.ar.",
+      "palabras_clave": [
+        "contacto",
+        "correo",
+        "mail",
+        "teléfono",
+        "oficina",
+        "posgrado"
+      ],
+      "fuente": "https://www.unm.edu.ar/posgrado2027/",
+      "actualizado": "2026-11-03"
+    }
+  ]
+}

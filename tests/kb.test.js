@@ -30,10 +30,11 @@ describe("base de conocimiento", () => {
 
   it("carga los archivos temáticos y conserva sus metadatos", () => {
     const items = cargarItems();
-    assert.equal(items.length, 57);
+    assert.equal(items.length, 61);
     assert.ok(items.some((item) => item.archivo === "contactos.json"));
     assert.ok(items.some((item) => item.archivo === "coprun.json"));
     assert.ok(items.some((item) => item.archivo === "inscripcion-2027.json"));
+    assert.ok(items.some((item) => item.archivo === "posgrado-2027.json"));
     assert.ok(items.some((item) => item.etiqueta && item.palabrasClave.length));
     assert.ok(items.every((item) => item.id && item.pregunta && item.texto));
   });
@@ -44,6 +45,8 @@ describe("base de conocimiento", () => {
       ["¿Cómo se aprueba el COPRUN y qué asistencia piden?", "coprun-faq-5"],
       ["¿Dónde está la biblioteca y cuál es su correo?", "contactos-faq-3"],
       ["¿Hay becas o ayuda económica en la UNM?", "vida-universitaria-faq-8"],
+      ["¿Qué opciones de posgrado y diplomaturas ofrece la UNM en 2027?", "posgrado-2027-oferta"],
+      ["¿Cuándo puedo inscribirme a un posgrado para 2027?", "posgrado-2027-inscripcion"],
       ["Hola, quiero averiguar por las carreras disponibles.", "vida-universitaria-faq-2"],
       ["¿Qué carreras ofrece el Departamento de Ciencias Aplicadas y Tecnología?", "carreras-aplicadas-tecnologia"],
       ["¿Qué carreras ofrece el Departamento de Ciencias Económicas y Jurídicas?", "carreras-economicas-juridicas"],
@@ -69,7 +72,7 @@ describe("base de conocimiento", () => {
   it("reutiliza embeddings solo cuando la caché corresponde a la base", async () => {
     const cache = JSON.parse(fs.readFileSync(cachePath, "utf8"));
     assert.equal(cache.version, 2);
-    assert.equal(cache.items.length, 57);
+    assert.equal(cache.items.length, 61);
     assert.match(cache.firma, /^[a-f0-9]{64}$/);
 
     const llamadasAntes = llamadasEmbedding;
