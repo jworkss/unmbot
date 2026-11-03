@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node --test"
+    "test": "node --test",
+    "generate:audio": "node generar-audio.js"
   },
   "keywords": [],
   "author": "",

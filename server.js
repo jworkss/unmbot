@@ -705,47 +705,31 @@ app.get("/api/history", requireAuth, (req, res) => {
       .all(req.user.session_id),
   });
 });
-const TEXTO_BIENVENIDA = [
-  "Hola, soy el asistente de la UNM. ¿Cómo te puedo ayudar?",
-  `Podés elegir una consulta frecuente: ${OPCIONES.map((opcion, indice) => `${indice + 1}, ${opcion.etiqueta}`).join(", ")}`,
-  "También podés escribir o grabar tu consulta.",
-].join(" ");
-const ARCHIVO_AUDIO_BIENVENIDA = `bienvenida_${crypto
-  .createHash("sha256")
-  .update(TEXTO_BIENVENIDA)
-  .digest("hex")
-  .slice(0, 16)}.wav`;
-let audioBienvenidaEnCurso = null;
+const AUDIO_BIENVENIDA = path.join(
+  __dirname,
+  "audio_out",
+  "bienvenida_62405f5e930694ab.wav",
+);
 app.get("/api/welcome-audio", requireAuth, async (req, res, next) => {
-  const audioPath = path.join(__dirname, "audio_out", ARCHIVO_AUDIO_BIENVENIDA);
   try {
-    let archivoDisponible = false;
-    try {
-      const archivo = await fs.promises.stat(audioPath);
-      archivoDisponible = archivo.isFile() && archivo.size > 0;
-    } catch (error) {
-      if (error.code !== "ENOENT") throw error;
-    }
-
-    if (!archivoDisponible) {
-      if (!audioBienvenidaEnCurso) {
-        audioBienvenidaEnCurso = generateSpeech(
-          TEXTO_BIENVENIDA,
-          audioPath,
-        ).finally(() => {
-          audioBienvenidaEnCurso = null;
-        });
-      }
-      await audioBienvenidaEnCurso;
-    }
-    res.type("audio/wav").sendFile(audioPath, (error) => {
-      if (error) next(error);
-    });
+    const archivo = await fs.promises.stat(AUDIO_BIENVENIDA);
+    if (!archivo.isFile() || archivo.size === 0)
+      return res.status(503).json({
+        error: "El audio de bienvenida no está disponible.",
+      });
+    res.type("audio/wav").sendFile(
+      AUDIO_BIENVENIDA,
+      { headers: { "Cache-Control": "private, max-age=86400" } },
+      (error) => {
+        if (error) next(error);
+      },
+    );
   } catch (error) {
-    console.error("Error preparando el audio de bienvenida:", error.message);
-    if (!res.headersSent)
-      res.status(500).json({ error: "No se pudo preparar el audio de bienvenida." });
-    else next(error);
+    if (error.code === "ENOENT")
+      return res.status(503).json({
+        error: "El audio de bienvenida no está disponible.",
+      });
+    next(error);
   }
 });
 app.get("/audio_out/:file", requireAuth, (req, res) => {

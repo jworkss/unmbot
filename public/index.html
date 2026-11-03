@@ -3,20 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Universidad Nacional de Moreno</title>
+    <title>ChatBot UNM</title>
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
     <header class="unm-masthead">
       <div class="masthead-inner">
-        <a href="https://www.unm.edu.ar/" aria-label="Universidad Nacional de Moreno, inicio">
+        <a
+          href="https://www.unm.edu.ar/"
+          aria-label="Universidad Nacional de Moreno, inicio"
+        >
           <img
             src="https://www.unm.edu.ar/wp-content/uploads/2024/04/Fondo-oscuroOK-300x149-1.png"
             alt="Universidad Nacional de Moreno"
           />
         </a>
         <p class="masthead-note">
-          Página de prueba simulada del asistente de la Universidad Nacional de Moreno
+          Página de prueba simulada del asistente de la Universidad Nacional de
+          Moreno
         </p>
         <p>Nuestro derecho, nuestro lugar,<br />nuestro futuro...</p>
       </div>
@@ -24,13 +28,21 @@
 
     <nav class="site-navigation" aria-label="Navegación principal">
       <a href="https://www.unm.edu.ar/">Inicio</a>
-      <a href="https://www.unm.edu.ar/estudiar-en-la-unm/quiero-estudiar-en-la-unm/">Ingresantes</a>
+      <a
+        href="https://www.unm.edu.ar/estudiar-en-la-unm/quiero-estudiar-en-la-unm/"
+        >Ingresantes</a
+      >
       <a href="https://www.unm.edu.ar/estudiantes/">Estudiantes</a>
       <a href="https://www.unm.edu.ar/posgrado2027/">Posgrado</a>
       <a href="https://www.unm.edu.ar/convocatorias/">Investigación</a>
       <form action="https://www.unm.edu.ar/" method="get" role="search">
         <label class="solo-lector" for="site-search">Buscar en el sitio</label>
-        <input id="site-search" type="search" name="s" placeholder="Buscar..." />
+        <input
+          id="site-search"
+          type="search"
+          name="s"
+          placeholder="Buscar..."
+        />
       </form>
     </nav>
 
@@ -39,17 +51,26 @@
         <div class="hero-copy">
           <p>Universidad pública y gratuita</p>
           <h1 id="hero-title">Universidad Nacional de Moreno</h1>
-          <a href="https://www.unm.edu.ar/estudiar-en-la-unm/quiero-estudiar-en-la-unm/" class="hero-link">
+          <a
+            href="https://www.unm.edu.ar/estudiar-en-la-unm/quiero-estudiar-en-la-unm/"
+            class="hero-link"
+          >
             Conocé la UNM
           </a>
         </div>
-        <a class="mi-unm-link" href="https://www.unm.edu.ar/estudiantes/" aria-label="Mi UNM">
+        <a
+          class="mi-unm-link"
+          href="https://www.unm.edu.ar/estudiantes/"
+          aria-label="Mi UNM"
+        >
           Mi UNM
         </a>
       </section>
 
       <section class="quick-access" aria-label="Accesos principales">
-        <a href="https://www.unm.edu.ar/estudiar-en-la-unm/quiero-estudiar-en-la-unm/">
+        <a
+          href="https://www.unm.edu.ar/estudiar-en-la-unm/quiero-estudiar-en-la-unm/"
+        >
           <span>01</span><strong>Ingresantes</strong>
         </a>
         <a href="https://www.unm.edu.ar/estudiantes/">
@@ -77,11 +98,17 @@
             />
             <div>
               <span>Posgrado</span>
-              <h3>Abrió la inscripción 2027 para las carreras de Posgrado y Diplomaturas</h3>
+              <h3>
+                Abrió la inscripción 2027 para las carreras de Posgrado y
+                Diplomaturas
+              </h3>
               <p>Conocé la oferta académica y el proceso de inscripción.</p>
             </div>
           </a>
-          <a class="news-card" href="https://www.unm.edu.ar/convocatoria-investigacion/">
+          <a
+            class="news-card"
+            href="https://www.unm.edu.ar/convocatoria-investigacion/"
+          >
             <img
               src="https://www.unm.edu.ar/wp-content/uploads/2026/10/IMG_1394-1024x683.jpg"
               alt=""
@@ -89,7 +116,9 @@
             />
             <div>
               <span>Investigación</span>
-              <h3>Convocatorias para estudiantes auxiliares de investigación</h3>
+              <h3>
+                Convocatorias para estudiantes auxiliares de investigación
+              </h3>
               <p>Conocé proyectos, requisitos y fechas en el sitio oficial.</p>
             </div>
           </a>
@@ -101,7 +130,9 @@
             />
             <div>
               <span>Comunidad</span>
-              <h3>Proyectos de investigación científica y desarrollo tecnológico</h3>
+              <h3>
+                Proyectos de investigación científica y desarrollo tecnológico
+              </h3>
               <p>Más información sobre las convocatorias vigentes.</p>
             </div>
           </a>
@@ -127,98 +158,107 @@
       </button>
       <section id="chat-panel" aria-labelledby="chat-title" hidden>
         <div class="chat-panel-heading">
-          <img
-            class="chat-heading-avatar"
-            src="/img/avatar-bot.png"
-            alt=""
-          />
+          <img class="chat-heading-avatar" src="/img/avatar-bot.png" alt="" />
           <div>
             <span>Asistente virtual</span>
             <h2 id="chat-title">Universidad Nacional de Moreno</h2>
           </div>
-          <button id="chat-close" type="button" aria-label="Cerrar chat">×</button>
+          <button id="chat-close" type="button" aria-label="Cerrar chat">
+            ×
+          </button>
         </div>
-      <div class="chat-app">
-      <header class="chat-app-header">
-        <strong>Asistente UNM</strong>
-      <div id="a11y" role="group" aria-label="Ajustes de lectura">
-        <button id="letra-menos" aria-label="Achicar letra">A−</button>
-        <button id="letra-mas" aria-label="Agrandar letra">A+</button>
-        <button
-          id="contraste-btn"
-          aria-label="Activar o desactivar alto contraste"
-        >
-          Contraste
-        </button>
-      </div>
-      <span id="user-badge"></span>
-      <div id="sesion-btns">
-        <button id="cuenta-btn">Mi cuenta</button>
-        <button id="admin-btn" hidden>Administrar</button>
-        <button id="salir-btn">Salir</button>
-      </div>
-      </header>
+        <div class="chat-app">
+          <header class="chat-app-header">
+            <strong>Asistente UNM</strong>
+            <div id="a11y" role="group" aria-label="Ajustes de lectura">
+              <button id="letra-menos" aria-label="Achicar letra">A−</button>
+              <button id="letra-mas" aria-label="Agrandar letra">A+</button>
+              <button
+                id="contraste-btn"
+                aria-label="Activar o desactivar alto contraste"
+              >
+                Contraste
+              </button>
+            </div>
+            <span id="user-badge"></span>
+            <div id="sesion-btns">
+              <button id="cuenta-btn">Mi cuenta</button>
+              <button id="admin-btn" hidden>Administrar</button>
+              <button id="salir-btn">Salir</button>
+            </div>
+          </header>
 
-    <div id="chat-container" role="log" aria-label="Conversación"></div>
+          <div id="chat-container" role="log" aria-label="Conversación"></div>
 
-    <footer>
-      <div id="composer">
-        <button
-          id="record-btn"
-          type="button"
-          aria-label="Grabar una consulta"
-          disabled
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 14a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v5a3 3 0 0 0 3 3Z" />
-            <path d="M19 11a7 7 0 0 1-14 0m7 7v3m-4 0h8" />
-          </svg>
-        </button>
-        <button
-          id="pause-btn"
-          type="button"
-          aria-label="Pausar grabación"
-          title="Pausar grabación"
-          disabled
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M8 5v14m8-14v14" />
-          </svg>
-        </button>
-        <input
-          type="text"
-          id="text-input"
-          aria-label="Escribí tu consulta"
-          placeholder="Escribí tu consulta..."
-          maxlength="500"
-          autocomplete="off"
-          disabled
-        />
-        <button id="send-btn" type="button" aria-label="Enviar mensaje" disabled>
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="m22 2-7 20-4-9-9-4 20-7ZM22 2 11 13" />
-          </svg>
-          <span>Enviar</span>
-        </button>
-      </div>
-      <div
-        id="anuncio"
-        class="solo-lector"
-        role="status"
-        aria-live="polite"
-      ></div>
-      <div id="options">
-        <span id="status">Ingresá tu nombre para empezar</span>
-        <label
-          ><input type="checkbox" id="audio-toggle" checked /> Escuchar
-          respuesta</label
-        >
-        <a id="feedback-link" hidden target="_blank" rel="noopener noreferrer"
-          >Dejanos sugerencias para mejorar</a
-        >
-      </div>
-    </footer>
-      </div>
+          <footer>
+            <div id="composer">
+              <button
+                id="record-btn"
+                type="button"
+                aria-label="Grabar una consulta"
+                disabled
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M12 14a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v5a3 3 0 0 0 3 3Z"
+                  />
+                  <path d="M19 11a7 7 0 0 1-14 0m7 7v3m-4 0h8" />
+                </svg>
+              </button>
+              <button
+                id="pause-btn"
+                type="button"
+                aria-label="Pausar grabación"
+                title="Pausar grabación"
+                disabled
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8 5v14m8-14v14" />
+                </svg>
+              </button>
+              <input
+                type="text"
+                id="text-input"
+                aria-label="Escribí tu consulta"
+                placeholder="Escribí tu consulta..."
+                maxlength="500"
+                autocomplete="off"
+                disabled
+              />
+              <button
+                id="send-btn"
+                type="button"
+                aria-label="Enviar mensaje"
+                disabled
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m22 2-7 20-4-9-9-4 20-7ZM22 2 11 13" />
+                </svg>
+                <span>Enviar</span>
+              </button>
+            </div>
+            <div
+              id="anuncio"
+              class="solo-lector"
+              role="status"
+              aria-live="polite"
+            ></div>
+            <div id="options">
+              <span id="status">Ingresá tu nombre para empezar</span>
+              <label
+                ><input type="checkbox" id="audio-toggle" checked /> Escuchar
+                respuesta</label
+              >
+              <a
+                id="feedback-link"
+                hidden
+                target="_blank"
+                rel="noopener noreferrer"
+                >Dejanos sugerencias para mejorar</a
+              >
+            </div>
+          </footer>
+        </div>
       </section>
     </div>
 
@@ -227,7 +267,8 @@
         <span class="auth-kicker">Asistente virtual UNM</span>
         <h2 id="auth-title">Ingresá al asistente</h2>
         <p>
-          Esta es una página de prueba simulada de la Universidad Nacional de Moreno.
+          Esta es una página de prueba simulada de la Universidad Nacional de
+          Moreno.
         </p>
       </div>
       <div class="mic-suggestion">
@@ -239,9 +280,13 @@
         </span>
         <div>
           <strong>Probá las consultas por voz</strong>
-          <p>Podés habilitar el micrófono ahora o hacerlo cuando quieras grabar.</p>
+          <p>
+            Podés habilitar el micrófono ahora o hacerlo cuando quieras grabar.
+          </p>
         </div>
-        <button id="mic-permission-btn" type="button">Habilitar micrófono</button>
+        <button id="mic-permission-btn" type="button">
+          Habilitar micrófono
+        </button>
         <p id="mic-permission-status" role="status" aria-live="polite"></p>
       </div>
       <form id="auth-form">
@@ -375,8 +420,7 @@
         const listo = !!usuario && !busy;
         textInput.disabled = !listo || isRecording || !!audioBlob;
         sendBtn.disabled =
-          !listo ||
-          (!isRecording && !audioBlob && !textInput.value.trim());
+          !listo || (!isRecording && !audioBlob && !textInput.value.trim());
         recordBtn.disabled =
           !usuario || busy || isRecording || recordingStarting;
         $("pause-btn").disabled = !isRecording || busy;
@@ -461,12 +505,15 @@
         estado.textContent = "";
         try {
           if (!navigator.mediaDevices?.getUserMedia)
-            throw new Error("Este navegador no permite habilitar el micrófono.");
+            throw new Error(
+              "Este navegador no permite habilitar el micrófono.",
+            );
           const stream = await navigator.mediaDevices.getUserMedia({
             audio: true,
           });
           stream.getTracks().forEach((track) => track.stop());
-          estado.textContent = "Micrófono habilitado. Ya podés probar las consultas por voz.";
+          estado.textContent =
+            "Micrófono habilitado. Ya podés probar las consultas por voz.";
         } catch (err) {
           estado.textContent =
             err.name === "NotAllowedError"
@@ -909,9 +956,11 @@
           });
           audioBlob = null;
           audioChunks = [];
-          const tipo = ["audio/webm;codecs=opus", "audio/webm", "audio/mp4"].find(
-            (mime) => MediaRecorder.isTypeSupported(mime),
-          );
+          const tipo = [
+            "audio/webm;codecs=opus",
+            "audio/webm",
+            "audio/mp4",
+          ].find((mime) => MediaRecorder.isTypeSupported(mime));
           mediaRecorder = new MediaRecorder(
             stream,
             tipo ? { mimeType: tipo } : undefined,
@@ -921,7 +970,8 @@
             if (event.data.size > 0) audioChunks.push(event.data);
           };
           grabador.onstop = () => {
-            const mime = grabador.mimeType || audioChunks[0]?.type || "audio/webm";
+            const mime =
+              grabador.mimeType || audioChunks[0]?.type || "audio/webm";
             audioBlob = new Blob(audioChunks, { type: mime });
             audioChunks = [];
             mediaRecorder = null;
@@ -943,7 +993,8 @@
           isRecording = true;
           isPaused = false;
           recordBtn.classList.add("recording");
-          statusText.textContent = "Grabando... pausá o tocá Enviar cuando termines.";
+          statusText.textContent =
+            "Grabando... pausá o tocá Enviar cuando termines.";
           actualizarControles();
         } catch (err) {
           recordingStarting = false;

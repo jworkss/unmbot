@@ -63,6 +63,15 @@ describe("API del asistente", () => {
     assert.equal((await alta.json()).user.username, "usuario prueba");
     cookie = alta.headers.get("set-cookie").split(";")[0];
 
+    const audioBienvenida = await fetch(`${baseUrl}/api/welcome-audio`, {
+      headers: { Cookie: cookie },
+    });
+    assert.equal(audioBienvenida.status, 200);
+    assert.match(audioBienvenida.headers.get("content-type"), /audio\/wav/);
+    const datosAudio = Buffer.from(await audioBienvenida.arrayBuffer());
+    assert.equal(datosAudio.toString("ascii", 0, 4), "RIFF");
+    assert.equal(datosAudio.toString("ascii", 8, 12), "WAVE");
+
     const otroAlta = await fetch(`${baseUrl}/api/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -72,6 +81,15 @@ describe("API del asistente", () => {
       }),
     });
     assert.equal(otroAlta.status, 200);
+    const cookieOtraPersona = otroAlta.headers.get("set-cookie").split(";")[0];
+    const audioOtraPersona = await fetch(`${baseUrl}/api/welcome-audio`, {
+      headers: { Cookie: cookieOtraPersona },
+    });
+    assert.equal(audioOtraPersona.status, 200);
+    assert.deepEqual(
+      Buffer.from(await audioOtraPersona.arrayBuffer()),
+      datosAudio,
+    );
 
     const usuarioId = db
       .prepare("SELECT session_id FROM users WHERE username = ?")
