@@ -1127,12 +1127,38 @@ dialog form {
     padding: 0 0.3rem;
   }
   footer {
-    padding: 0.6rem;
+    padding: 0.75rem;
+  }
+  #composer {
+    display: grid;
+    grid-template-columns: 3.25rem 3.25rem minmax(0, 1fr);
+    gap: 0.65rem;
+    align-items: center;
+  }
+  #text-input {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    width: 100%;
+    min-height: 3.5rem;
   }
   #record-btn {
-    min-width: 4rem;
+    grid-column: 1;
+    grid-row: 2;
+    width: 3.25rem;
+    height: 3.25rem;
+    min-width: 0;
+  }
+  #pause-btn {
+    grid-column: 2;
+    grid-row: 2;
+    width: 3.25rem;
+    height: 3.25rem;
   }
   #send-btn {
-    padding: 0 0.8rem;
+    grid-column: 3;
+    grid-row: 2;
+    width: 100%;
+    min-height: 3.25rem;
+    padding: 0 0.75rem;
   }
 }

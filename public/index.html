@@ -9,10 +9,7 @@
   <body>
     <header class="unm-masthead">
       <div class="masthead-inner">
-        <a
-          href="https://www.unm.edu.ar/"
-          aria-label="Universidad Nacional de Moreno, inicio"
-        >
+        <a href="" aria-label="Universidad Nacional de Moreno, inicio">
           <img
             src="https://www.unm.edu.ar/wp-content/uploads/2024/04/Fondo-oscuroOK-300x149-1.png"
             alt="Universidad Nacional de Moreno"
@@ -27,14 +24,11 @@
     </header>
 
     <nav class="site-navigation" aria-label="Navegación principal">
-      <a href="https://www.unm.edu.ar/">Inicio</a>
-      <a
-        href="https://www.unm.edu.ar/estudiar-en-la-unm/quiero-estudiar-en-la-unm/"
-        >Ingresantes</a
-      >
-      <a href="https://www.unm.edu.ar/estudiantes/">Estudiantes</a>
-      <a href="https://www.unm.edu.ar/posgrado2027/">Posgrado</a>
-      <a href="https://www.unm.edu.ar/convocatorias/">Investigación</a>
+      <a href="">Inicio</a>
+      <a href="">Ingresantes</a>
+      <a href="">Estudiantes</a>
+      <a href="">Posgrado</a>
+      <a href="">Investigación</a>
       <form action="https://www.unm.edu.ar/" method="get" role="search">
         <label class="solo-lector" for="site-search">Buscar en el sitio</label>
         <input
@@ -51,37 +45,16 @@
         <div class="hero-copy">
           <p>Universidad pública y gratuita</p>
           <h1 id="hero-title">Universidad Nacional de Moreno</h1>
-          <a
-            href="https://www.unm.edu.ar/estudiar-en-la-unm/quiero-estudiar-en-la-unm/"
-            class="hero-link"
-          >
-            Conocé la UNM
-          </a>
+          <a href="" class="hero-link"> Conocé la UNM </a>
         </div>
-        <a
-          class="mi-unm-link"
-          href="https://www.unm.edu.ar/estudiantes/"
-          aria-label="Mi UNM"
-        >
-          Mi UNM
-        </a>
+        <a class="mi-unm-link" href="" aria-label="Mi UNM"> Mi UNM </a>
       </section>
 
       <section class="quick-access" aria-label="Accesos principales">
-        <a
-          href="https://www.unm.edu.ar/estudiar-en-la-unm/quiero-estudiar-en-la-unm/"
-        >
-          <span>01</span><strong>Ingresantes</strong>
-        </a>
-        <a href="https://www.unm.edu.ar/estudiantes/">
-          <span>02</span><strong>Estudiantes</strong>
-        </a>
-        <a href="https://www.unm.edu.ar/posgrado2027/">
-          <span>03</span><strong>Posgrado</strong>
-        </a>
-        <a href="https://www.unm.edu.ar/comunidad/">
-          <span>04</span><strong>Comunidad UNM</strong>
-        </a>
+        <a href=""> <span>01</span><strong>Ingresantes</strong> </a>
+        <a href=""> <span>02</span><strong>Estudiantes</strong> </a>
+        <a href=""> <span>03</span><strong>Posgrado</strong> </a>
+        <a href=""> <span>04</span><strong>Comunidad UNM</strong> </a>
       </section>
 
       <section class="news-section" aria-labelledby="news-title">
@@ -90,7 +63,7 @@
           <h2 id="news-title">Novedades UNM</h2>
         </div>
         <div class="news-grid">
-          <a class="news-card" href="https://www.unm.edu.ar/posgrado2027/">
+          <a class="news-card" href="">
             <img
               src="https://www.unm.edu.ar/wp-content/uploads/2026/10/IMG_5121-1024x683.jpg"
               alt=""
@@ -105,10 +78,7 @@
               <p>Conocé la oferta académica y el proceso de inscripción.</p>
             </div>
           </a>
-          <a
-            class="news-card"
-            href="https://www.unm.edu.ar/convocatoria-investigacion/"
-          >
+          <a class="news-card" href="">
             <img
               src="https://www.unm.edu.ar/wp-content/uploads/2026/10/IMG_1394-1024x683.jpg"
               alt=""
@@ -122,7 +92,7 @@
               <p>Conocé proyectos, requisitos y fechas en el sitio oficial.</p>
             </div>
           </a>
-          <a class="news-card" href="https://www.unm.edu.ar/convocatorias/">
+          <a class="news-card" href="">
             <img
               src="https://www.unm.edu.ar/wp-content/uploads/2026/10/IMG_5900-1024x683.jpg"
               alt=""
@@ -142,7 +112,7 @@
       <section class="site-contact" aria-label="Información de contacto">
         <strong>Universidad Nacional de Moreno</strong>
         <span>Av. Bartolomé Mitre 1891, Moreno, Buenos Aires</span>
-        <a href="https://www.unm.edu.ar/">www.unm.edu.ar</a>
+        <a href="">www.unm.edu.ar</a>
       </section>
     </main>
 
@@ -847,8 +817,13 @@
             else if (ev.type === "done") {
               termino = true;
               progreso.remove();
-              appendMessage("assistant", ev.assistantText, ev.audioUrl, true);
-              if (ev.fromOption) {
+              appendMessage(
+                "assistant",
+                ev.assistantText,
+                ev.audioUrl,
+                !ev.limitNotice,
+              );
+              if (ev.fromOption && ev.questionLimit?.remaining !== 0) {
                 if (ev.suggestions?.length) {
                   mostrarMenu(ev.suggestions, `Más sobre ${ev.selectedOption}`);
                 } else {
@@ -858,16 +833,12 @@
                   );
                 }
               }
-              if (ev.questionLimit?.remaining === 0) {
-                const hora = new Date(
-                  ev.questionLimit.resetAt,
-                ).toLocaleTimeString("es-AR", {
-                  hour: "2-digit",
-                  minute: "2-digit",
-                });
+              if (ev.limitNotice) {
                 appendMessage(
                   "assistant",
-                  `Alcanzaste el límite de 5 preguntas. Podrás volver a consultar a las ${hora}.`,
+                  ev.limitNotice.text,
+                  ev.limitNotice.audioUrl,
+                  true,
                 );
               }
               if (

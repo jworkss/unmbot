@@ -30,11 +30,12 @@ describe("base de conocimiento", () => {
 
   it("carga los archivos temáticos y conserva sus metadatos", () => {
     const items = cargarItems();
-    assert.equal(items.length, 85);
+    assert.equal(items.length, 89);
     assert.ok(items.some((item) => item.archivo === "contactos.json"));
     assert.ok(items.some((item) => item.archivo === "coprun.json"));
     assert.ok(items.some((item) => item.archivo === "inscripcion-2027.json"));
     assert.ok(items.some((item) => item.archivo === "posgrado-2027.json"));
+    assert.ok(items.some((item) => item.archivo === "becas.json"));
     assert.ok(items.some((item) => item.archivo === "departamento-ciencias-aplicadas-tecnologia.json"));
     assert.ok(items.some((item) => item.archivo === "departamento-ciencias-economicas-juridicas.json"));
     assert.ok(items.some((item) => item.archivo === "departamento-humanidades-ciencias-sociales.json"));
@@ -48,7 +49,10 @@ describe("base de conocimiento", () => {
       ["¿Cuáles son las fechas de inscripción para 2027?", "inscripcion-2027-faq-1"],
       ["¿Cómo se aprueba el COPRUN y qué asistencia piden?", "coprun-faq-5"],
       ["¿Dónde está la biblioteca y cuál es su correo?", "contactos-faq-3"],
-      ["¿Hay becas o ayuda económica en la UNM?", "vida-universitaria-faq-7"],
+      ["Hablame de becas", "becas-faq-1"],
+      ["¿Hay becas o ayuda económica en la UNM?", "becas-faq-1"],
+      ["¿Cómo solicito una beca interna en la UNM?", "becas-faq-3"],
+      ["¿Qué becas externas informa la UNM y cuándo se puede inscribir?", "becas-faq-5"],
       ["¿Qué opciones de posgrado y diplomaturas ofrece la UNM en 2027?", "posgrado-2027-oferta"],
       ["¿Cuándo puedo inscribirme a un posgrado para 2027?", "posgrado-2027-inscripcion"],
       ["Hola, quiero averiguar por las carreras disponibles.", "oferta-academica-general"],

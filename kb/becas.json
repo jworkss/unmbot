@@ -1,0 +1,93 @@
+{
+  "preguntas_frecuentes": [
+    {
+      "id": "becas-faq-1",
+      "categoria": "Bienestar estudiantil",
+      "etiqueta": "Becas en la UNM",
+      "pregunta": "¿Qué becas hay en la UNM?",
+      "respuesta": "La UNM ofrece becas internas de Mérito Académico, Ayuda Económica y Apoyo, sin límite de edad ni nacionalidad. También informa sobre programas externos como Progresar y Manuel Belgrano. Cada convocatoria tiene requisitos y fechas propios.",
+      "palabras_clave": [
+        "becas",
+        "beca",
+        "hablame de becas",
+        "becas universitarias",
+        "ayuda económica",
+        "apoyo para estudiantes",
+        "becas de la universidad"
+      ],
+      "fuente": "https://www.unm.edu.ar/estudiantes/becas-internas/",
+      "actualizado": "2026-11-03"
+    },
+    {
+      "id": "becas-faq-2",
+      "categoria": "Bienestar estudiantil",
+      "etiqueta": "Requisitos de las becas internas",
+      "pregunta": "¿Qué requisitos tienen las becas internas de la UNM?",
+      "respuesta": "Para Mérito Académico se requieren cuatro materias cuatrimestrales aprobadas (o equivalente anual) y promedio mínimo de 8; en Ingeniería en Electrónica, 7. Para Ayuda Económica, estudiantes avanzados necesitan tres materias aprobadas y promedio mínimo de 5. Para Apoyo, necesitan dos materias aprobadas. Quienes ingresan deben aprobar el COPRUN y no adeudar materias del secundario para solicitar Ayuda Económica o Apoyo. Además, la convocatoria indica que no se deben cumplir los requisitos de Progresar o Manuel Belgrano.",
+      "palabras_clave": [
+        "requisitos de becas",
+        "requisitos becas internas",
+        "promedio para beca",
+        "materias aprobadas beca",
+        "beca por mérito académico",
+        "beca de ayuda económica",
+        "beca de apoyo",
+        "COPRUN"
+      ],
+      "fuente": "https://www.unm.edu.ar/estudiantes/becas-internas/",
+      "actualizado": "2026-11-03"
+    },
+    {
+      "id": "becas-faq-3",
+      "categoria": "Bienestar estudiantil",
+      "etiqueta": "Solicitar una beca interna",
+      "pregunta": "¿Cómo solicito una beca interna en la UNM?",
+      "respuesta": "Completá el formulario del sistema SIU Tehuelche y enviá la documentación requerida en un único PDF legible a bienestaruniversitario@unm.edu.ar, con el asunto «Inscripción a becas internas». La solicitud queda efectiva después de revisar la documentación completa y enviarte el comprobante.",
+      "palabras_clave": [
+        "cómo solicitar beca",
+        "inscripción a becas",
+        "formulario SIU Tehuelche",
+        "documentación becas",
+        "correo para becas",
+        "bienestaruniversitario@unm.edu.ar"
+      ],
+      "fuente": "https://www.unm.edu.ar/estudiantes/becas-internas/",
+      "actualizado": "2026-11-03"
+    },
+    {
+      "id": "becas-faq-4",
+      "categoria": "Bienestar estudiantil",
+      "etiqueta": "Documentación para becas internas",
+      "pregunta": "¿Qué documentación piden para solicitar una beca interna?",
+      "respuesta": "Se solicita documentación personal y del grupo familiar, como DNI, CUIL, comprobantes de ingresos y constancias académicas. También se puede pedir certificado de discapacidad, si corresponde. Consultá la lista oficial vigente y enviá los documentos juntos en un PDF legible.",
+      "palabras_clave": [
+        "papeles para beca",
+        "documentos para beca",
+        "certificado de discapacidad",
+        "documentación del grupo familiar",
+        "comprobante de ingresos",
+        "certificado alumno regular"
+      ],
+      "fuente": "https://www.unm.edu.ar/estudiantes/becas-internas/",
+      "actualizado": "2026-11-03"
+    },
+    {
+      "id": "becas-faq-5",
+      "categoria": "Bienestar estudiantil",
+      "etiqueta": "Becas externas",
+      "pregunta": "¿Qué becas externas informa la UNM y cuándo se puede inscribir?",
+      "respuesta": "La UNM informa sobre Progresar y Manuel Belgrano. Al 3 de noviembre de 2026, las fechas que muestra la página oficial para esas convocatorias —abril de 2026— ya vencieron. Consultá la página oficial para saber si hay una nueva inscripción abierta.",
+      "palabras_clave": [
+        "becas externas",
+        "Becas Progresar",
+        "Becas Manuel Belgrano",
+        "fecha inscripción becas",
+        "convocatoria de becas",
+        "inscripción Progresar",
+        "inscripción Manuel Belgrano"
+      ],
+      "fuente": "https://www.unm.edu.ar/estudiantes/becas-externas/",
+      "actualizado": "2026-11-03"
+    }
+  ]
+}

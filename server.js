@@ -1,7 +1,6 @@
 const fs = require("fs");
 const path = require("path");
 const https = require("https");
-const http = require("http");
 const os = require("os");
 const crypto = require("crypto");
 const { execFile } = require("child_process");
@@ -11,6 +10,7 @@ const multer = require("multer");
 const Database = require("better-sqlite3");
 const qrcode = require("qrcode-terminal");
 const { initKB, buscar, cargarItems } = require("./kb");
+const { asegurarCertificados } = require("./certificados");
 
 const execFileAsync = util.promisify(execFile);
 const app = express();
@@ -61,13 +61,14 @@ Reglas:
 3. Si falta información, dilo brevemente. Incluye datos de contacto solo si la persona pregunta expresamente cómo contactar al área o departamento.
 4. Usa la información oficial proporcionada para contestar directamente. Si esa información responde la pregunta, no derives a la persona al sitio web ni a otra fuente en lugar de darle la respuesta. Si recomiendas verificar o ampliar información, incluye el correo o la URL exacta proporcionada; nunca digas solamente "consulta los canales oficiales". No ofrezcas fuentes si no son necesarias para responder.
 5. Incluye datos de contacto de un departamento solo si la persona pregunta específicamente cómo contactarlo. El Departamento de Alumnos es el único responsable de brindar información de inscripción; responde sobre inscripción solo con información de ese tema incluida en la base y no la atribuyas a otra área.
-6. Si la consulta no tiene que ver con la UNM, indica brevemente que solo puedes ayudar con temas de la universidad.
-7. Tu respuesta se leerá en voz alta: responde en prosa, sin enumeraciones numeradas, listas, emojis ni formato Markdown.
-8. Si hay muchas comisiones o aulas y no se especificó cuál, pregunta cuál le interesa.
-9. No leas códigos de materia a menos que te los pidan.
-10. No ofrezcas enviar correos ni hacer acciones que no puedes realizar. No menciones las fechas internas de actualización salvo que te pregunten por ellas.
-11. Si preguntan por las materias o el plan de estudios sin indicar una carrera, no enumeres materias ni supongas la carrera: pregunta solamente «¿De qué carrera querés conocer las materias?».
-12. La respuesta se usa con lector de pantalla y puede escucharse en voz alta. Usa lenguaje claro y frases cortas; prioriza una sola idea por respuesta y evita información extensa que no hayan pedido.`;
+6. Para consultas sobre requisitos o documentación de inscripción, usa únicamente la información del archivo inscripcion-2027.json. Si los requisitos dependen de la situación de la persona y no la especificó, pregunta si ya terminó el secundario o todavía lo está cursando.
+7. Si la consulta no tiene que ver con la UNM, indica brevemente que solo puedes ayudar con temas de la universidad.
+8. Tu respuesta se leerá en voz alta: responde en prosa, sin enumeraciones numeradas, listas, emojis ni formato Markdown.
+9. Si hay muchas comisiones o aulas y no se especificó cuál, pregunta cuál le interesa.
+10. No leas códigos de materia a menos que te los pidan.
+11. No ofrezcas enviar correos ni hacer acciones que no puedes realizar. No menciones las fechas internas de actualización salvo que te pregunten por ellas.
+12. Si preguntan por las materias o el plan de estudios sin indicar una carrera, no enumeres materias ni supongas la carrera: pregunta solamente «¿De qué carrera querés conocer las materias?».
+13. La respuesta se usa con lector de pantalla y puede escucharse en voz alta. Usa lenguaje claro y frases cortas; prioriza una sola idea por respuesta y evita información extensa que no hayan pedido.`;
 
 // Migración: marca las respuestas en las que el bot no pudo ayudar
 try {
@@ -306,7 +307,7 @@ function enlaceSolicitado(texto, fragmentos) {
   if (!/\b(pagina|sitio|web|enlace|link)\b/.test(normalizada)) return "";
   const fragmento = fragmentos.find(
     (item) =>
-      /\b(inscrip|ingreso|carrera|estudiar)\b/i.test(
+      /\b(inscrip|ingreso|carrera|estudiar|becas?|bienestar)\b/i.test(
         `${item.archivo} ${item.etiqueta}`,
       ) && item.fuente,
   );
@@ -320,6 +321,10 @@ function mensajeLimite(reinicio) {
 }
 
 function urlFuente(fuente) {
+  const urlOficial = fuente.match(
+    /^https?:\/\/www\.unm\.edu\.ar\/[^\s)]+/i,
+  )?.[0];
+  if (urlOficial) return urlOficial;
   if (/inscripcion2027/i.test(fuente))
     return "https://www.unm.edu.ar/inscripcion2027";
   if (/estudiar-en-la-unm/i.test(fuente)) {
@@ -450,8 +455,13 @@ db.exec(`
 const MIN_CLAVE = 6; // largo mínimo cuando la persona elige su contraseña
 const NOMBRE_OK = /^[\p{L}\p{N}_.\- ]{3,30}$/u;
 const DURACION = 7 * 24 * 3600 * 1000; // la sesión dura 7 días
-const VENTANA_PREGUNTAS = 40 * 60 * 1000;
-const MAX_PREGUNTAS = 5;
+const VENTANA_PREGUNTAS = 30 * 60 * 1000;
+const MAX_PREGUNTAS = 10;
+const AVISO_LIMITE_TEXTO =
+  "Gracias por aportar, ingresa al siguiente formulario para ayudarme a mejorar\nhttps://forms.gle/XwPvuf9jJcJYgBudA";
+const AVISO_MITAD_TEXTO =
+  "Gracias por aportar, ingresa al siguiente formulario para ayudarme a mejorar. Te quedan 5 preguntas por hacer.\nhttps://forms.gle/XwPvuf9jJcJYgBudA";
+const AVISO_LIMITE_AUDIO = "/audio_out/consulta_1793797579744.wav";
 const sha = (s) => crypto.createHash("sha256").update(s).digest("hex");
 const hashPass = (p) => {
   const salt = crypto.randomBytes(16);
@@ -861,6 +871,13 @@ async function procesarConsulta({
   const consultaInscripcion = /\b(inscrip\w*|preinscrip\w*|ingres\w*)\b/.test(
     consultaNormalizada,
   );
+  const consultaHorarioInscripcion =
+    consultaInscripcion && /\bhorari\w*/.test(consultaNormalizada);
+  const consultaRequisitosInscripcion =
+    consultaInscripcion &&
+    /\b(requisit\w*|documentaci\w*|papel\w*|necesit\w*)/.test(
+      consultaNormalizada,
+    );
   const recuperados = await buscar(consultaBusqueda);
   const fragmentos = recuperados.filter((item) => {
     const tema = normalizarTexto(
@@ -905,7 +922,53 @@ async function procesarConsulta({
   const consultaAmplia = esConsultaAmpliaDeCarreras(userText);
   const consultaGeneralMaterias = esConsultaGeneralMaterias(userText);
   const webLink = enlaceSolicitado(userText, fragmentos);
-  if (webLink) {
+  if (consultaHorarioInscripcion) {
+    const itemAlumnos = itemsKB.find(
+      (item) =>
+        item.archivo === "ingreso.json" &&
+        item.etiqueta === "Contacto de Alumnos",
+    );
+    const horario = itemAlumnos?.texto.match(/atiende (.+? horas)/i)?.[1];
+    if (!horario)
+      throw new Error("No se encontró el horario de Alumnos en ingreso.json");
+    assistantText = `El Departamento de Alumnos atiende ${horario}.`;
+  } else if (consultaRequisitosInscripcion) {
+    const etiquetaRequisito =
+      /\b(extranjer\w*|pasaporte|residencia)\b/.test(consultaNormalizada)
+        ? "Estudiantes extranjeros"
+        : /\b(mayor(?:es)? de 25|25 anos)\b/.test(consultaNormalizada)
+          ? "Ingreso para mayores de 25 años"
+          : /\b(ficha de salud|antecedentes de salud)\b/.test(
+                consultaNormalizada,
+              )
+            ? "Ficha de salud obligatoria"
+            : /\b(ultimo ano|quinto ano|sexto ano|cursando|alumno regular)\b/.test(
+                  consultaNormalizada,
+                )
+              ? "Documentación si estoy en el último año"
+              : /\b(termin[eé]|egresad\w*|egres[eé]|titulo|analitico)\b/.test(
+                    consultaNormalizada,
+                  )
+                ? "Documentación si terminé el secundario"
+                : null;
+    if (!etiquetaRequisito) {
+      assistantText =
+        "Los requisitos dependen de si ya terminaste el secundario o todavía lo estás cursando. ¿Cuál es tu caso?";
+    } else {
+      const itemRequisito = itemsKB.find(
+        (item) =>
+          item.archivo === "inscripcion-2027.json" &&
+          item.etiqueta === etiquetaRequisito,
+      );
+      if (!itemRequisito)
+        throw new Error(
+          `No se encontró "${etiquetaRequisito}" en inscripcion-2027.json`,
+        );
+      assistantText = itemRequisito.texto
+        .replace(/\s*Consultas:.*$/i, "")
+        .trim();
+    }
+  } else if (webLink) {
     assistantText = webLink;
   } else if (consultaAmplia) {
     assistantText =
@@ -978,6 +1041,21 @@ async function procesarConsulta({
   db.prepare(
     "INSERT INTO messages (session_id, role, content, audio_url, sin_info) VALUES (?, ?, ?, ?, ?)",
   ).run(sessionId, "assistant", assistantText, audioUrl, sinInfo ? 1 : 0);
+  const avisoLimite =
+    usoPreguntas.restantes === 5 || usoPreguntas.restantes === 0
+      ? {
+          text:
+            usoPreguntas.restantes === 5
+              ? AVISO_MITAD_TEXTO
+              : AVISO_LIMITE_TEXTO,
+          audioUrl: AVISO_LIMITE_AUDIO,
+        }
+      : null;
+  if (avisoLimite) {
+    db.prepare(
+      "INSERT INTO messages (session_id, role, content, audio_url) VALUES (?, ?, ?, ?)",
+    ).run(sessionId, "assistant", avisoLimite.text, avisoLimite.audioUrl);
+  }
   emit({
     type: "done",
     assistantText,
@@ -990,6 +1068,7 @@ async function procesarConsulta({
       remaining: usoPreguntas.restantes,
       resetAt: usoPreguntas.reinicio,
     },
+    limitNotice: avisoLimite,
   });
 }
 
@@ -1078,10 +1157,14 @@ if (require.main === module) {
     .then(() => console.log("Base de la UNM cargada"))
     .catch(console.error);
 
-  const keyPath = path.join(__dirname, "certs", "key.pem");
-  const certPath = path.join(__dirname, "certs", "cert.pem");
-
-  if (fs.existsSync(keyPath) && fs.existsSync(certPath)) {
+  (async () => {
+    const { keyPath, certPath, generated } = await asegurarCertificados({
+      directory: path.join(__dirname, "certs"),
+      ipAddress: obtenerIPLocal(),
+    });
+    if (generated) {
+      console.log("No se encontraron certificados; se generó un par nuevo.");
+    }
     const credentials = {
       key: fs.readFileSync(keyPath),
       cert: fs.readFileSync(certPath),
@@ -1091,16 +1174,10 @@ if (require.main === module) {
       console.log(`\n✅ Servidor HTTPS listo en red local: ${url}`);
       qrcode.generate(url, { small: true }, (qr) => console.log(qr));
     });
-  } else {
-    http.createServer(app).listen(PORT, "0.0.0.0", () => {
-      const url = `http://${obtenerIPLocal()}:${PORT}`;
-      console.log(`\n⚠️ Servidor HTTP listo en: ${url}`);
-      console.log(
-        "(Para usar el micrófono desde otros dispositivos, agrega certs/key.pem y certs/cert.pem)\n",
-      );
-      qrcode.generate(url, { small: true }, (qr) => console.log(qr));
-    });
-  }
+  })().catch((error) => {
+    console.error("No se pudo iniciar el servidor HTTPS:", error);
+    process.exitCode = 1;
+  });
 }
 
 module.exports = { app, db };

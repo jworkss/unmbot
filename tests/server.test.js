@@ -580,7 +580,37 @@ describe("API del asistente", () => {
     assert.equal(resultado.sinInfo, false);
   });
 
-  it("limita a cinco preguntas por usuario durante 40 minutos y luego reinicia el contador", async () => {
+  it("devuelve el enlace oficial de becas internas si la persona lo solicita", async () => {
+    const alta = await fetch(`${baseUrl}/api/register`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: "consulta link becas",
+        password: "clave-becas-1",
+      }),
+    });
+    const cookieBecas = alta.headers.get("set-cookie").split(";")[0];
+    const respuesta = await fetch(`${baseUrl}/api/text-chat`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Cookie: cookieBecas },
+      body: JSON.stringify({
+        text: "¿Cuál es la página de becas internas?",
+        conAudio: false,
+      }),
+    });
+    const eventos = (await respuesta.text())
+      .trim()
+      .split("\n")
+      .map((linea) => JSON.parse(linea));
+    const resultado = eventos.find((evento) => evento.type === "done");
+    assert.equal(
+      resultado.assistantText,
+      "https://www.unm.edu.ar/estudiantes/becas-internas/",
+    );
+    assert.equal(resultado.sinInfo, false);
+  });
+
+  it("limita a diez preguntas por usuario durante 30 minutos y luego reinicia el contador", async () => {
     const alta = await fetch(`${baseUrl}/api/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -601,7 +631,7 @@ describe("API del asistente", () => {
         }),
       });
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 10; i++) {
       const respuesta = await enviarPregunta();
       const eventos = (await respuesta.text())
         .trim()
@@ -609,7 +639,41 @@ describe("API del asistente", () => {
         .map((linea) => JSON.parse(linea));
       const resultado = eventos.find((evento) => evento.type === "done");
       assert.ok(resultado);
-      if (i === 4) assert.equal(resultado.questionLimit.remaining, 0);
+      if (i < 4) assert.equal(resultado.limitNotice, null);
+      if (i === 4) {
+        assert.equal(resultado.questionLimit.remaining, 5);
+        assert.equal(
+          resultado.limitNotice.text,
+          "Gracias por aportar, ingresa al siguiente formulario para ayudarme a mejorar. Te quedan 5 preguntas por hacer.\nhttps://forms.gle/XwPvuf9jJcJYgBudA",
+        );
+        assert.equal(
+          resultado.limitNotice.audioUrl,
+          "/audio_out/consulta_1793797579744.wav",
+        );
+        const audio = await fetch(
+          `${baseUrl}${resultado.limitNotice.audioUrl}`,
+          { headers: { Cookie: cookieLimite } },
+        );
+        assert.equal(audio.status, 200);
+        assert.match(audio.headers.get("content-type"), /audio\/wav/);
+      }
+      if (i === 9) {
+        assert.equal(resultado.questionLimit.remaining, 0);
+        assert.equal(
+          resultado.limitNotice.text,
+          "Gracias por aportar, ingresa al siguiente formulario para ayudarme a mejorar\nhttps://forms.gle/XwPvuf9jJcJYgBudA",
+        );
+        assert.equal(
+          resultado.limitNotice.audioUrl,
+          "/audio_out/consulta_1793797579744.wav",
+        );
+        const audio = await fetch(
+          `${baseUrl}${resultado.limitNotice.audioUrl}`,
+          { headers: { Cookie: cookieLimite } },
+        );
+        assert.equal(audio.status, 200);
+        assert.match(audio.headers.get("content-type"), /audio\/wav/);
+      }
     }
 
     const bloqueada = await enviarPregunta();
@@ -619,7 +683,7 @@ describe("API del asistente", () => {
       .map((linea) => JSON.parse(linea));
     assert.match(
       eventosBloqueados.find((evento) => evento.type === "limit").message,
-      /límite de 5 preguntas/,
+      /límite de 10 preguntas/,
     );
 
     const userId = db
@@ -627,13 +691,64 @@ describe("API del asistente", () => {
       .get("limite pruebas").id;
     db.prepare(
       "UPDATE question_usage SET window_started_at = ? WHERE user_id = ?",
-    ).run(Date.now() - 40 * 60 * 1000 - 1, userId);
+    ).run(Date.now() - 30 * 60 * 1000 - 1, userId);
     const reiniciada = await enviarPregunta();
     const eventosReiniciados = (await reiniciada.text())
       .trim()
       .split("\n")
       .map((linea) => JSON.parse(linea));
     assert.ok(eventosReiniciados.find((evento) => evento.type === "done"));
+  });
+
+  it("responde los horarios y requisitos de inscripción desde sus bases oficiales", async () => {
+    const alta = await fetch(`${baseUrl}/api/register`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: "pruebas requisitos",
+        password: "clave-requisitos-1",
+      }),
+    });
+    const cookieInscripcion = alta.headers.get("set-cookie").split(";")[0];
+    const requisitos = cargarItems().find(
+      (item) =>
+        item.archivo === "inscripcion-2027.json" &&
+        item.etiqueta === "Documentación si terminé el secundario",
+    );
+    const consultar = async (text) => {
+      const respuesta = await fetch(`${baseUrl}/api/text-chat`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Cookie: cookieInscripcion,
+        },
+        body: JSON.stringify({ text, conAudio: false }),
+      });
+      const eventos = (await respuesta.text())
+        .trim()
+        .split("\n")
+        .map((linea) => JSON.parse(linea));
+      return eventos.find((evento) => evento.type === "done");
+    };
+
+    const horario = await consultar("¿Cuáles son los horarios de inscripción?");
+    assert.equal(
+      horario.assistantText,
+      "El Departamento de Alumnos atiende de lunes a viernes en el horario de 9:00 a 19:00 horas.",
+    );
+
+    const requisitosGenerales = await consultar(
+      "¿Cuáles son los requisitos de inscripción?",
+    );
+    assert.equal(
+      requisitosGenerales.assistantText,
+      "Los requisitos dependen de si ya terminaste el secundario o todavía lo estás cursando. ¿Cuál es tu caso?",
+    );
+
+    const requisitosSecundario = await consultar(
+      "¿Qué requisitos de inscripción necesito si ya terminé el secundario?",
+    );
+    assert.equal(requisitosSecundario.assistantText, requisitos.texto);
   });
 
   it("rechaza credenciales inválidas", async () => {

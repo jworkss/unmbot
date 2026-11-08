@@ -91,20 +91,6 @@
     },
     {
       "categoria": "Bienestar",
-      "etiqueta": "Becas",
-      "pregunta": "¿Hay becas en la UNM y quién puede pedirlas?",
-      "respuesta": "Sí. La UNM tiene becas internas propias y participa de programas de otros organismos. En general se necesita haber ingresado a la carrera, demostrar una situación económica que lo justifique, tener buen desempeño académico y cumplir los requisitos de cada beca. Consultas: bienestaruniversitario@unm.edu.ar.",
-      "palabras_clave": [
-        "beca",
-        "becas internas",
-        "becas externas",
-        "ayuda económica"
-      ],
-      "fuente": "unm.edu.ar (estudiar en la UNM, estudiantes, carreras y bienestar)",
-      "actualizado": "2026-10-27"
-    },
-    {
-      "categoria": "Bienestar",
       "etiqueta": "Bienestar, salud y deporte",
       "pregunta": "¿Qué servicios de bienestar ofrece la universidad?",
       "respuesta": "El Departamento de Bienestar y Asuntos Estudiantiles ofrece información sobre becas, pasantías, boleto estudiantil, convivencia universitaria, servicio de salud y deportes. Las actividades deportivas son gratuitas para estudiantes, docentes y nodocentes. Está en la oficina E001, interno 3126.",
