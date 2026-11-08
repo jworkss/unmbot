@@ -28,8 +28,26 @@
         "comisiones",
         "elegir comisión"
       ],
-      "fuente": "unm.edu.ar (estudiar en la UNM, estudiantes, carreras y bienestar)",
-      "actualizado": "2026-10-27"
+      "fuente": "https://www.unm.edu.ar/estudiar-en-la-unm/quiero-estudiar-en-la-unm/",
+      "actualizado": "2026-11-08"
+    },
+    {
+      "categoria": "Estudiar en la UNM",
+      "etiqueta": "Consultar comisión y aula",
+      "pregunta": "¿Cómo sé qué comisión me corresponde y en qué aula curso?",
+      "respuesta": "La UNM informa que la comisión se elige durante la inscripción en línea, según tu preferencia y los cupos disponibles. Para el primer cuatrimestre publica las asignaturas en https://www.unm.edu.ar/asignaturas-primer/, que requiere iniciar sesión. La información pública no permite confirmar qué comisión o aula te fue asignada; no compartas tu contraseña en este chat.",
+      "palabras_clave": [
+        "comisión asignada",
+        "mi comisión",
+        "qué comisión me corresponde",
+        "aula asignada",
+        "dónde curso",
+        "salón",
+        "comisiones y aulas",
+        "comisión y aula"
+      ],
+      "fuente": "https://www.unm.edu.ar/estudiar-en-la-unm/quiero-estudiar-en-la-unm/; https://www.unm.edu.ar/asignaturas-primer/",
+      "actualizado": "2026-11-08"
     },
     {
       "categoria": "Gestiones",
@@ -104,6 +122,22 @@
       ],
       "fuente": "unm.edu.ar (estudiar en la UNM, estudiantes, carreras y bienestar)",
       "actualizado": "2026-10-27"
+    },
+    {
+      "categoria": "Bienestar",
+      "etiqueta": "Horario de Enfermería",
+      "pregunta": "¿Cuál es el horario de Enfermería de la UNM?",
+      "respuesta": "La Enfermería de la UNM atiende de lunes a viernes, de 8 a 21 horas.",
+      "palabras_clave": [
+        "enfermería",
+        "enfermeria",
+        "horario de enfermería",
+        "atención médica",
+        "servicio de salud",
+        "salud"
+      ],
+      "fuente": "https://www.unm.edu.ar/estudiantes/servicio-de-salud/",
+      "actualizado": "2026-11-08"
     },
     {
       "categoria": "Orientación",

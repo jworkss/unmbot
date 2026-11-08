@@ -30,7 +30,7 @@ describe("base de conocimiento", () => {
 
   it("carga los archivos temáticos y conserva sus metadatos", () => {
     const items = cargarItems();
-    assert.equal(items.length, 89);
+    assert.equal(items.length, 91);
     assert.ok(items.some((item) => item.archivo === "contactos.json"));
     assert.ok(items.some((item) => item.archivo === "coprun.json"));
     assert.ok(items.some((item) => item.archivo === "inscripcion-2027.json"));
@@ -53,6 +53,9 @@ describe("base de conocimiento", () => {
       ["¿Hay becas o ayuda económica en la UNM?", "becas-faq-1"],
       ["¿Cómo solicito una beca interna en la UNM?", "becas-faq-3"],
       ["¿Qué becas externas informa la UNM y cuándo se puede inscribir?", "becas-faq-5"],
+      ["¿Cómo sé qué comisión me corresponde y en qué aula curso?", "vida-universitaria-faq-3"],
+      ["¿Cuál es el horario de Enfermería de la UNM?", "vida-universitaria-faq-9"],
+      ["¿Qué documentación necesito para solicitar una beca interna?", "becas-faq-4"],
       ["¿Qué opciones de posgrado y diplomaturas ofrece la UNM en 2027?", "posgrado-2027-oferta"],
       ["¿Cuándo puedo inscribirme a un posgrado para 2027?", "posgrado-2027-inscripcion"],
       ["Hola, quiero averiguar por las carreras disponibles.", "oferta-academica-general"],

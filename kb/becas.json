@@ -59,17 +59,18 @@
       "categoria": "Bienestar estudiantil",
       "etiqueta": "Documentación para becas internas",
       "pregunta": "¿Qué documentación piden para solicitar una beca interna?",
-      "respuesta": "Se solicita documentación personal y del grupo familiar, como DNI, CUIL, comprobantes de ingresos y constancias académicas. También se puede pedir certificado de discapacidad, si corresponde. Consultá la lista oficial vigente y enviá los documentos juntos en un PDF legible.",
+      "respuesta": "La página oficial incluye DNI y CUIL/CUIT del solicitante, DNI de convivientes, certificación negativa de ANSES de integrantes mayores de 18 años y comprobantes de ingresos del grupo familiar. Según corresponda, también pide certificado de discapacidad, factura de un servicio del hogar, contrato de alquiler y último pago o comprobante de crédito hipotecario. Para estudiantes, incluye certificado de alumno regular y analítico; a ingresantes puede pedirles documentación del secundario. Enviá todo en un único PDF legible y verificá la lista de la convocatoria vigente.",
       "palabras_clave": [
         "papeles para beca",
         "documentos para beca",
+        "qué documentación necesito para solicitar una beca interna",
         "certificado de discapacidad",
         "documentación del grupo familiar",
         "comprobante de ingresos",
         "certificado alumno regular"
       ],
       "fuente": "https://www.unm.edu.ar/estudiantes/becas-internas/",
-      "actualizado": "2026-11-03"
+      "actualizado": "2026-11-08"
     },
     {
       "id": "becas-faq-5",
